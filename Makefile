@@ -2,4 +2,4 @@ sacs:
 	@git status \n
 	git add .
 	git commit
-	git status
+	git push
