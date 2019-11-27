@@ -1,0 +1,7 @@
+version: '3'
+services:
+  tex-docker:
+    build: .
+    container_name: tex-docker
+    restart: always
+    volumes: 
