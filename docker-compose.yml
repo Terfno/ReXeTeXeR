@@ -5,4 +5,4 @@ services:
     build: .
     container_name: tex-docker
     tty: true
-    # restart: always
+    restart: always
