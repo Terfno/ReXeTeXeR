@@ -1,7 +1,6 @@
 FROM alpine:latest
 
-RUN apk update && \
-    apk add texlive-xetex
+RUN apk --update add --virtual --no-cache texlive-xetex
 
 ADD ./docs /docs
 

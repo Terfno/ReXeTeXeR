@@ -1,4 +1,4 @@
-sacs:
+git:
 	@git status && \
 	git add . && \
 	git commit && \
