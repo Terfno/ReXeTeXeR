@@ -9,6 +9,9 @@ d/build:
 d/run:
 	docker run -itd tex-docker sh
 
+d/rmi:
+	docker rmi tex-docker:latest
+
 d/exec:
 	docker exec -it tex-docker sh
 
@@ -19,4 +22,4 @@ dc/restart:
 	docker-compose restart
 
 dc/down:
-	docker-compose down --rmi all
+	docker-compose down
