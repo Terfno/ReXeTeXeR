@@ -4,22 +4,22 @@ git:
 	git push
 
 d/build:
-	docker build . -t tex-docker
+	@docker build . -t tex-docker
 
 d/run:
-	docker run -itd tex-docker sh
+	@docker run -itd tex-docker sh
 
 d/rmi:
-	docker rmi tex-docker:latest
+	@docker rmi tex-docker:latest
 
 d/exec:
-	docker exec -it tex-docker sh
+	@docker exec -it tex-docker sh
 
 dc/up:
-	docker-compose up -d --build
+	@docker-compose up -d --build
 
 dc/restart:
-	docker-compose restart
+	@docker-compose restart
 
 dc/down:
-	docker-compose down
+	@docker-compose down
