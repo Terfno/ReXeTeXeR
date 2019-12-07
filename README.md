@@ -17,3 +17,14 @@
 # kpsewhich -var-value=TEXMFHOME
 /root/texmf
 ```
+
+```sh
+apk update
+apk search
+apk add -U --progress -ul --no-cache {{.name}}
+```
+
+```sh
+xelatex {{.name_of_tex}}.tex
+```
+これで`{{.name_of_tex}}.pdf`と`{{.name_of_tex}}.log`と`{{.name_of_tex}}.aux`が錬成される
