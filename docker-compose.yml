@@ -3,6 +3,9 @@ version: '3'
 services:
   tex-docker:
     build: .
+    image: tex-docker
     container_name: tex-docker
     tty: true
     restart: always
+    volumes: 
+      - ./docs:/docs
