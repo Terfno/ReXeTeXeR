@@ -1,8 +1,3 @@
-git:
-	@git add . && \
-	git commit && \
-	git push
-
 build:
 	@docker build . -t tex-docker
 

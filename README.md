@@ -1,6 +1,12 @@
 # texDocker
 おれはxetexが好き
 
+## 環境
+* make
+* docker
+* docker-compose
+* そこそこ速いインターネット
+
 ## やりたいこと
 * `*.tex` を `*.pdf` に変換して吐き出すDockerコンテナーを錬成するDockerfileを書きたい
 
