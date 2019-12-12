@@ -23,3 +23,7 @@ dc/restart:
 
 dc/down:
 	@docker-compose down
+
+dc/re:
+	@make dc/down && \
+	make dc/up
