@@ -6,6 +6,10 @@
 * docker
 * docker-compose
 * そこそこ速いインターネット
+* 自動リロードに対応したPDFビューワー
+  * macOS: [Skim](https://skim-app.sourceforge.io/)
+  * windows10: [Sumatra PDF](https://www.sumatrapdfreader.org/)
+  * Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
 ## やりたいこと
 * `*.tex` を `*.pdf` に変換して吐き出すDockerコンテナーを錬成するDockerfileを書きたい
