@@ -17,8 +17,8 @@ ADD ./fonts/Noto_Serif_JP/ /usr/share/fonts/japanese/TrueType/Noto_Serif_JP/
 ADD ./fonts/Roboto/ /usr/share/fonts/japanese/TrueType/Roboto/
 
 # bibtex cite.sty
-ADD ./pack/cite.sty /usr/share/texmf-dist/tex/xelatex/cite/
-ADD ./pack/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
+ADD ./src/cite.sty /usr/share/texmf-dist/tex/xelatex/cite/
+ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
 RUN mktexlsr
 
 CMD ["sh"]
