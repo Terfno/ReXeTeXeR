@@ -1,12 +1,15 @@
 \documentclass[a4paper]{article}
 \XeTeXlinebreaklocale "ja"
+\usepackage{xltxtra}
 
-\usepackage{xltxtra} % \XeTeX ロゴのために必要
-
+% fonts
 \usepackage{fontspec}
-\setmainfont[Scale=MatchLowercase]{Noto_Serif_JP} % \rmfamily のフォント
-\setsansfont[Scale=MatchLowercase]{Noto_Sans_JP}  % \sffamily のフォント
-\setmonofont[Scale=MatchLowercase]{Courier_Prime} % \ttfamily のフォント
+\setmainfont[Scale=MatchLowercase]{NotoSerifJP-Regular}
+\setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular}
+\setmonofont[Scale=MatchLowercase]{CourierPrime-Regular}
+
+% bibtex
+\usepackage{cite}
 
 \begin{document}
 
@@ -16,9 +19,17 @@
 
   \section{はじめに}
   これはtexの記述テストです。
-  私は{\XeTeX}を使っています。
+  私は {\XeTeX} を使っています。イマドキ{\LaTeX}はダサいですよね。
 
   $$
     \frac{1}{2}
   $$
+
+  引用テスト→\cite{lecun2015deep}
+
+  \section{参考文献}
+  % bibtex
+  \bibliographystyle{junsrt}
+  \bibliography{ref.bib}
+
 \end{document}

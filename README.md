@@ -1,4 +1,5 @@
 # texDocker
+おれはxetexが好き
 
 ## やりたいこと
 * `*.tex` を `*.pdf` に変換して吐き出すDockerコンテナーを錬成するDockerfileを書きたい
@@ -10,6 +11,7 @@
 * [x] ローカルの `*.tex` をコンテナー内にコピーするように変更する→volumesで実装
 * [x] コンテナー内にコピーした `*.tex` を `*.pdf` に変換させる
 * [x] 変換した `*.pdf` をローカルに吐き出させる
+* [x] bibtex対応
 * [ ] ローカルの `*.pdf` をプレビューする
 
 ## memo
@@ -62,3 +64,7 @@ SIL license
 Apache license 2.0
 
 レギュラーとイタリック、ボールドを用意
+
+## pack
+* cite.sty: mirrors.ctan.org/macros/latex/contrib/cite/cite.sty
+* junsrt.bst: http://mirror.las.iastate.edu/tex-archive/biblio/pbibtex/base/junsrt.bst

@@ -3,27 +3,27 @@ git:
 	git commit && \
 	git push
 
-d/build:
+build:
 	@docker build . -t tex-docker
 
-d/run:
+run:
 	@docker run -itd tex-docker sh
 
-d/rmi:
+rmi:
 	@docker rmi tex-docker:latest
 
-d/exec:
+exec:
 	@docker exec -it tex-docker sh
 
-dc/up:
+up:
 	@docker-compose up -d --build
 
-dc/restart:
+restart:
 	@docker-compose restart
 
-dc/down:
+down:
 	@docker-compose down
 
-dc/re:
-	@make dc/down && \
-	make dc/up
+re:
+	@make down && \
+	make up
