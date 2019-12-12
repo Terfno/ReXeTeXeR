@@ -34,3 +34,6 @@ find / -type f -name "*.ttf"
 find / -type f -name "*.otf"
 ```
 これでinstalled fontのlistがとれる
+
+### font
+https://fonts.google.com/?category=Sans+Serif&selection.family=Courier+Prime:400,400i,700|Gelasio:400,400i,700|Noto+Sans+JP:400,700|Noto+Serif+JP:400,700|Roboto:400,400i,700
