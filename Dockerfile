@@ -6,7 +6,8 @@ WORKDIR /docs
 RUN apk update && \
   apk add -U --progress -ul --no-cache texlive-xetex && \
   # ↓ for dev
-  apk add -U --progress -ul --no-cache vim
+  apk add -U --progress -ul --no-cache vim &&\
+  apk add -U --progress -ul --no-cache tree
 
 # fonts
 ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/
