@@ -1,6 +1,12 @@
-\documentclass{article}
-
+\documentclass[a4paper]{article}
 \XeTeXlinebreaklocale "ja"
+
+\usepackage{xltxtra} % \XeTeX ロゴのために必要
+
+\usepackage{fontspec}
+\setmainfont[Scale=MatchLowercase]{Palatino Linotype} % \rmfamily のフォント
+\setsansfont[Scale=MatchLowercase]{Tahoma}            % \sffamily のフォント
+\setmonofont[Scale=MatchLowercase]{Lucida Console}    % \ttfamily のフォント
 
 \begin{document}
 
@@ -10,6 +16,7 @@
 
   \section{はじめに}
   これはtexの記述テストです。
+  私は{\XeTeX}を使っています。
 
   $$
     \frac{1}{2}
