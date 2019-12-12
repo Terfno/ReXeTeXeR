@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  12 DEC 2019 10:44
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  12 DEC 2019 14:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -524,20 +524,14 @@ LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/bx/n' will be
 (Font)              scaled to size 12.07462pt on input line 20.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 5.86961pt on input line 22.
+(Font)              scaled to size 5.86961pt on input line 24.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 4.19258pt on input line 22.
+(Font)              scaled to size 4.19258pt on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 22.
+(Font)              <7> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 22.
-
-Overfull \hbox (6.82568pt too wide) in paragraph at lines 21--23
-\TU/NotoSerifJP-Regular(0)/m/n/10 これはtexの記述テストです。 私は X[]T[]X を使っています。イマドキL[]T[]
-Xはダサいですよね。 
- []
-
-(./report.bbl
+(Font)              <5> on input line 24.
+ (./report.bbl
 
 LaTeX Font Warning: Font shape `TU/NotoSerifJP-Regular(0)/m/it' undefined
 (Font)              using `TU/NotoSerifJP-Regular(0)/m/n' instead on input line
