@@ -142,7 +142,7 @@ Referenceを表示するのに必要だった`cite.sty`と`junsrt.bst`が置い�
 * [x] bibtex対応
 * [x] ローカルの `*.pdf` をプレビューする
 * [x] 画像のテスト
-* [ ] OMakeかなんかで監視してビルド
+* [x] OMakeかなんかで監視してビルド→shとmakeでできた
 * [ ] ライセンスの整備
 * [ ] ドキュメントの整備
 * [ ] 公開記事の整備
@@ -174,3 +174,6 @@ find / -type f -name "*.otf"
 xelatex report.tex && pbibtex report.aux && xelatex report.tex && xelatex report.tex
 ```
 これでbibtex(pbibtex)に対応したpdfを吐き出せる
+
+## 自動で監視してビルド
+https://qiita.com/tamanobi/items/74b62e25506af394eae5

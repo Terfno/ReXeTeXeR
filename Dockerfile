@@ -4,10 +4,13 @@ WORKDIR /docs
 
 # install xetex
 RUN apk update && \
-  apk add -U --progress -ul --no-cache texlive-xetex && \
   # ↓ for dev
-  apk add -U --progress -ul --no-cache vim &&\
-  apk add -U --progress -ul --no-cache tree
+  # apk add -U --progress -ul --no-cache vim &&\
+  # apk add -U --progress -ul --no-cache tree && \
+  # ↑ for dev
+  apk add -U --progress -ul --no-cache texlive-xetex && \
+  apk add -U --progress -ul --no-cache openssl && \
+  apk add -U --progress -ul --no-cache make
 
 # fonts
 ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/
