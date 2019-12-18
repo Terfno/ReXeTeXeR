@@ -5,6 +5,9 @@
 <div style="text-align:center;">マジでかっこいいロゴっぽいやつ</div><br>
 
 ## これはなに
+![img](design/img.png)
+<div style="text-align:center;">動作イメージ(スクショは開発中のもの)</div><br>
+
 日本語の `.tex` (UTF-8) をTeXの環境構築なしに、XeTeX(xelatex)を使って `.pdf` に変換するDockerのコンテナーを作れるファイル群です。勝手に**ReXeTeXeR**と名前をつけました。pBibTeXによるReferenceの自動生成に対応してます。
 
 ## そのうちできること

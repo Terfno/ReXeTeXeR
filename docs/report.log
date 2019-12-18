@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  18 DEC 2019 02:32
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  18 DEC 2019 02:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -531,15 +531,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 28.
-
-Overfull \hbox (1.49171pt too wide) in paragraph at lines 34--36
-\TU/NotoSerifJP-Regular(0)/m/n/10 bibtexを使えます。引用箇所は↓の感じです。Referencesが最後のとこにあります
-。 引用テ
- []
-
 File: img/logo.png Graphic file (type bmp)
 <img/logo.png>
-(./report.bbl
+ (./report.bbl
 
 LaTeX Font Warning: Font shape `TU/NotoSerifJP-Regular(0)/m/it' undefined
 (Font)              using `TU/NotoSerifJP-Regular(0)/m/n' instead on input line
