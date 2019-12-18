@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  18 DEC 2019 02:35
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.18)  18 DEC 2019 05:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -533,7 +533,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 28.
 File: img/logo.png Graphic file (type bmp)
 <img/logo.png>
- (./report.bbl
+
+Overfull \hbox (2.53983pt too wide) in paragraph at lines 45--46
+\TU/NotoSerifJP-Regular(0)/m/n/10 なんか書くと、コンテナ内のシェルスクリプトがこのファイルの変更を検知して、texのコン
+ []
+
+(./report.bbl
 
 LaTeX Font Warning: Font shape `TU/NotoSerifJP-Regular(0)/m/it' undefined
 (Font)              using `TU/NotoSerifJP-Regular(0)/m/n' instead on input line
@@ -549,7 +554,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  12502 strings out of 492922
  280125 string characters out of 6138839
- 353691 words of memory out of 5000000
+ 354691 words of memory out of 5000000
  16494 multiletter control sequences out of 15000+600000
  535306 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
