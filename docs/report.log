@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  12 DEC 2019 14:10
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Alpine Linux) (preloaded format=xelatex 2019.12.12)  18 DEC 2019 02:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -423,115 +423,123 @@ Package: cite 2015/02/27  v 5.5
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 14.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 14.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 14.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 14.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 14.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 14.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 14.
-LaTeX Font Info:    Redeclaring math accent \check on input line 14.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 14.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 14.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 14.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 14.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 14.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 17.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 17.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 17.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 17.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 17.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 17.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 17.
+LaTeX Font Info:    Redeclaring math accent \check on input line 17.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 17.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 17.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 17.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 17.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 14.
+(Font)              `operators' in the math version `normal' on input line 17.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/NotoSerifJP-Regular(0)/m/n on input 
-line 14.
+line 17.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 14.
+(Font)              `operators' in the math version `bold' on input line 17.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/NotoSerifJP-Regular(0)/m/n on input
- line 14.
+ line 17.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/NotoSerifJP-Regular(0)/m/n --> TU/NotoSerifJP-Regula
-r(0)/m/n on input line 14.
+r(0)/m/n on input line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/NotoSerifJP-Regular(0)/m/it on inpu
-t line 14.
+t line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/NotoSerifJP-Regular(0)/bx/n on inpu
-t line 14.
+t line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/NotoSansJP-Regular(0)/m/n on input 
-line 14.
+line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/CourierPrime-Regular(0)/m/n on inpu
-t line 14.
+t line 17.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/NotoSerifJP-Regular(0)/m/n --> TU/NotoSerifJP-Regula
-r(0)/bx/n on input line 14.
+r(0)/bx/n on input line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/NotoSerifJP-Regular(0)/bx/it on in
-put line 14.
+put line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/NotoSansJP-Regular(0)/bx/n on inpu
-t line 14.
+t line 17.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/CourierPrime-Regular(0)/bx/n on inp
-ut line 14.
+ut line 17.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 14.48955pt on input line 18.
+(Font)              scaled to size 14.48955pt on input line 21.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 10.0622pt on input line 18.
+(Font)              scaled to size 10.0622pt on input line 21.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 6.70813pt on input line 18.
+(Font)              scaled to size 6.70813pt on input line 21.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 5.0311pt on input line 18.
+(Font)              scaled to size 5.0311pt on input line 21.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 18.
+(Font)              <12> on input line 21.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 18.
+(Font)              <8> on input line 21.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 18.
+(Font)              <6> on input line 21.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 12.07462pt on input line 20.
+(Font)              scaled to size 12.07462pt on input line 23.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/bx/n' will be
-(Font)              scaled to size 12.07462pt on input line 20.
+(Font)              scaled to size 12.07462pt on input line 23.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 5.86961pt on input line 24.
+(Font)              scaled to size 5.86961pt on input line 28.
 LaTeX Font Info:    Font shape `TU/NotoSerifJP-Regular(0)/m/n' will be
-(Font)              scaled to size 4.19258pt on input line 24.
+(Font)              scaled to size 4.19258pt on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 24.
+(Font)              <7> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 24.
- (./report.bbl
+(Font)              <5> on input line 28.
+
+Overfull \hbox (1.49171pt too wide) in paragraph at lines 34--36
+\TU/NotoSerifJP-Regular(0)/m/n/10 bibtexを使えます。引用箇所は↓の感じです。Referencesが最後のとこにあります
+。 引用テ
+ []
+
+File: img/logo.png Graphic file (type bmp)
+<img/logo.png>
+(./report.bbl
 
 LaTeX Font Warning: Font shape `TU/NotoSerifJP-Regular(0)/m/it' undefined
 (Font)              using `TU/NotoSerifJP-Regular(0)/m/n' instead on input line
@@ -545,10 +553,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 12495 strings out of 492922
- 280057 string characters out of 6138839
- 352691 words of memory out of 5000000
- 16491 multiletter control sequences out of 15000+600000
+ 12502 strings out of 492922
+ 280125 string characters out of 6138839
+ 353691 words of memory out of 5000000
+ 16494 multiletter control sequences out of 15000+600000
  535306 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  47i,6n,116p,346b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
