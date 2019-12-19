@@ -5,7 +5,7 @@
 
 </div>
 
-> *ReXeTeXeR*、逆から読んでも*ReXeTeXeR*  - 2019 terfno
+ぼくのブログ: [TeXの環境構築ダルくね…? せや!](https://medium.com/@terfno/b9892d0d343c?)
 
 ![img](./design/logo.png)
 <div style="text-align:center;">マジでかっこいいロゴっぽいやつ</div><br>
@@ -258,20 +258,3 @@ Referenceを表示するのに必要だった`cite.sty`と`junsrt.bst`が置い�
 
 * cite.sty: mirrors.ctan.org/macros/latex/contrib/cite/cite.sty
 * junsrt.bst: http://mirror.las.iastate.edu/tex-archive/biblio/pbibtex/base/junsrt.bst
-
-
-## memo
-### やること
-* [x] とりあえずTeXの環境をDockerコンテナー内に作る
-  * [x] alpine pull
-  * [x] xetex install
-* [x] ローカルの `*.tex` をコンテナー内にコピーするように変更する→volumesで実装
-* [x] コンテナー内にコピーした `*.tex` を `*.pdf` に変換させる
-* [x] 変換した `*.pdf` をローカルに吐き出させる
-* [x] bibtex対応
-* [x] ローカルの `*.pdf` をプレビューする
-* [x] 画像のテスト
-* [x] OMakeかなんかで監視してビルド→shとmakeでできた
-* [x] ライセンスの整備
-* [x] ドキュメントの整備
-* [ ] 公開記事の整備
