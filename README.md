@@ -195,6 +195,7 @@ terminal
 
 ### 7. `report.tex`が更新されると`report.pdf`も自動で更新される
 `docs/report.tex`を監視しています。更新を検知するとPDFに変換されます。
+
 参考: https://qiita.com/tamanobi/items/74b62e25506af394eae5
 
 ### 8. 自動リロードに対応したPDFビューワーを使って`report.pdf`を開く
@@ -206,14 +207,16 @@ terminal
 
 ### 9. `report.tex`がほぼほぼリアルタイムにPDFでプレビューされる
 以上の手順を踏むと以下のような動作が可能です。スクショはmacOS上で、左半分のVSCodeでTeXを書き、右のSkimでPDFを開いている状態です。`docs/report.tex`を更新すると右側で見ている`docs/report.pdf`も更新されます。
+
+
 ![img](design/img.png)
 <div style="text-align:center;">動作イメージ(スクショは開発中のもの)</div><br>
 
 ### 10. うれしいね:smile:
 よく"Buy us coffee"って見るんですが、私はコーヒー飲めないので、紅茶か本かなんか贈ってくれると喜びます。
 * [my Amazon wish list of books](https://www.amazon.co.jp/hz/wishlist/ls/3F249ZYIVVASC/ref=nav_wishlist_lists_2?_encoding=UTF8&type=wishlist)
-[my Amazon wish list(tea, game, etc)](https://www.amazon.co.jp/hz/wishlist/ls/27B0W5F7BN0VF/ref=nav_wishlist_lists_4?_encoding=UTF8&type=wishlist)
-[my Amazon wish list of gadget](https://www.amazon.co.jp/hz/wishlist/ls/21AZUN2VWHY3C/ref=nav_wishlist_lists_3?_encoding=UTF8&type=wishlist)
+* [my Amazon wish list(tea, game, etc)](https://www.amazon.co.jp/hz/wishlist/ls/27B0W5F7BN0VF/ref=nav_wishlist_lists_4?_encoding=UTF8&type=wishlist)
+* [my Amazon wish list of gadget](https://www.amazon.co.jp/hz/wishlist/ls/21AZUN2VWHY3C/ref=nav_wishlist_lists_3?_encoding=UTF8&type=wishlist)
 
 ## ディレクトリ
 ### `/design`について
