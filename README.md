@@ -1,4 +1,10 @@
 # ReXeTeXeR
+<div style="text-align:center;">
+
+![GitHub](https://img.shields.io/github/license/terfno/rexetexer)  ![GitHub repo size](https://img.shields.io/github/repo-size/terfno/rexetexer)  ![GitHub last commit](https://img.shields.io/github/last-commit/terfno/rexetexer)
+
+</div>
+
 > *ReXeTeXeR*、逆から読んでも*ReXeTeXeR*  - 2019 terfno
 
 ![img](./design/logo.png)
