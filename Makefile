@@ -4,6 +4,12 @@ build:
 run:
 	@docker run -itd tex-docker sh
 
+stop:
+	@docker stop tex-docker
+
+start:
+	@docker start tex-docker
+
 rmi:
 	@docker rmi tex-docker:latest
 

@@ -16,6 +16,13 @@
 
 日本語の `.tex` (UTF-8) をTeXの環境構築なしに、XeTeX(xelatex)を使って `.pdf` に変換するDockerのコンテナーを作れるファイル群です。勝手に**ReXeTeXeR**と名前をつけました。pBibTeXによるReferenceの自動生成に対応してます。
 
+## Make
+* 初回起動: make up
+* コンテナ入る: make exec
+* コンテナ停止: make stop
+* コンテナ起動: make start
+* 完全停止: make down
+
 ## 使い方
 0. ReXeTeXeRのために簡単な環境構築をする
 1. 自分の作業用ディレクトリに移動する
