@@ -1,6 +1,8 @@
+filename:=report
+
 tex:
-	@xelatex report.tex && pbibtex report.aux && xelatex report.tex && xelatex report.tex
+	@xelatex $(filename).tex && pbibtex $(filename).aux && xelatex $(filename).tex && xelatex $(filename).tex
 
 watch:
 	@chmod +x ./watch.sh && \
-	./watch.sh ./report.tex 'make tex'
+	./watch.sh ./$(filename).tex 'make tex'
