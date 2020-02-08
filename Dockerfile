@@ -4,10 +4,6 @@ WORKDIR /docs
 
 # install xetex
 RUN apk update && \
-  # ↓ for dev
-  # apk add -U --progress -ul --no-cache vim &&\
-  # apk add -U --progress -ul --no-cache tree && \
-  # ↑ for dev
   apk add -U --progress -ul --no-cache texlive-xetex && \
   apk add -U --progress -ul --no-cache openssl && \
   apk add -U --progress -ul --no-cache make
