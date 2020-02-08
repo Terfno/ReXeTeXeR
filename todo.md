@@ -1,4 +1,4 @@
 # to do for update
-* [ ] image化用にdocker-compose.ymlとDockerfileをupdate
+* [x] image化用にdocker-compose.ymlとDockerfileをupdate
 * [ ] imageをdocker hubにpush
-* [ ] makefileでローカルのvolumeをマウントするように更新
+* [x] makefileでローカルのvolumeをマウントするように更新

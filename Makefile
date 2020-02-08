@@ -1,8 +1,10 @@
+docs:=`pwd`"/docs"
+
 build:
 	@docker build . -t tex-docker
 
 run:
-	@docker run -v ~/Documents/git/ReXeTeXeR/docs:/docs --name tex-docker -itd tex-docker sh
+	@docker run -v ${docs}:/docs --name tex-docker -itd tex-docker sh
 
 exec:
 	@docker exec -it tex-docker sh
@@ -13,8 +15,8 @@ stop:
 start:
 	@docker start tex-docker
 
+rm:
+	@docker rm tex-docker
+
 rmi:
 	@docker rmi tex-docker:latest
-
-prune:
-	@docker container prune
