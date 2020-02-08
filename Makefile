@@ -1,8 +1,13 @@
+docs:=`pwd`"/docs"
+
 build:
 	@docker build . -t tex-docker
 
 run:
-	@docker run -itd tex-docker sh
+	@docker run -v ${docs}:/docs --name tex-docker -itd tex-docker sh
+
+exec:
+	@docker exec -it tex-docker sh
 
 stop:
 	@docker stop tex-docker
@@ -10,21 +15,8 @@ stop:
 start:
 	@docker start tex-docker
 
+rm:
+	@docker rm tex-docker
+
 rmi:
 	@docker rmi tex-docker:latest
-
-exec:
-	@docker exec -it tex-docker sh
-
-up:
-	@docker-compose up -d --build
-
-restart:
-	@docker-compose restart
-
-down:
-	@docker-compose down
-
-re:
-	@make down && \
-	make up
