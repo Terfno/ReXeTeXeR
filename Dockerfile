@@ -1,12 +1,10 @@
-FROM alpine:latest
+FROM alpine:3.11
 
 WORKDIR /docs
 
 # install xetex
 RUN apk update && \
-  apk add -U --progress -ul --no-cache texlive-xetex && \
-  apk add -U --progress -ul --no-cache openssl && \
-  apk add -U --progress -ul --no-cache make
+  apk add openssl make texlive-xetex
 
 # fonts
 ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/
