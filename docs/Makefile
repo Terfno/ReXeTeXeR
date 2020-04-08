@@ -1,6 +1,8 @@
+TARGET:=report.tex
+
 tex:
-	@xelatex report.tex && pbibtex report.aux && xelatex report.tex && xelatex report.tex
+	@xelatex ${TARGET} && pbibtex report.aux && xelatex ${TARGET} && xelatex ${TARGET}
 
 watch:
 	@chmod +x ./watch.sh && \
-	./watch.sh ./report.tex 'make tex'
+	./watch.sh ./${TARGET} 'make tex'
