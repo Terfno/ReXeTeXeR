@@ -17,6 +17,19 @@
 
 日本語の `.tex` (UTF-8) をTeXの環境構築なしに、XeTeX(xelatex)を使って `.pdf` に変換するDockerのコンテナーを作れるファイル群です。勝手に**ReXeTeXeR**と名前をつけました。pBibTeXによるReferenceの自動生成に対応してます。
 
+## 必要な環境
+### 必須
+以下必須環境です。
+* Docker 19.03
+* Git 2.26
+
+### 推奨
+上記に加え、以下のものがあると楽です。
+* GNU Make 3.81
+* Visual Studio Code
+  * TeX Workshop
+* Skimなどのpdfビュワー
+
 ## Make
 * 初回ビルド: make build
 * 初回コンテナ作成→起動: make run
