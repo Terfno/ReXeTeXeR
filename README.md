@@ -32,8 +32,8 @@
 3. Dockerのイメージをビルドする
 4. Dockerのコンテナを作成する
 5. コンテナに入る
-6. `/docs`にある`report.tex`を監視するコマンドをコンテナ内で実行する
-7. `/docs`以下にある`ref.bib`と`report.tex`を編集する
+6. `report.tex`を監視するコマンドをコンテナ内で実行する
+7. `ref.bib`と`report.tex`を編集する
 8. `report.tex`が更新されると`report.pdf`も自動で更新される
 9. 自動リロードに対応したPDFビューワーを使って`report.pdf`を開く
 10. `report.tex`がほぼほぼリアルタイムにPDFでプレビューされる
