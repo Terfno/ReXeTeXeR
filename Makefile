@@ -2,6 +2,9 @@ DOCS:=`pwd`"/docs"
 INAME:=terfno/rexetexer
 CNAME:=rexetexer
 
+dev:
+	@docker run -it --rm alpine:3.11 sh
+
 build:
 	@docker build -t '${INAME}' .
 
