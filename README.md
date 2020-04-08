@@ -17,24 +17,23 @@
 
 日本語の `.tex` (UTF-8) をTeXの環境構築なしに、XeTeX(xelatex)を使って `.pdf` に変換するDockerのコンテナーを作れるファイル群です。勝手に**ReXeTeXeR**と名前をつけました。pBibTeXによるReferenceの自動生成に対応してます。
 
-## Make
-* 初回ビルド: make build
-* 初回コンテナ作成→起動: make run
-* コンテナ入る: make exec
-* コンテナ停止: make stop
-* コンテナ起動: make start
-* コンテナ削除: make rm
-* イメージ削除: make rmi
+## 必要な環境
+* Docker
+
+### あると便利
+* GNU Make
+* テキストエディタ
+* 自動リロードできるPDFビュワー
 
 ## 使い方
 0. ReXeTeXeRのために簡単な環境構築をする
-1. 自分の作業用ディレクトリに移動する
-2. ReXeTeXeRをcloneする
+1. ReXeTeXeRを準備する
+2. 自分の作業用ディレクトリに移動する
 3. Dockerのイメージをビルドする
 4. Dockerのコンテナを作成する
 5. コンテナに入る
-6. `/docs`にある`report.tex`を監視するコマンドをコンテナ内で実行する
-7. `/docs`以下にある`ref.bib`と`report.tex`を編集する
+6. `report.tex`を監視するコマンドをコンテナ内で実行する
+7. `ref.bib`と`report.tex`を編集する
 8. `report.tex`が更新されると`report.pdf`も自動で更新される
 9. 自動リロードに対応したPDFビューワーを使って`report.pdf`を開く
 10. `report.tex`がほぼほぼリアルタイムにPDFでプレビューされる
@@ -42,7 +41,6 @@
 
 ### 0. ReXeTeXeRのために簡単な環境構築をする
 #### 用意するもの
-* Git
 * GNU Make
 * Docker
 * そこそこ速いインターネット
@@ -53,43 +51,100 @@
 
 terminal
 ```sh
-$ git version
 $ docker version
 $ make --verison
 ```
 
 なければ環境構築してください。
 
-### 1. 自分の作業用ディレクトリに移動する
+### 1. ReXeTeXeRを準備する
+* Dockerイメージ
+* `Makefile`
+* `watch.sh`
+
+#### Dockerのイメージ
+Docker HubからReXeTeXeRのイメージをpullしましょう。
+
+terminal
+```sh
+$ docker pull terfno/rexetexer
+```
+
+#### Makefile
+自身のディレクトリにMakefileを置いてください。中身は以下の通りです。
+
+```make
+INAME:=terfno/rexetexer
+CNAME:=rexetexer
+
+run:
+	@docker run -v ${PWD}:/docs --name ${CNAME} -itd ${INAME} sh
+
+exec:
+	@docker exec -it ${CNAME} sh
+
+start:
+	@docker start ${CNAME}
+
+stop:
+	@docker stop ${CNAME}
+
+# rm
+rm:
+	@docker rm ${CNAME}
+
+rmi:
+	@docker rmi ${INAME}
+
+# tex
+tex:
+	@xelatex report.tex && pbibtex report.aux && xelatex report.tex && xelatex report.tex
+
+watch:
+	@chmod +x ./watch.sh && \
+	./watch.sh ./report.tex 'make tex'
+```
+
+#### watch.sh
+`Makefile`と同じ場所に`watch.sh`というファイルを作成して、以下の内容を記述してください。
+監視ビルドに使用されるスクリプトです。
+
+```sh
+#!/bin/sh
+# see also http://mizti.hatenablog.com/entry/2013/01/27/204343
+update() {
+  echo `openssl sha256 -r $1 | awk '{print $1}'`
+}
+
+INTERVAL=1 #監視間隔, 秒で指定
+no=0
+last=`update $1`
+while true;
+do
+  sleep $INTERVAL
+  current=`update $1`
+  if [ "$last" != "$current" ];
+  then
+    nowdate=`date '+%Y/%m/%d'`
+    nowtime=`date '+%H:%M:%S'`
+    echo "no:$no\tdate:$nowdate\ttime:$nowtime\tfile:$1"
+    eval $2
+    last=$current
+    no=`expr $no + 1`
+  fi  
+done
+```
+
+### 2. 自分の作業用ディレクトリに移動する
 `.tex`をメインで書いているディレクトリに移動してください。
 以下は私の場合です。
 
 terminal
 ```sh
-$ cd Documents/git/
+$ cd Documents/git/report
 ```
 
-### 2. ReXeTeXeRをcloneする
-このReXeTeXeRをcloneしましょう。
-
-terminal
-```sh
-$ git clone https://github.com/Terfno/ReXeTeXeR.git
-```
-
-cloneできたらいい感じに名前を変えて`.git`を削除するなりしてください。`.tex`をGitで管理する場合は自分のリポジトリにpushできるように設定してください。
-
-### 3. Dockerのイメージをビルドする
-詳細は`Makefile`を読んでください。
-
-terminal
-```sh
-$ make build
-```
-
-これで`Dockerfile`から`tex-docker`というイメージが作成されます。
-
-### 4. Dockerのコンテナを作成する
+### 3. Dockerのコンテナを作成する
 詳細は`Makefile`を読んでください。
 
 terminal
@@ -97,10 +152,10 @@ terminal
 $ make run
 ```
 
-これで`tex-docker`というイメージから`tex-docker`というコンテナが作成され、起動します。
-このとき、ReXeTeXeR以下の`/docs`がマウントされるようになっています。任意に変更することもできます。詳細は`Makefile`を読んでください。
+これでpullしてきた`terfno/rexetexer`というイメージから`rexetexer`というコンテナが作成され、起動します。
+このとき、`${PWD}`がマウントされるようになっています。任意に変更することもできます。詳細は`Makefile`を読んでください。
 
-### 5. コンテナに入る
+### 4. コンテナに入る
 詳細は`Makefile`を読んでください。
 
 terminal
@@ -108,20 +163,23 @@ terminal
 $ make exec
 ```
 
-入ると、`#/docs`にReXeTeXeR以下の`/docs`がマウントされていることを確認できると思います。
+入ると、${PWD}がマウントされていることを確認できると思います。
 
-### 6. `/docs`にある`report.tex`を監視するコマンドをコンテナ内で実行する
+### 5. `report.tex`を監視するコマンドをコンテナ内で実行する
 このコンテナではGNU Makeが使えるので、以下のコマンドでいけます。
-詳細は`docs/Makefile`を読んでください。
+詳細は`Makefile`を読んでください。
 
 terminal
 ```
 # make watch
 ```
 
-### 7. `/docs`以下にある`ref.bib`と`report.tex`を編集する
+このとき監視されるのは`report.tex`なので、任意のファイルを関しする差異は`Makefile`を変更してください。
+
+### 6. `ref.bib`と`report.tex`を編集する
 現在のサンプルを以下に示します。
-#### `docs/report.tex`
+
+#### `report.tex`
 ```tex
 \documentclass[a4paper]{article}
 \XeTeXlinebreaklocale "ja"
@@ -177,7 +235,7 @@ terminal
 
 ```
 
-#### `docs/ref.bib`
+#### `ref.bib`
 ```bib
 @article{lecun2015deep,
   title={Deep learning},
@@ -199,26 +257,26 @@ terminal
 }
 ```
 
-### 8. `report.tex`が更新されると`report.pdf`も自動で更新される
-`docs/report.tex`を監視しています。更新を検知するとPDFに変換されます。
+### 7. `report.tex`が更新されると`report.pdf`も自動で更新される
+`report.tex`を監視しています。更新を検知するとPDFに変換されます。
 
 参考: https://qiita.com/tamanobi/items/74b62e25506af394eae5
 
-### 9. 自動リロードに対応したPDFビューワーを使って`report.pdf`を開く
+### 8. 自動リロードに対応したPDFビューワーを使って`report.pdf`を開く
 
 * 自動リロードに対応したPDFビューワー
   * macOS: [Skim](https://skim-app.sourceforge.io/)
   * windows10: [Sumatra PDF](https://www.sumatrapdfreader.org/)
   * Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
-### 10. `report.tex`がほぼほぼリアルタイムにPDFでプレビューされる
-以上の手順を踏むと以下のような動作が可能です。スクショはmacOS上で、左半分のVSCodeでTeXを書き、右のSkimでPDFを開いている状態です。`docs/report.tex`を更新すると右側で見ている`docs/report.pdf`も更新されます。
+### 9. `report.tex`がほぼほぼリアルタイムにPDFでプレビューされる
+以上の手順を踏むと以下のような動作が可能です。スクショはmacOS上で、左半分のVSCodeでTeXを書き、右のSkimでPDFを開いている状態です。`report.tex`を更新すると右側で見ている`report.pdf`も更新されます。
 
 
 ![img](design/img.png)
 <div style="text-align:center;">動作イメージ(スクショは開発中のもの)</div><br>
 
-### 11. うれしいね:smile:
+### 10. うれしいね:smile:
 よく"Buy us coffee"って見るんですが、私はコーヒー飲めないので、紅茶か本かなんか贈ってくれると喜びます。
 * [my Amazon wish list of books](https://www.amazon.co.jp/hz/wishlist/ls/3F249ZYIVVASC/ref=nav_wishlist_lists_2?_encoding=UTF8&type=wishlist)
 * [my Amazon wish list of gadget](https://www.amazon.co.jp/hz/wishlist/ls/21AZUN2VWHY3C/ref=nav_wishlist_lists_3?_encoding=UTF8&type=wishlist)
@@ -229,7 +287,7 @@ terminal
 ReXeTeXeRのロゴのaiファイルとpngがあります。
 
 ### `/docs`について
-コンテナ内にマウントされています。
+開発中にマウントしているディレクトリです。
 * `Makefile`
   * 監視とか変換のコマンドをまとめています
 * `watch.sh`
@@ -248,10 +306,8 @@ ReXeTeXeRのロゴのaiファイルとpngがあります。
 ### `/font`について
 Google Fontsからいくつか用意しました。コンテナ内に自動的に配置されます。不要であればDockerfileを編集してください。
 * Courier Prime (R,I,B)
-* Gelasio (R,I,B)
 * Noto Sans JP (R,B)
 * Noto Serif JP (R,B)
-* Roboto (R,I,B)
 
 ### `/src`について
 Referenceを表示するのに必要だった`cite.sty`と`junsrt.bst`が置いてあります。今後必要なライブラリがあれば、ここを使用してコンテナー内に配置する予定です。

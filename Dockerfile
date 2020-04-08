@@ -1,19 +1,15 @@
-FROM alpine:latest
+FROM alpine:3.11
 
 WORKDIR /docs
 
 # install xetex
 RUN apk update && \
-  apk add -U --progress -ul --no-cache texlive-xetex && \
-  apk add -U --progress -ul --no-cache openssl && \
-  apk add -U --progress -ul --no-cache make
+  apk add openssl make texlive-xetex
 
 # fonts
 ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/
-ADD ./fonts/Gelasio/ /usr/share/fonts/japanese/TrueType/Gelasio/
 ADD ./fonts/Noto_Sans_JP/ /usr/share/fonts/japanese/TrueType/Noto_Sans_JP/
 ADD ./fonts/Noto_Serif_JP/ /usr/share/fonts/japanese/TrueType/Noto_Serif_JP/
-ADD ./fonts/Roboto/ /usr/share/fonts/japanese/TrueType/Roboto/
 
 # bibtex cite.sty
 ADD ./src/cite.sty /usr/share/texmf-dist/tex/xelatex/cite/
