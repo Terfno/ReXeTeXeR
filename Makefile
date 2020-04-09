@@ -1,22 +1,36 @@
-docs:=`pwd`"/docs"
+INAME:=terfno/rexetexer
+CNAME:=rexetexer
+TARGET:=report.tex
+
+dev:
+	@docker run -it --rm alpine:3.11 sh
 
 build:
-	@docker build . -t tex-docker
+	@docker build -t '${INAME}' .
 
 run:
-	@docker run -v ${docs}:/docs --name tex-docker -itd tex-docker sh
+	@docker run -v ${PWD}:/docs --name ${CNAME} -itd ${INAME} sh
 
 exec:
-	@docker exec -it tex-docker sh
-
-stop:
-	@docker stop tex-docker
+	@docker exec -it ${CNAME} sh
 
 start:
-	@docker start tex-docker
+	@docker start ${CNAME}
 
+stop:
+	@docker stop ${CNAME}
+
+# rm
 rm:
-	@docker rm tex-docker
+	@docker rm ${CNAME}
 
 rmi:
-	@docker rmi tex-docker:latest
+	@docker rmi ${INAME}
+
+# tex
+tex:
+	@xelatex ${TARGET} && pbibtex report.aux && xelatex ${TARGET} && xelatex ${TARGET}
+
+watch:
+	@chmod +x ./watch.sh && \
+	./watch.sh ./${TARGET} 'make tex'
