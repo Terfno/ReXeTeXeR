@@ -131,7 +131,7 @@ do
     eval $2
     last=$current
     no=`expr $no + 1`
-  fi  
+  fi
 done
 ```
 
