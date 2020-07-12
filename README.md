@@ -20,8 +20,17 @@
 
 日本語の `.tex` (UTF-8) を TeX の環境構築なしに、XeTeX(xelatex)を使って `.pdf` に変換する Docker のコンテナーを作れるファイル群です。勝手に**ReXeTeXeR**と名前をつけました。pBibTeX による Reference の自動生成に対応してます。
 
+# ReXeTeXeR
+
+<div style="text-align:center;">
+
+![GitHub](https://img.shields.io/github/license/terfno/rexetexer) ![GitHub repo size](https://img.shields.io/github/repo-size/terfno/rexetexer) ![GitHub last commit](https://img.shields.io/github/last-commit/terfno/rexetexer)
+
+</div>
+
 ## 環境
-Dockerは必須です。それ以外はオプショナルです。
+
+Docker は必須です。それ以外はオプショナルです。
 
 - Docker(必須)
 - GNU Make
@@ -30,226 +39,85 @@ Dockerは必須です。それ以外はオプショナルです。
 
 ## 使い方
 
-0. ReXeTeXeR のために簡単な環境構築をする
-1. ReXeTeXeR を準備する
-2. 自分の作業用ディレクトリに移動する
-3. Docker のイメージをビルドする
-4. Docker のコンテナを作成する
-5. コンテナに入る
-6. `report.tex`を監視するコマンドをコンテナ内で実行する
-7. `ref.bib`と`report.tex`を編集する
-8. `report.tex`が更新されると`report.pdf`も自動で更新される
-9. 自動リロードに対応した PDF ビューワーを使って`report.pdf`を開く
-10. `report.tex`がほぼほぼリアルタイムに PDF でプレビューされる
-11. うれしいね:smile:
+### 0. 準備
 
-### 0. ReXeTeXeR のために簡単な環境構築をする
-
-#### 🗒 用意するもの
-
-- GNU Make
-- Docker
-- そこそこ速いインターネット
-- 安定した電源
-
-#### ✅ やること
-
-環境があるかどうか確認しましょう。
-
-```sh
-$ docker version
-$ make --verison
-```
-
-なければ環境構築してください。
-
-### 1. ReXeTeXeR を準備する
-
-やること
-
-- Docker イメージの用意
-- 作業ディレクトリの作成
-- `Makefile`の作成
-- `watch.sh`の作成
-
-#### 🐳 Docker のイメージ
-
-Docker Hub から ReXeTeXeR のイメージを pull しましょう。
-
-```sh
-$ docker pull terfno/rexetexer
-```
-
-#### 📢作業ディレクトリの作成
-
-今回、`.tex`をメインで書くディレクトリに移動してください。なければ適当に作って移動してください。
-以下は私の場合です。
-
-```sh
-$ cd Documents/report
-```
-
-#### ✍ `Makefile`
-
-自身のディレクトリに Makefile を置いてください。中身は以下の通りです。
-
-```make
-INAME:=terfno/rexetexer
-CNAME:=rexetexer
-
-run:
-	@docker run -v ${PWD}:/docs --name ${CNAME} -itd ${INAME} sh
-
-exec:
-	@docker exec -it ${CNAME} sh
-
-start:
-	@docker start ${CNAME}
-
-stop:
-	@docker stop ${CNAME}
-
-# rm
-rm:
-	@docker rm ${CNAME}
-
-rmi:
-	@docker rmi ${INAME}
-
-# tex
-tex:
-	@xelatex report.tex && pbibtex report.aux && xelatex report.tex && xelatex report.tex
-
-watch:
-	@chmod +x ./watch.sh && \
-	./watch.sh ./report.tex 'make tex'
-```
-
-#### ✍ `watch.sh`
-
-`Makefile`と同じ場所に`watch.sh`というファイルを作成して、以下の内容を記述してください。
-監視ビルドに使用されるスクリプトです。
-
-```sh
-#!/bin/sh
-# see also http://mizti.hatenablog.com/entry/2013/01/27/204343
-update() {
-  echo `openssl sha256 -r $1 | awk '{print $1}'`
-}
-
-INTERVAL=1 #監視間隔, 秒で指定
-no=0
-last=`update $1`
-while true;
-do
-  sleep $INTERVAL
-  current=`update $1`
-  if [ "$last" != "$current" ];
-  then
-    nowdate=`date '+%Y/%m/%d'`
-    nowtime=`date '+%H:%M:%S'`
-    echo "no:$no\tdate:$nowdate\ttime:$nowtime\tfile:$1"
-    eval $2
-    last=$current
-    no=`expr $no + 1`
-  fi
-done
-```
-
-#### ✅ 確認
-
-今の段階でディレクトリは以下のようになっているはずです。
+download したこのリポジトリを作業したい場所で展開します。すると、以下のようになるはずです。
 
 ```
+.
+├── LICENSE
 ├── Makefile
+├── README.md
+├── img
+│   └── logo.png
+├── ref.bib
+├── report.pdf
+├── report.tex
 └── watch.sh
 ```
 
-### 2. Docker のコンテナを作成する
+その後、以下のコマンドで ReXeTeXeR を pull します。
 
-詳細は`Makefile`を読んでください。
+```sh
+$ make init
+```
+
+これで ReXeTeXeR が pull されます。
+
+### 1. 起動
 
 ```sh
 $ make run
 ```
 
-これで pull してきた`terfno/rexetexer`というイメージから`rexetexer`というコンテナが作成され、起動します。
-このとき、`${PWD}`がマウントされるようになっています。任意に変更することもできます。詳細は`Makefile`を読んでください。
-
-### 3. コンテナに入る
-
-詳細は`Makefile`を読んでください。
+### 2. 接続
 
 ```sh
 $ make exec
 ```
 
-入ると、`${PWD}`がマウントされていることを確認できると思います。
+これでコンテナに入れます。以降のコマンドは特に記載がなければコンテナ内で実行するコマンドです。
 
-### 4. `ref.bib`と`report.tex`を編集する
+### 3. 自動コンパイルスクリプトを起動
 
-サンプルを以下に示します。
+```sh
+$ make watch
+```
 
-#### ✍ `report.tex`
+### 4. TeX を書く
+
+`./report.tex`を編集することで、PDF が錬成されます。
+XeTeX(XeLaTeX)です。
+
+#### 画像の表示
+
+`./img`以下に画像ファイルを置きます。その後 tex ファイルに以下のような記述をすると画像を表示できます。
+プリアンブルで graphicx の使用を追記します。
 
 ```tex
-\documentclass[a4paper]{article}
-\XeTeXlinebreaklocale "ja"
-\usepackage{xltxtra}
+\usepackage{graphicx}
+```
 
-% fonts
-\usepackage{fontspec}
-\setmainfont[Scale=MatchLowercase]{NotoSerifJP-Regular}
-\setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular}
-\setmonofont[Scale=MatchLowercase]{CourierPrime-Regular}
+document 内で以下のように書くと画像を表示できます。
 
+```tex
+\includegraphics[width=10cm]{./img/logo.png}
+```
+
+詳細は`report.tex`を読むか、graphicx package について調べてください。
+
+#### 引用(BibTeX)
+
+プリアンブルに cite の使用を追記します。
+
+```tex
 % bibtex
 \usepackage{cite}
-
-% 画像
-\usepackage{graphicx}
-
-\begin{document}
-
-  \title{Resume}
-  \author{Takahito Sueda}
-  \maketitle
-
-  \section{はじめに}
-  {\XeTeX} でいい感じにするやつです。
-
-  \section{数式}
-  普通に{\TeX}で書けます。
-  \begin{eqnarray}
-    2x_1 + x_2 & = & 5 \\
-    2x_2 & = & 2
-  \end{eqnarray}
-
-  \section{引用}
-  bibtexを使えます。引用箇所は↓の感じです。Referencesが最後のとこにあります。\\
-  引用テストDL\cite{lecun2015deep} \\
-  引用テストML\cite{michie1994machine}
-
-  \section{画像}
-  graphicx使っていけます。
-  \begin{center}
-    \includegraphics[width=10cm]{img/logo.png} \\
-    ReXeTeXeRのぶちかっこいいロゴ
-  \end{center}
-
-  \section{自動監視テスト}
-  なんか書くと、コンテナ内のシェルスクリプトがこのファイルの変更を検知して、texのコンパイルコマンドが走ります。
-
-  % bibtex
-  \bibliographystyle{junsrt}
-  \bibliography{ref.bib}
-\end{document}
-
 ```
 
-#### ✍ `ref.bib`
+そして`ref.bib`に引用の情報を書きます。
 
-```
+```bib
 @article{lecun2015deep,
   title={Deep learning},
   author={LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
@@ -260,75 +128,51 @@ $ make exec
   year={2015},
   publisher={Nature Publishing Group}
 }
-@article{michie1994machine,
-  title={Machine learning},
-  author={Michie, Donald and Spiegelhalter, David J and Taylor, CC and others},
-  journal={Neural and Statistical Classification},
-  volume={13},
-  year={1994},
-  publisher={Technometrics}
-}
 ```
 
-#### ✅ 確認
+document 内で以下のように書くと引用できます。
 
-今の段階でディレクトリは以下のようになっているはずです。
-
-```
-├── Makefile
-├── ref.bib
-├── report.tex
-└── watch.sh
+```tex
+\cite{lecun2015deep}
 ```
 
-### 5. `report.tex`を監視するコマンドをコンテナ内で実行する
+### 5. PDF を見る
 
-このコンテナでは GNU Make が使えるので、以下のコマンドでいけます。
-詳細は`Makefile`を読んでください。
+リソースのオートリロードに対応した PDF ビューワーを使って`report.pdf`を開くと、ほぼリアルタイムにプレビューされます。
 
-```
-# make watch
-```
+### 6. その他
 
-このとき監視されるのは`report.tex`なので、任意のファイルを関しする差異は`Makefile`を変更してください。
+#### 1 回だけコンパイルしたい
 
-#### 📢 `.tex`から`.pdf`に一度だけ変換する場合
-詳細は`Makefile`を読んでほしいですが、`report.tex`を`report.pdf`に一度だけその場で変換する場合は以下のコマンドでけます。
+コンテナ内で以下のコマンドを実行すると、`reoprt.tex`から`report.pdf`に変換されます。
 
-```
-# make tex
+```sh
+$ make tex
 ```
 
-#### 🤔 ちゃんとエラー解消したはずなのにうまくpdfにならないときは
-`*.aux`, `*.bbl`, `*.blg`, `*.log`, `*.toc`あたりのファイルを一度削除して再試行してみてください。
+#### VSCode の Auto Save との相性が悪い
 
-**【重要】エラーは英語だけどちゃんと読めば分かる。**
+ファイルの変更を察知してコンパイルが走るので、VSCode などの Auto Save で文法が完成していない tex ファイルがコンパイルされることがあります。
+`.vscode`を残すことでこの ReXeTeXeR があるワークスペースのみ`onFocusChange`になります。
 
-
-### 6. `report.tex`が更新されると`report.pdf`も自動で更新される
-
-`report.tex`を監視しています。更新を検知すると PDF に変換されます。
-
-参考: https://qiita.com/tamanobi/items/74b62e25506af394eae5
-
-### 7. 自動リロードに対応した PDF ビューワーを使って`report.pdf`を開く
+#### 自動リロードに対応した PDF ビューワー
 
 - 自動リロードに対応した PDF ビューワー
   - macOS: [Skim](https://skim-app.sourceforge.io/)
   - windows10: [Sumatra PDF](https://www.sumatrapdfreader.org/)
   - Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
-### 8. `report.tex`がほぼほぼリアルタイムに PDF でプレビューされる
+#### 止めるときは
 
-以上の手順を踏むと以下のような動作が可能です。スクショは macOS 上で、左半分の VSCode で TeX を書き、右の Skim で PDF を開いている状態です。`report.tex`を更新すると右側で見ている`report.pdf`も更新されます。
+コンテナから出て(`$ exit`)、以下のコマンドで止められます。
 
-![img](design/img.png)
+```sh
+$ make stop
+```
 
-<div style="text-align:center;">動作イメージ(スクショは開発中のもの)</div><br>
+## 古事記
 
-### 9. うれしいね:smile:
-
-よく"Buy us coffee"って見るんですが、私はコーヒー飲めないので、紅茶か本かなんか贈ってくれると喜びます。
+// もしこの ReXeTeXeR が役に立ったらなんか贈ってもらえると私の励みになります。
 
 - [my Amazon wish list of books](https://www.amazon.co.jp/hz/wishlist/ls/3F249ZYIVVASC/ref=nav_wishlist_lists_2?_encoding=UTF8&type=wishlist)
 - [my Amazon wish list of gadget](https://www.amazon.co.jp/hz/wishlist/ls/21AZUN2VWHY3C/ref=nav_wishlist_lists_3?_encoding=UTF8&type=wishlist)
