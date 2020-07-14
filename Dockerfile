@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM python:alpine3.12
 
 WORKDIR /docs
 
@@ -14,6 +14,7 @@ ADD ./fonts/Noto_Serif_JP/ /usr/share/fonts/japanese/TrueType/Noto_Serif_JP/
 # bibtex cite.sty
 ADD ./src/cite.sty /usr/share/texmf-dist/tex/xelatex/cite/
 ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
+# ADD ./src/c_thesis.sty /usr/share/texmf-dist/tex/xelatex/c_thesis/
 RUN mktexlsr
 
 CMD ["sh"]
