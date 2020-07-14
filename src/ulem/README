@@ -1,0 +1,11 @@
+
+  The ulem package provides various types of underlining that can stretch
+  between words and be broken across lines in LaTeX or plain TeX.
+  In LaTeX ulem replaces italics with underlining in \em-phasized text.
+  A declaration of \normalem (or the \usepackage option "normalem") restores 
+  the normal \em and \emph behavior.
+
+  Copyright 1989-2019 by Donald Arseneau (Vancouver, Canada; asnd@triumf.ca)
+
+  This software may be freely transmitted, reproduced, or modified for any
+  purpose provided that this copyright notice is left intact.  

@@ -1,0 +1,380 @@
+%%
+%% This is file `c_thesis.sty',
+
+%---------------------------------------------------------------
+%TeX‚Ìƒ\[ƒX‚É‚¨‚¢‚ÄAˆÈ‰º‚Ì‚Qs‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+%  \kanjiskip=.25zw plus 3pt minus 3pt
+%  \xkanjiskip=.25zw plus 3pt minus 3pt
+%--------------------------------------------------------------
+
+%---------------------------------------------------------------
+%ƒXƒ^ƒCƒ‹ƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚Ý
+%--------------------------------------------------------------
+\usepackage{mathptmx}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{graphicx} % EPS ‚µ‚©Žæ‚èž‚Ü‚È‚¢ê‡ƒIƒvƒVƒ‡ƒ“‚Í
+			     % dvipsBJPEG ‚Æ‚© PNG ‚ðŽg‚¤‚È‚ç dvipdfm
+\usepackage{url} % \urliURLj‚ðŽQl•¶Œ£‚Ì‚È‚©‚ÅŽg‚¤‚Ì‚É•K—v
+%\usepackage{amsmath}%”Ž®ŠÖ˜A
+\usepackage{txfonts}%
+\usepackage{caption}%}‚ÌƒLƒƒƒvƒVƒ‡ƒ“ŠÖŒW
+%\usepackage[small,normal,bf,up]{caption}%}‚ÌƒLƒƒƒvƒVƒ‡ƒ“ŠÖŒW
+%--------------------------------------------------------------
+%¡“ú‚Ì“ú‚É‚¿‚ÌÄ’è‹`
+%--------------------------------------------------------------
+\renewcommand{\today}{•½¬\number\heisei ”N \number\month ŒŽ \number\day “ú}
+%--------------------------------------------------------------
+%ƒy[ƒWƒŒƒCƒAƒEƒg‚Ì’è‹`
+%--------------------------------------------------------------
+    \setlength{\voffset}{-1truein}
+    \addtolength{\voffset}{25truemm}
+    \setlength{\topmargin}{0truemm}
+    \setlength{\headheight}{0truemm}
+    \setlength{\headsep}{0truemm}
+    \setlength{\hoffset}{-1truein}
+    \addtolength{\hoffset}{25truemm}
+    \setlength{\oddsidemargin}{0.5truecm}%’Ç‰Á‚µ‚½êŠ
+    \setlength{\evensidemargin}{0.5truecm}
+    \setlength{\textheight}{247truemm}
+    \setlength{\textwidth}{155truemm}
+    \setlength{\footskip}{10truemm}
+%    \addtolength{\textheight}{\topskip}
+    \renewcommand{\baselinestretch}{1.1}
+%--------------------------------------------------------------
+%thebibrographyŠÂ‹«‚ÌŒ©o‚µ‚ÌÄ’è‹`
+%--------------------------------------------------------------
+\renewcommand{\bibname}{ŽQl•¶Œ£}
+%------------------------------------------------------------------
+%ŽQl•¶Œ£‚Ìƒ‰ƒxƒ‹‚É”Ô†‚ð—p‚¢‚éB–³‘Ê‚È€–Ú‚Ì“ü—Í‚È‚­‚È‚éB—˜—p•û–@(\bib{ŽQl•¶Œ£1,ŽQl•¶Œ£2})
+%------------------------------------------------------------------
+\newcounter{bibnum}\setcounter{bibnum}{0}
+\def\bib#1{\begin{thebibliography}{99}\@for\memoryc:=#1
+\do{\addtocounter{bibnum}{1}\bibitem{\thebibnum}\memoryc}\end{thebibliography}}
+%--------------------------------------------------------------
+%ˆø—p‹L†‚ÌÄ’è‹`
+%--------------------------------------------------------------
+\def\@biblabel#1{#1)}
+%--------------------------------------------------------------
+%ŽQl•¶Œ£‚Ìˆø—p‚Í‘ÌÙ‚Ì‚Æ‚¨‚èã‚Â‚«•¶Žš‚Å•\Ž¦
+%--------------------------------------------------------------
+\DeclareRobustCommand\cite{\unskip
+   \@ifnextchar[{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+\def\@cite#1#2{$^{\hbox{\scriptsize{#1\if@tempswa,#2\fi})}}$}
+%--------------------------------------------------------------
+%\@maketitle‚ÅŽg—p‚·‚éƒ|ƒCƒ“ƒg‚ÌÝ’è
+%--------------------------------------------------------------
+\newcommand{\DAIMEI}{\@setfontsize\DAIMEI{21}{31.5}}
+\newcommand{\NAMAE}{\@setfontsize\NAMAE{16}{32}}%25.5
+\newcommand{\KUHAKU}{\@setfontsize\KUHAKU{28}{42}}
+%--------------------------------------------------------------
+%\boss‚Æ\syozoku–½—ß‚Ì’Ç‰Á
+%--------------------------------------------------------------
+\def\adviser#1{\gdef\@adviser{#1}}
+\gdef\@adviser{} %•ÏX“_
+\def\affiliation#1{\gdef\@affiliation{#1}}
+\gdef\@affiliation{} %•ÏX“_
+\def\kind#1{\gdef\@kind{#1}}
+\gdef\@kind{} %•ÏX“_
+%-------------------------------------------------------------
+%ƒnƒCƒtƒl[ƒVƒ‡ƒ“‚ð‹ÖŽ~
+%-------------------------------------------------------------
+\hyphenpenalty=20000\relax
+\exhyphenpenalty=20000\relax
+\sloppy
+
+
+%-------------------------------------------------------------
+%ŽQl•¶Œ£‚Ì•\Ž¦Œ`Ž®•ÏXi‚±‚Ìê‡@ŽQl•¶Œ£i”Ô†j‚Ì•\Ž¦@ƒfƒtƒHƒ‹ƒg‚Å‚Íã‚Â‚«•¶Žš‚É‚È‚éj
+%\def\@cite#1#2{({#1\if@tempswa , #2\fi})}
+%--------------------------------------------------------------
+%\postsectionname‚Ì’è‹`
+%--------------------------------------------------------------
+\renewcommand{\postsectionname}{.}%
+%--------------------------------------------------------------
+\newcommand{\@sidou}{Žw“±‹³ˆõ}
+\newcommand{\@school}{’ÃŽRH‹Æ‚“™ê–åŠwZ}
+\newcommand{\@gakka}{‘‡—HŠw‰È}
+%\newcommand{\interim}{‘²‹ÆŒ¤‹†’†ŠÔ•ñ‘}
+\newcommand{\interim}{î•ñHŠwŽÀŒ±‚u•ñ‘}
+\newcommand{\preliminary}{‘²‹ÆŒ¤‹†—\”õR¸˜_•¶}
+\newcommand{\thesis}{‘²‹ÆŒ¤‹†•ñ‘}
+%-------------------------------------------------------------
+%\@maketitle‚Ì’è‹`-
+%--------------------------------------------------------------
+\renewcommand{\@maketitle}{%
+
+    \setlength{\voffset}{-1.0truein}
+    \addtolength{\voffset}{40truemm}
+    \setlength{\topmargin}{0truemm}
+    \setlength{\headheight}{0truemm}
+    \setlength{\headsep}{0truemm}
+    \setlength{\hoffset}{0truept}
+    \setlength{\oddsidemargin}{0.46truecm}%’Ç‰Á‚µ‚½êŠ
+    \setlength{\evensidemargin}{0.46truecm}
+    \setlength{\textheight}{247truemm}
+    \setlength{\textwidth}{155truemm}
+    \setlength{\footskip}{0truemm}
+    \begin{center}%
+    {\Huge \@kind  \par}%
+     \end{center}%
+      \begin{center}%
+      \let\footnote\thanks
+      \vspace{2.3truecm}
+      {\DAIMEI \@title \par}%
+      \end{center}%
+      \vspace{2.3truecm}
+      \begin{center}
+      {\NAMAE \@sidou \par}
+      {\NAMAE \@adviser \par}%
+%      \vspace{2.3truecm}
+      \vspace{1.4truecm}
+      \end{center}
+     \begin{center}%
+    {\NAMAE \@school \par}
+    {\NAMAE \@gakka \par}
+    {\NAMAE \@affiliation \par}
+     \vspace{1.4truecm}
+     \end{center}%
+     \begin{center}
+      {\NAMAE  \@author\par}%
+     \vspace{1.4truecm}
+      {\NAMAE \@date\par}%
+    \end{center}
+    \thispagestyle{empty}%
+    \newpage
+
+    \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
+  }
+%-------------------------------------------------------------------------
+%}A•\‚ÌƒtƒHƒ“ƒgƒTƒCƒY‚Ì•ÏX
+%-------------------------------------------------------------------------
+\captionsetup[figure]{labelsep=quad, font=normalsize}
+\captionsetup[table]{labelsep=quad, font=normalsize}
+%\renewcommand{\captionfont}{\normal}
+%\long\def\@makecaption#1#2{\normalsize%
+%-------------------------------------------------------------------------
+%}A•\A”Ž®‚ðŽQÆ‚·‚é‚Æ‚«‚É—á‚Æ‚µ‚Ä\figurenum{ƒ‰ƒxƒ‹–¼‚Å}ƒJƒEƒ“ƒ^‚Ì”Ô†‚Ì‘O‚Éu}v‚ª•\Ž¦‚³‚ê‚éB
+%-------------------------------------------------------------------------
+\def\figurenum#1{\figurename\ref{#1}}
+\def\tablenum#1{\tablename\ref{#1}}
+\def\equnum#1{\equationname(\ref{#1})}
+\renewcommand{\labelenumi}{\theenumij}
+\def\slabel#1{\ref{#1}\sname}
+\def\hurokuf#1{\figurename\ref{#1}}
+\def\hurokut#1{\tablename\ref{#1}}
+%---------------------------------------------------------------------
+%–ÚŽŸ‚È‚Ç‚Ì•\‘è‚ð•Ï‚¦‚é‚Æ‚«‚ÉŽg‚¤‚æB
+%---------------------------------------------------------------------
+%Ž©•ª‚Å•\Ž¦•Ï‚¦‚½‚¢‚Æ‚«‚ÍˆÈ‰º‚ð•ÏX‚µ‚Ä‚ËB(%‚ð‚Í‚¸‚µ‚Ä‚Ë{}‚Ì‚È‚©‚Ì•¶Žš‚ð•Ï‚¦‚Ä‚­‚¾‚³‚¢B)
+%\renewcommand{\postpartname}{•”}
+%\renewcommand{\contentsname}{–ÚŽŸ}
+%\renewcommand{\listfigurename}{}–ÚŽŸ}
+%\renewcommand{\listtablename}{•\–ÚŽŸ}
+%\renewcommand{\refname}{ŽQl•¶Œ£}
+%\renewcommand{\indexname}{õˆø}
+%\renewcommand{\figurename}{}}
+%\renewcommand{\tablename}{•\}
+%\renewcommand{\appendixname}{•t˜^}
+\renewcommand{\abstractname}{Abstract}
+\newcommand{\abstractnamae}{ŠT—v}
+\newcommand{\sname}{ß}
+%--------------------------------------------------------------------
+%ƒOƒ‰ƒt•\Ž¦Žž‚ÌŠÈ—ª‰»
+%--------------------------------------------------------------------
+%\def\graph#1#2#3#4#5{%
+%\begin{figure}[#1]
+%\centering
+%\includegraphics[#2]{#3}
+%\caption{#4}
+%\label{#5}
+%\end{figure}
+%}
+%----------------------------------------------------------------------
+%•¶Žšœ‹Ž
+%----------------------------------------------------------------------
+%\def\coma{,}
+%\def\comas#1{\@tfor\memory:=#1\do{\ifx\coma\memory\relax\else\memory\fi}}
+%------------------------------------------------------------------------
+%î•ñHŠwŽÀŒ±V‚Ì‚Æ‚«‚ÍuŠT—vvA‘²‹ÆŒ¤‹†•ñ‘‚Å‚ÍuAbstractv•\Ž¦‚É‚·‚é‚½‚ß‚Ì‚à‚Ì(l‚¦‚½‚ª‚Å‚«‚È‚©‚Á‚½)
+%-------------------------------------------------------------------------
+%\newcounter{@N}
+% \setcounter{@N}{0}
+% \def\moji{V}
+% %\def\dispeigo#1{\@tfor\memorye:=#1\do{\ifx\moji\memorye\addtocounter{@N}{1}\else\relax\fi}}
+% \newcommand{\comparator}{\ifnum\the@N<1 \abstractname\else\abstractnamae\fi}
+% \def\mojicount#1{%
+%  \@tfor\memoryd:=#1\do{\addtocounter{@N}{1}\the@N}%
+%}
+%\def\comparator{\ifnum\the@N>9 \abstractnamae\else\abstractname\fi}
+%----------------------------------------------------------------------
+%equationŠÂ‹«‚ÅA”Ž®‚Ì”Ô†‚ðß‚ðŠÜ‚ñ‚¾”Ô†‚É‚·‚éB@—áF(1.1)}
+%----------------------------------------------------------------------
+%\renewcommand{\theequation}{
+%\arabic{section}.\arabic{equation} }
+%\@addtoreset{equation}{section}
+%----------------------------------------------------------------------
+%thebibliographyŠÂ‹«‚ÌÄ’è‹`iŽQl•¶Œ£‚ð–ÚŽŸ‚Éo‚·‚¾‚¯j
+%----------------------------------------------------------------------
+\renewenvironment{thebibliography}[1]{%
+  \addcontentsline{toc}{section}{\refname}
+    \global\let\presectionname\relax
+      \global\let\postsectionname\relax
+        \section*{\refname}\@mkboth{\refname}{\refname}%
+	   \list{\@biblabel{\@arabic\c@enumiv}}%
+	        {\settowidth\labelwidth{\@biblabel{#1}}%
+	        \leftmargin\labelwidth
+	        \advance\leftmargin\labelsep
+	        \@openbib@code
+	        \usecounter{enumiv}%
+	        \let\p@enumiv\@empty
+	        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+	  \sloppy
+	  \clubpenalty4000
+	  \@clubpenalty\clubpenalty
+	  \widowpenalty4000%
+	  \sfcode`\.\@m}
+	 {\def\@noitemerr
+	 {\@latex@warning{Empty `thebibliography' environment}}%
+	\endlist}
+%-----------------------------------------------------------------------
+%\appendix–½—ß‚ÌÄ’è‹`(•t˜^‚É‚È‚é‚Æ‰üƒy[ƒW‚µAƒy[ƒW‚ÌƒJƒEƒ“ƒ^‚ðƒ[ƒ‚É‚·‚éBƒy[ƒW”Ô†‚Ì•ÏX(A--››)
+%-----------------------------------------------------------------------
+\renewcommand{\appendix}{\par
+ \newpage
+  \setcounter{section}{0}%
+  \setcounter{figure}{0}
+  \setcounter{table}{0}
+  \def\thepage{A--\arabic{page}}
+    \setcounter{subsection}{0}%
+    \setcounter{page}{1}
+      \gdef\presectionname{\appendixname}%
+      \renewcommand{\refname}{•t˜^ŽQl•¶Œ£}
+      \renewcommand{\figurename}{•t}}
+      \renewcommand{\tablename}{•t•\}
+        \gdef\postsectionname{}%
+	  \gdef\thesection{\presectionname\@Alph\c@section\postsectionname}%
+	    \gdef\thesubsection{\@Alph\c@section.\@arabic\c@subsection}}
+%------------------------------------------------------------------------
+%–ÚŽŸ‚Ìsection–½—ß‚Æƒy[ƒW”Ô†‚ÌŠÔ‚Ì”jü•\Ž¦(http://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=233)‚æ‚èˆø—p
+%subsection‚É‚Â‚¢‚Ä‚à’Ç‹L
+%-------------------------------------------------------------------------
+
+\def\@pnumwidth{3.0em}
+
+\renewcommand*{\l@section}[2]{%
+\ifnum \c@tocdepth >\z@
+\addpenalty{\@secpenalty}%
+\addvspace{1.0em \@plus\p@}%
+\begingroup
+\parindent\z@
+\rightskip\@tocrmarg
+\parfillskip-\rightskip
+\leavevmode\headfont
+\setlength\@lnumwidth{4zw}% Œ³1.5em [2003-03-02]
+\advance\leftskip\@lnumwidth \hskip-\leftskip
+#1\nobreak\leaders\hbox{\normalfont$\m@th \mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill\nobreak\hbox to\@pnumwidth{\hss#2}\par
+\endgroup
+\fi}
+
+\renewcommand*{\l@subsection}{%
+          \@tempdima\jsc@tocl@width \advance\@tempdima -1zw
+          \@dottedtocline{2}{\@tempdima}{3zw}}
+%--------------------------------------------------------------------------
+%}‚ðˆÍ‚ñ‚Å’†‰›‚¼‚ë‚¦iŽg‚¢•ûj\begin{figure}[htbp]\begin{figbox}\includegraphics[]{}\end{figbox}\end{figure}
+%--------------------------------------------------------------------------
+\newenvironment{figbox}%
+ {\begin{center}\begin{Sbox}}%
+ {\end{Sbox}\end{center}\fbox{\TheSbox}}
+%--------------------------------------
+%listing‚ð“Ç‚Ýž‚ñ‚¾Žž‚É—˜—pi•t˜^“™‚Å)
+%--------------------------------------
+\newenvironment{Cprogram}
+ {\begin{lstlisting}[framerule=.4pt,frame=shadowbox,language=C]}%
+ {\end{lstlisting}}
+%-------------------------
+%sectionŠÖ˜A‚ÌÄ’è‹`
+%------------------------
+\renewcommand{\section}{%
+    \@startsection{section}{1}{1zw}%
+    {0.7\Cvs}{0.7\Cvs}%
+    {\normalsize\bf\raggedright}}
+
+\renewcommand{\subsection}{%
+    \@startsection{subsection}{1}{1zw}%
+    {.5\Cvs \@plus.5\Cdp \@minus.2 \Cdp}%
+    {.2\Cvs \@plus.3\Cdp}%
+    {\normalsize\bf\raggedright}}
+
+\renewcommand{\subsubsection}{%
+    \@startsection{subsubsection}{1}{1zw}%
+    {.5\Cvs \@plus.5\Cdp \@minus.2 \Cdp}%
+    {.2\Cvs \@plus.3\Cdp}%
+    {\normalsize\bf\raggedright}}
+%------------------------------------
+%}‚ÌˆÍ‚Ý
+%-----------------------------------
+\newenvironment{bverbatim}[1]%
+{\VerbatimEnvironment
+\centering
+\begin{Sbox}%
+\begin{minipage}{#1}%
+\begin{Verbatim}}{\end{Verbatim}%
+\end{minipage}\end{Sbox}%
+\begin{center}\fbox{\TheSbox}\end{center}}%% ‚±‚±‚Ü‚Åƒ}ƒNƒ’è‹`
+%-------------------------------------------
+%abstractŠÂ‹«‚Íƒy[ƒW”Ô†‚È‚µ‚Å(\null\vfil)ã‘¤‚ÌƒXƒy[ƒX‚ðíœ‚µ‚Äã‘¤—]”’‚ð’²®
+%-------------------------------------------
+ \renewenvironment{abstract}{%
+    \titlepage
+    \@beginparpenalty\@lowpenalty
+    \begin{center}%
+      \headfont \abstractname
+      \@endparpenalty\@M
+    \end{center}
+    \par}%
+  {\par\vfil\null\endtitlepage}
+%--------------------------------------------
+%‰pŒêƒ^ƒCƒgƒ‹‚Æ‚ ‚í‚¹‚Ä•\Ž¦‚·‚éê‡‚É‚ÍˆÈ‰º‚ð—˜—p\fcaption{“ú–{Œê}{‰pŒê} •\‚à“¯—l//¡Œã‚±‚Ì‚æ‚¤‚ÈŒ`Ž®‚É‚È‚éê‡‚à‚ ‚èH
+%--------------------------------------------
+%\def\fcaption#1#2{%
+%\addtocounter{figure}{1}% }”Ô†i‚ß‚é
+%\def\@currentlabel{\arabic{figure}} % }”Ô†‚Ì•\Ž¦•û–@i}”Ô†))@‚ ‚­‚Ü‚Å—á
+%\centering
+%}\@currentlabel@#1 \par
+%Fig.\@currentlabel@#2
+%}
+%\def\tcaption#1#2{%
+%\addtocounter{table}{1}% }‚ÌƒJƒEƒ“ƒ^‚ðˆê‚Âi‚ß‚é
+%\def\@currentlabel{\arabic{table}} % }”Ô†‚Ì•\Ž¦•û–@i}”Ô†))@‚ ‚­‚Ü‚Å—á
+%\centering
+%•\\@currentlabel@#1 \par
+%Table.\@currentlabel@#2
+%}
+%-----------------------------------------------
+%tableofcontents‚ÌÄ’è‹`
+%•‚Ì’è‹`‚É‚Â‚¢‚Äˆø—p‚µ‚Ä‹Lq
+%jsarticle.cls‚ðŽQÆ https://github.com/texjporg/jsclasses/blob/832c665cfc3a144f1a298e5b7d238efbd3b8942f/jsarticle.cls
+%-----------------------------------------------
+\newdimen\jsc@tocl@width % dimen’è‹`
+
+\renewcommand{\tableofcontents}{%
+  \settowidth\jsc@tocl@width{\headfont\presectionname\postsectionname}%
+  \settowidth\@tempdima{\headfont\appendixname}%
+  \ifdim\jsc@tocl@width<\@tempdima\relax\setlength\jsc@tocl@width{\@tempdima}\fi
+  \ifdim\jsc@tocl@width<2zw \divide\jsc@tocl@width by 2 \advance\jsc@tocl@width 1zw\fi
+
+  \section*{\contentsname}%
+  \@mkboth{\contentsname}{\contentsname}%
+  \@starttoc{toc}%
+  \thispagestyle{empty}
+  \newpage
+  \setcounter{page}{1}
+}
+%-----------------------------------------------
+% enumerate ŠÂ‹«‚ÌÄ’è‹`
+%-----------------------------------------------
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+%-----------------------------------------------
+%This is the end of file `eeses.sty'.

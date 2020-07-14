@@ -1,0 +1,273 @@
+%
+%  ulem.ltx   Manual for ulem.sty
+%
+%
+%  Copyright (c) 1989-2019 by Donald Arseneau
+%
+%  Version date 2019/11/18
+%
+\documentclass[12pt]{ltxdoc}
+\addtolength{\textwidth}{1cm}
+%\makeshortverb`\|
+\usepackage{ulem}
+\def\baselinestretch{1.06}
+\setlength\parskip{2pt}
+\hyphenation{normalem uwforbf ulforem}
+\title{The ulem package:\\ underlining for emphasis}
+\author{Donald Arseneau\\ asnd@triumf.ca}
+\date{2019/11/18}
+\begin{document}
+
+\maketitle
+\sloppy
+
+\begin{abstract}
+  The ulem package provides various types of underlining that can stretch
+  between words and be broken across lines.  Use it with \LaTeX\ or plain \TeX.
+
+  In \LaTeX, ulem normally replaces italics with underlining in text 
+  emphasized by \cs{emph}, and to some extent by \cs{em}. A declaration 
+  of |\normalem| or the |\usepackage| option |[normalem]| disables this 
+  feature.
+
+   The following commands are defined for general use:\\[5pt]
+  \indent \begin{tabular}{l@{\quad}l}\hline\noalign{\vskip2pt}
+   |\uline{important}|  & underlined text like \uline{important}\\[1pt]
+   |\uuline{urgent}|    & double-underlined text like  \uuline{urgent}\\[1pt]
+   |\uwave{boat}|       & wavy underline like {\let\ULleaders\cleaders\uwave{boat}}\\[1pt]
+   |\sout{wrong}|       & line struck through word like \sout{wrong}\\[1pt]
+   |\xout{removed}|     & marked over like \xout{removed} \\[1pt]
+   |\dashuline{dashing}|& dashed underline like \dashuline{dashing}\\[1pt]
+   |\dotuline{dotty}|   & dotted underline like \dotuline{dotty}\\[3pt]\hline
+  \end{tabular}\\[6pt]
+   Other similar commands can be defined with relative ease by utilizing the
+   \cs{markoverwith} command provided by ulem.
+\end{abstract}
+
+
+\begin{footnotesize}
+\noindent The ulem package is Copyright \copyright\ 1989--2019 by 
+Donald Arseneau (Vancouver, Canada).\\
+The package (ulem.sty) and this documentation (ulem.ltx, ulem.pdf) may be 
+freely transmitted, reproduced, or modified for any purpose provided that the
+copyright notice is left intact.
+(Small excerpts may of course be taken and used without any restriction.)\par
+\end{footnotesize}
+
+\section{Basic Use}
+Ulem is a package for \LaTeX\ or plain \TeX\ which provides various types of
+underlining that can stretch between words and be broken across lines.
+Such underlining is given by the \cs{uline} command, leaving the original
+\cs{underline} command available for math mode.
+To load this package in plain \TeX, use `|\input ulem.sty|'.
+
+In \LaTeX\ ulem replaces italics with underlining in text emphasized
+by \cs{em} or \cs{emph} -- but only if the text is delimited by 
+braces.  Unlike regular \cs{emph} emphasis, nested ulem emphasis generates
+multiple underlining; it does not alternate on and off.
+To use \cs{uline} for underlining, but have \cs{em} and \cs{emph} still 
+produce normal italics, load ulem with |\usepackage[normalem]{ulem}|, 
+or declare \cs{normalem} in the preamble.
+
+Unlike regular underlining, ulem allows line breaks, and manual
+hyphenation, within the underlined text; but it is far from perfect. It is
+most suitable for simple text like {\em \LaTeX: A document preparation
+system\/}  that may need to be underlined in a manuscript submitted for
+publication.  Again, ulem can only give underlined text for \cs{em} when 
+the text is delimited by explicit braces.
+
+The thickness of the underline rule is given by the command macro
+\cs{ULthickness}; use \cs{renewcommand} (not the usual 
+\cs{setlength}) to change it.\footnote
+{Users of plain \TeX\ should use \textbackslash def wherever these
+instructions recommend \textbackslash(re)newcommand, and dimen
+assignments wherever \textbackslash setlength is mentioned.}\,
+The depth of the underline is controlled 
+by the length \cs{ULdepth}.  The default value is a special flag 
+(\cs{maxdimen}) which lets the depth vary depending on the current font.
+You can set a particular value to \cs{ULdepth} (using \cs{setlength}) to 
+force a particular depth, either locally for a special purpose, or 
+for the document as a whole.  (See the definition of \cs{sout} for an
+example.)
+
+Other types of underlining are defined as well:
+a wavey underline with \cs{uwave} (\uwave{under-wave}), double underlines 
+using \cs{uuline} (\uuline{two lines under this}), dashed \cs{dashuline}
+(\dashuline{dashes underneath}) or dotted \cs{dotuline} (\dotuline{dots 
+below}) underlines.  Non-underlines are: a line to strike out text \cs{sout}
+(\sout{strike out}), and text crossed-out with hatching \cs{xout} 
+(\xout{cross out}).  See them tabulated in the abstract.
+
+Alternative package: soul.
+
+\section{Defining new commands}
+
+You can define your own styles of overprinting or underlining by using
+the \cs{markoverwith} command in the definition of your new command.
+The definition should be something like:\\[6pt]
+ \cs{newcommand}\cs{cmd}|{|\cs{bgroup} \meta{settings}\cs{markoverwith}|{|\meta{something}|}|\cs{ULon}|}|\\[8pt]
+The `\meta{something}' can be as simple as a single character, or as complex as
+you can keep track of; it will likely contain some repositioning commands, perhaps
+\cs{raisebox}.
+
+Producing a colored underline or strike-through is not supported by
+regular |\uline| or |\sout|, but it is quite easy to colorize using 
+the \cs{markoverwith} mechanism: just put |\textcolor{|\dots|}| in 
+the \meta{something}, such as this definition:
+\begin{verbatim}
+    \newcommand\reduline{\bgroup\markoverwith
+      {\textcolor{red}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+\end{verbatim}
+If you really feel the need to make a new command with a truly 
+flexible rule, then look in ulem.sty and copy from the definitions
+of \cs{uline} and \cs{sout}.
+
+Any type of underlining can be substituted for any font-selection command
+by issuing a proper \cs{useunder} declaration:\\[3pt]
+ \cs{useunder}|{|\meta{underlinecommand}|}{|\meta{fontdeclaration}|}{|\meta{fontcommand}|}|\\[3pt]
+e.g., |\useunder{\uuline}{\bfseries}{\textbf}| gives a double underline
+instead of bold face in \LaTeX\ (but note the problem explained next).
+
+The commands \cs{normalem} and \cs{ULforem} respectively disable and enable
+underlining for \cs{em}/\cs{emph}, and so do the \cs{usepackage}
+options [normalem] and [ULforem]. There is also the \cs{usepackage} 
+option [UWforbf] to replace boldface from \cs{textbf} with a wavey underline.
+These features use the \cs{useunder} command internally.
+UWforbf specifically employs
+\cs{useunder}|{|\cs{uwave}|}|\allowbreak|{|\cs{bf}|}|\allowbreak|{|\cs{textbf}|}|,
+so the \cs{bfseries}
+command still produces bold face, but \cs{bf} makes an 
+under-wave (if \cs{bf} is defined at all). That is
+because section title formatting typically uses \cs{bfseries} not delimited by
+braces, which would give errors for \cs{uwave}.\footnote{%% no verbatim in footnotes
+To get under-waved section titles (in ordinary \LaTeX\ classes) you could define:\\
+\texttt{\string\renewcommand\string\@seccntformat[1]\string{\string\uwave
+\string{\string\csname\ the\#1\string\endcsname\string}\string\hskip 1em\string}}\\
+and later specify 
+\texttt{\string\section[...]\string{\string\uwave\string{...\string}\string}}. 
+But you don't want to enter that swamp.}
+In plain \TeX\ there is \cs{bf} but no \cs{textbf} so you could say |\useunder{\uwave}{\bf}{}|.
+
+Some commands, such as |\\| and \cs{hskip} are given special treatment to
+work within uline, but others are not.  Support for others can sometimes 
+be added by assigning special meanings in the token register \cs{UL@hook}.  
+(In \LaTeX\ do 
+|\addto@hook\UL@hook{\let\cmd\|\textsl{UL-version-of-cmd}|}|.)  The UL 
+versions of commands should be modelled on |\UL@hskip| or |\UL@cr|, and 
+should include the test `|\ifx\ \LA@space|'.  For example, support for 
+\cs{marginpar} is added through the hook mechanism.
+
+All the underlining commands are robust in \LaTeX.
+
+
+\section{Complications}
+The various underlining commands are essentially textual, and will not
+work quite the same in math mode.  But since some font commands,
+in the old-\LaTeX\ style (`oldlfont') serve both for text and math, 
+math mode is handled (in an approximate way).  Generally, you should
+avoid using ulem's commands within math, but math may appear in the 
+text argument to ulem's commands.
+
+Every word is typeset in an underlined box, so automatic hyphenation is
+disabled, but explicit discretionary hyphens (|\-|) will still be
+obeyed.  Several text-formatting commands are specially supported within
+the underlining:  |\-|, |\ |, |~|, |\\|, |\newline|, |\linebreak|, 
+|\nolinebreak|, |\penalty|, |\hskip|, |\hspace|, |\hfil|, |\hfill|, |\hss|.  
+Displayed math is not supported.  The special commands 
+do have a problem: they end a group so any local assignments are lost.  
+
+The underlines continue between words, and stretch just like ordinary
+spaces do.  Since spaces delimit words, there may be some difficulty
+with syntactical spaces (e.g. `|2.3 pt|'). Some effort is made to handle
+such cases, but sometimes (such as |\let\x= y|) the space is interpreted
+incorrectly. You can usually solve the problem by enclosing the offending
+command in braces or in a macro (like |\newcommand\xeqy{\let\x= y}|), 
+but\,\dots
+
+One important incompatibility with braces and macro replacement:
+\textbf{All the text in braces or coming from a macro is typeset in a box}
+(as if in \cs{mbox}). Consequently,
+braces will suppress stretching and line-breaking in the text they
+enclose.  Moreover, the specially-handled commands |\-|, |\\|, |\newline|
+and |\linebreak| are usually ignored if they appear inside extra braces.
+They operate only when the braces delimit a command parameter without
+introducing a level of grouping.  (Even though braces delimiting command
+parameters do not normally imply grouping, many commands will add their
+own grouping.)  Thus, you should try to limit inner braces to short bits of
+text or for delimiting parameters to commands. For emergency repairs, see
+the sadistic `Marat/Sade' example below.  Syntactical spaces inside braces 
+never cause a problem, nor do spaces in math mode.
+
+Text produced by expansion of a command (macro) is boxed too, but |\\|, |\ |,
+and |\-| still work properly in the expansion text so that while\\[2pt]
+\indent  |\newcommand\iff{if and only if} ... \uline{\iff}|\\[2pt]
+prevents stretching and line-breaking between words, the alternative\\[2pt]
+\indent  |\newcommand\iff{if\ and\ only\ if} ... \uline{\iff}|\\[2pt]
+allows stretching and line-breaking.  There is a remaining problem though:
+the |\ | (backslash-space) between words closes a group and any local 
+assignments will be lost, in particular, font changes and color changes.
+
+This loss of local assignments will break some other standard commands,
+(e.g., \cs{cite}) which produce multiple `words' using local assignments.
+The way to protect such commands is to bury them in an \cs{mbox}:
+\hskip 5pt plus 2in
+|\emph{every\-one agrees~\mbox{\cite{you,me}}.}|
+
+With ULforem in effect,
+nested \cs{em} or \cs{emph} commands produce multiple underlining, 
+but heed the warnings
+about braces above.  To get italics without underlining, use \cs{it}, 
+\cs{itshape}, or \cs{textit}.  Nesting
+of other types of underline is also possible, but the `underlines' may
+overlap.
+
+\medskip
+Here is a simple example (highlighting all invented words):\\[4pt]
+\begin{minipage}[t]{.58\linewidth}\hbadness=9999
+\ttfamily \rightskip=0pt plus 2cm
+|'Twas| |\emph{brillig}| |and| |the| |\emph{slithy~toves}|
+|did| |\emph{gyre}| |and| |\emph{gim\-ble}| |in| |the| |\emph{wabe,\\| |}|
+|All| |\emph{mim\-sey}| |were| |the| |\emph{boro\-goves}| |and|
+|the| |\emph{mome| |raths| |outgrabe}.|
+\end{minipage}\hfill
+\begin{minipage}[t]{.4\linewidth}\hbadness=9999
+'Twas \emph{brillig} and the \emph{slithy~toves}
+did \emph{gyre} and \emph{gim\-ble} in the \emph{wabe,\\ }
+All \emph{mim\-sey} were the \emph{boro\-goves} and
+the \emph{mome raths out\-grabe}.\par\mbox{}
+\end{minipage}\vspace{6pt}
+Note use
+of explicit hyphenation in `gimble' and `borogoves', the tie (|~|) 
+that prevents a line break in `slithy toves', but stretches like a 
+usual space, the `|\\|' that gives a proper linebreak, and the regular 
+(unforced) linebreak in `mome raths outgrabe'.
+
+\medskip
+Here is an ugly example showing how nested uline (\cs{emph}) needs
+to be broken up to allow line-breaks\\[2pt]
+\begin{minipage}[t]{.5\linewidth}
+\ttfamily \rightskip=0pt plus 1.5cm \hbadness=9999
+|No,| |I| |did| |{\em| |not}| |act| |in| |the| |movie| |{\em| |\emph{The}|
+|\emph{Persecution}| |\emph{and}| |\emph{Assassin}\-\emph{ation}| |\emph{of}|
+|\emph{Jean-Paul}| |\emph{Marat},| |as| |Per\-formed| |by| |the| |Inmates|
+|of| |the| |Asylum| |of| |Charenton| |Under| |the| |Direc\-tion| |of| |the|
+|Marquis| |de~Sade!}| |But| |I| |{\em| |did}| |see| |it.|\\\mbox{}
+\end{minipage}\hfill
+\begin{minipage}[t]{.43\linewidth}\hbadness=9999
+No, I did {\em not} act in the movie {\em \emph{The} 
+\emph{Persecution} \emph{and} \emph{Assassin}\-\emph{ation} \emph{of}
+\emph{Jean-Paul} \emph{Marat}, as Per\-formed by the Inmates
+of the Asylum of Charenton Under the Direc\-tion of the
+Marquis de~Sade!} But I {\em did} see it.
+\end{minipage}\\
+In the nested emphasis, \cs{emph} had to be given for each word separately
+so the spaces between could stretch and break into lines.  Even the
+discretionary hyphen (|\-|) in `Assassination' had to be outside the braces,
+but the hyphen in `Direction' was just fine because it was not in nested
+braces. The same applies to other special commands like |\ | and |~|. Also,
+the spaces are printed with only a single underline because they are
+outside the nested \cs{emph} commands.  This example really illustrates that
+ulem does not handle nested emphasis very well!  It should be reserved for
+simpler cases where it performs well without effort.
+
+\end{document}
