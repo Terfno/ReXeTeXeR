@@ -1,0 +1,325 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{miscdoc,url,booktabs,microtype}
+\addtolength\textwidth{1cm}
+\addtolength\oddsidemargin{-.5cm}
+\addtolength\evensidemargin{-.5cm}
+\raggedbottom
+\setlength\parskip{4pt plus 2pt}
+
+\begin{document}
+\title{\texttt{url.sty} version 3.4}
+\date{2013-09-16}
+\author{Donald Arseneau%
+  \thanks{Thanks to Robin Fairbairns for documentation conversion!}}
+\maketitle
+
+% url.sty  ver 3.4    16-Sep-2013   Donald Arseneau   asnd@triumf.ca
+% Copyright 1996-2013 Donald Arseneau,  Vancouver, Canada.
+% This program can be used, distributed, and modified under the terms
+% of the LaTeX Project Public License, version 2 or later.
+
+The package defines a form of \cs{verb} command that allows linebreaks
+at certain characters or combinations of characters, accepts
+reconfiguration, and can usually be used in the argument to another
+command.  It is intended for formatting email addresses, hypertext links,
+directories/paths, etc., which normally have no spaces.  The font used
+may be selected using the \cs{urlstyle} command, and new url-like
+commands may be defined using \cs{urldef}.
+This package does not make hyper-links! For that purpose, see the hyperref
+package (or some other deprecated ones).
+
+\begin{center}
+  \begin{tabular}{lp{3.5in}}
+    \toprule 
+    Usage &    Conditions \\
+    \midrule
+    \verb+\url{ }+ & The argument must not contain unbalanced braces.
+                     If used in the argument to another command, the 
+                     \cs{url} argument cannot contain any ``\verb+%+'',
+                      ``\verb+#+'', or ``\verb+^^+'', or end with
+                       ``\verb+\+''.\\
+    \verb+\url|  |+ & where ``\texttt{|}'' is any character not used
+                      in the argument and not ``\verb+{+'' or a space.  
+                      The same restrictions apply as above except that 
+                      the argument may contain unbalanced braces.\\ 
+    \cs{xyz} & for the defined-url ``\cs{xyz}''; such a command can be
+               used anywhere, no matter what characters it contains. \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+
+\noindent The ``\cs{url}'' command is fragile, and its argument is likely to be
+very fragile, but a defined-url is robust.
+
+\section{Package options}
+
+\newitem Package Option:  \texttt{obeyspaces}
+
+Ordinarily, all spaces are ignored in the url-text.  The
+``\texttt{[obeyspaces]}'' option allows spaces, but may introduce
+spurious spaces when a url containing ``\cs{}'' characters is given in
+the argument to another command. 
+So if you need to obey spaces you can say
+``\cs{usepackage}\texttt{[obeyspaces]\char`\{url\char`\}}'', and if
+you need both spaces and backslashes, use a defined-url.
+
+\newitem Package Option:  \texttt{hyphens}
+
+Ordinarily, breaks are not allowed after ``\texttt{-}'' characters
+because this leads to confusion.  (Is the ``\texttt{-}'' part of the
+address or just a hyphen?)
+The package option ``\texttt{[hyphens]}'' allows breaks after explicit
+hyphen characters.  The \cs{url} command will \textbf{never ever}
+hyphenate words.
+
+\newitem Package Option:  \texttt{spaces}
+
+Likewise, given the ``\texttt{[obeyspaces]}'' option, breaks are not 
+usually allowed after the spaces, but if you give the options
+``\texttt{[obeyspaces,spaces]}'', \cs{url} will allow breaks at those
+spaces.
+\begin{quote}
+  Note that it seems logical to allow the sole option
+  ``\texttt{[spaces]}'' to let input spaces indicate break points, but
+  not to display them in the output.  This would be easy to implement,
+  but is left out to avoid(?)\ confusion.
+\end{quote}
+
+\newitem Package Option:  \texttt{lowtilde}
+
+Normal treatment of the \verb+~+ character is to use the font's
+``\cs{textasciitilde}'' character, if it has one (or claims to).
+Otherwise, the character is faked using a mathematical ``\cs{sim}''.
+The ``\texttt{[lowtilde]}'' option causes a faked character to be used
+always (and a bit lower than usual).
+
+\newitem Package Option:  \texttt{allowmove}
+
+This option suppresses the test for \cs{url} being used in a so-called 
+moving argument (check ``fragile command''). Using it will enable \cs{url}
+to function in more contexts, but when it does fail, the error message
+may be incomprehensible.
+
+
+\section{Defining a defined-url}
+
+Take for example the email address ``\url{myself%node@gateway.net}"
+which could not be given (using ``\cs{url}'' or ``\cs{verb}'') in a
+caption or parbox due to the percent sign.  This address can be
+predefined with
+\begin{quote}
+  \verb|\urldef{\myself}\url{myself%node@gateway.net}| or\\
+  \verb+\urldef{\myself}\url|myself%node@gateway.net|+
+\end{quote}
+and then you may use ``\cs{myself}'' instead of
+``\verb+\url{myself%node@gateway.net}+''
+in an argument, and even in a moving argument like a caption because a
+defined-url is robust.
+
+\section{Style}
+
+You can switch the style of printing using ``\verb+\urlstyle{+$xx$\verb+}+'',
+where ``$xx$'' can be any defined style.  The pre-defined styles are 
+``\texttt{tt}'', ``\texttt{rm}'', ``\texttt{sf}'' and ``\texttt{same}'' 
+which all allow the same linebreaks but use different fonts~--- the 
+first three select a specific font and the ``\texttt{same}'' style 
+uses the current text font.  You can define your own styles with 
+different fonts and/or line-breaking by following the explanations 
+below.  The ``\cs{url}'' command follows whatever the currently-set 
+style dictates.
+
+\section{Alternate commands}
+
+It may be desireable to have different things treated differently, each
+in a predefined style; e.g., if you want directory paths to always be
+in typewriter and email addresses to be roman, then you would define new
+url-like commands as follows:
+\begin{quote}
+   \verb+\DeclareUrlCommand+\meta{command}\verb+{+\meta{settings}\verb+}+\\
+   \verb+\DeclareUrlCommand\email{\urlstyle{rm}}+\\
+   \verb+\DeclareUrlCommand\directory{\urlstyle{tt}}+.
+\end{quote}
+In fact, this \cs{directory} example is exactly the \cs{path}
+definition which might be pre-defined by the package.  Furthermore,
+basic \cs{url} is defined with
+\begin{quote}
+   \verb+\DeclareUrlCommand\url{}+,
+\end{quote}
+without any \emph{settings}, so it uses whatever \cs{urlstyle} 
+and other settings are already in effect.
+
+You can make a defined-url for these other styles, using the usual
+\cs{urldef} command as in this example:
+\begin{quote}
+\verb+\urldef{\myself}{\email}{myself%node.domain@gateway.net}+
+\end{quote}
+which makes \cs{myself} act like
+\verb+\email{myself%node.domain@gateway.net}+,
+if the \cs{email} command is defined as above.  The \cs{myself}
+command would then be robust.
+
+\section{Defining styles}
+
+Before describing how to customize the printing style, it is best to
+mention something about the unusual implementation of \cs{url}.  Although
+the material is textual in nature, and the font specification required
+is a text-font command, the text is actually typeset in \emph{math} mode.
+This allows the context-sensitive linebreaking, but also accounts for
+the default behavior of ignoring spaces.  (Maybe that underlying design 
+will eventually change.) Now on to defining styles.
+
+To change the font or the list of characters that allow linebreaks, you
+could redefine the commands \cs{UrlFont}, \cs{UrlBreaks},
+\cs{UrlSpecials}, etc., directly in the document, but it is better to
+define a new `url-style' (following the example of \cs{url@ttstyle}
+and \cs{url@rmstyle}) which defines all of \cs{UrlBigbreaks},
+\cs{UrlNoBreaks}, \cs{UrlBreaks}, \cs{UrlSpecials}, and \cs{UrlFont}.
+
+\subsection{Changing font}
+The \cs{UrlFont} command selects the font.  The definition of
+\cs{UrlFont} done by the pre-defined styles varies to cope with a
+variety of \LaTeX{} font selection schemes, but it could be as simple
+as \verb+\def\UrlFont{\tt}+.  Depending on the font selected, some
+characters may need to be defined in the \cs{UrlSpecials} list because
+many fonts don't contain all the standard input characters.
+
+\subsection{Changing linebreaks}
+The list of characters after which line-breaks are permitted is 
+given by the two commands (list macros)
+\cs{UrlBreaks} and \cs{UrlBigBreaks}. They consist of repeating
+\cs{do}\cs{c} for each relevant character \texttt{c}.
+
+The differences are that `BigBreaks' typically have a lower penalty (more
+easily chosen) and do not break within a repeating sequence (e.g., 
+``\verb+DEC::NODE+'').
+(For gurus: `BigBreaks' are treated as mathrels while `Breaks' are mathbins;
+see \textit{The TeXbook}, p.\,170.) The result is that a series of 
+consecutive `BigBreak'
+characters will break at the end and only at the end; a series of
+`Break' characters will break after the first and after every following
+\emph{pair}; there will be no break between a `Break' character and a
+following `BigBreak' char; breaks are permitted when a `BigBreak' 
+character is followed by `Break' or any other char.  In the case 
+of \texttt{http://} it doesn't matter whether \texttt{:} is a 
+`Break' or `BigBreak'~--- the breaks are the same in either case; but 
+for (now ancient) \emph{DECnet} addresses using \texttt{::} it was
+important to prevent breaks \emph{between} the colons, and that is why
+colons are `BigBreaks'.  (The only other `BigBreak' character is,
+optionally, the hyphen; slashes are regular `Break's.)
+
+It is possible for characters to prevent breaks after the next
+following character (this is used for parentheses).  Specify these in
+\cs{UrlNoBreaks}.
+
+You can allow some spacing around the breakable characters by assigning
+\begin{quote}
+\verb+\Urlmuskip = 0mu plus 1mu+
+\end{quote}
+(with \texttt{mu} units because of math mode).
+You can change the penalties used for BigBreaks and Breaks by assigning
+\begin{quote}
+\verb+\mathchardef\UrlBreakPenalty=100+\\
+\verb+\mathchardef\UrlBigBreakPenalty=100+
+\end{quote}
+The default penalties are \cs{binoppenalty} and \cs{relpenalty}.
+These have such odd non-\LaTeX{} syntax because I don't expect people
+to need to change them often. (The \verb+\mathchardef+ does not relate to 
+math mode; it is only a way to store a number without consuming registers.)
+
+\subsubsection{Arbitrary character actions}
+
+You can do arbitrarily complex things with characters by specifying
+their definition(s) in \cs{UrlSpecials}.  This makes them `active' in
+math mode (mathcode \texttt{"8000}).  The format for setting
+each special character \texttt{c} is:
+\verb+\do\c{+\meta{definition}\verb+}+, but other definitions not
+following this style can also be included.
+
+Here is an example to make ``\texttt{!}''\ inside \cs{url} force a line break
+instead of being treated verbatim (it uses \LaTeX's \cs{g@addto@macro}):
+
+\begin{quote}
+\verb+\makeatletter \g@addto@macro\UrlSpecials{\do\!{\newline}}+
+\end{quote}
+
+Here is another overly-complicated  example to put extra flexible
+muglue around each ``\texttt{/}'' character, except when followed 
+by another ``\texttt{/}'', as in ``\texttt{http://}'', where extra 
+spacing looks poor.
+
+\begin{quote}
+\begin{verbatim}
+% what we'll insert before and after each (lone) slash:
+\newmuskip\Urlslashmuskip 
+\Urlslashmuskip=2mu plus2mu minus2mu
+
+% change what / does:
+\g@addto@macro\UrlSpecials{\do\/{\Urlspaceyslash}}
+
+% need to look ahead:
+\def\Urlspaceyslash{\futurelet\Urlssnext\finishUrlspaceyslash}
+
+\def\finishUrlspaceyslash{%
+  \mskip\Urlslashmuskip  % extra space before
+  \mathchar8239  % "202f, i.e., binary op, \fam, / char
+  % if we see //, eliminate the extra space to taste:
+  \ifx\Urlssnext/\mskip-\Urlslashmuskip
+  \else\mskip\Urlslashmuskip \fi
+ }
+\end{verbatim}
+\end{quote}
+
+If this sounds confusing~\dots{} well, it is!  But I hope you
+won't need to redefine breakpoints~--- the default assignments seem to
+work well for a wide variety of applications.  If you do need to make
+changes, you can test for breakpoints using regular math mode and the
+characters ``\texttt{+=(a}''. 
+
+
+\section{Yet more flexibility}
+You can also customize the presentation of verbatim text by defining 
+\cs{UrlRight} and/or \cs{UrlLeft}.  An example for ISO formatting of 
+urls surrounded by \verb+<  >+ is
+\begin{quote}
+\begin{verbatim}
+\DeclareUrlCommand\url{\def\UrlLeft{<url:\ }\def\UrlRight{>}%
+    \urlstyle{tt}}
+\end{verbatim}
+\end{quote}
+The meanings of \cs{UrlLeft} and \cs{UrlRight} are \emph{not}
+reproduced verbatim.  This lets you use formatting commands there, but
+you must be careful not to use \TeX's special characters
+(\verb+\^_%~#$&{}+ etc.)\ improperly.  You can also define \cs{UrlLeft}
+to reprocess the verbatim text, but the format of the definition is special:
+\begin{quote}
+\verb+\def\UrlLeft#1\UrlRight{+\,\dots\ do things with \verb+#1+ \dots\,\verb+}+
+\end{quote}
+Yes, that is \verb+#1+ followed by \cs{UrlRight} then the definition (a \TeX\
+macro with delimited arguments).  For example, to produce a hyper\TeX\ hypertext 
+link:
+\begin{quote}
+\verb+\def\UrlLeft#1\UrlRight{%+\\
+\verb+      \special{html:<a href="#1">}#1\special{html:</a>}}+
+\end{quote}
+Using this technique, \path{url.sty} can provide a convenient
+interface for performing various operations on verbatim text.  You
+don't even need to print out the argument!  For greatest efficiency in
+such obscure applications, you can define a null url-style where all
+the lists like \cs{UrlBreaks} are empty.
+
+Please note that this method is \emph{not} how the hyperref package
+manages urls for its \cs{url} command, even though it makes use of
+\path{url.sty}. Instead, hyperref's \cs{url} reads its argument in
+a less-verbatim manner than described above, produces its hyperlink,
+and invokes \cs{nolinkurl} to format the text.  \cs{nolinkurl} is 
+the \cs{url} command descibed herein.
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

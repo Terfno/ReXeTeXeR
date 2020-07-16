@@ -17,12 +17,13 @@ ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
 
 # style file of tsuyama thesis - c_thesis.sty
 ADD ./src/c_thesis.sty /usr/share/texmf-dist/tex/xelatex/c_thesis/
+# todo fix dir | url - url.sty
+ADD ./src/url/ /usr/share/texmf-dist/tex/xelatex/
 
 # listing - jlisting.sty
 ADD ./src/jlisting.sty /usr/share/texmf-dist/tex/xelatex/jlisting/
 
-# todo fix dir
-# normalem - ulem.sty
+# todo fix dir | normalem - ulem.sty
 ADD ./src/ulem/ /usr/share/texmf-dist/tex/xelatex/
 
 RUN mktexlsr

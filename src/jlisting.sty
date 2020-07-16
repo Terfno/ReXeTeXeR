@@ -135,11 +135,11 @@
 % ソースコード目次における文字と番号の空き
 \let \l@lstlisting = \l@figure
 % キャプションとソースコード目次に対する日本語対応
-\def\lstlistingname{ソースコード}
+% \def\lstlistingname{ソースコード}
 \def\lstlistlistingname{ソースコード目次}
 %    \end{修正事項}
 \endinput
-% 
+%
 %#!platex
 \documentclass[papersize]{jsarticle}
 % Macros
@@ -150,7 +150,7 @@
 }
 \usepackage{listings}[2004/09/07]
 \usepackage{jlisting}[2006/02/20]
-\usepackage{url} 
+\usepackage{url}
 \usepackage{verbatim}
 
 \makeatletter
@@ -161,7 +161,7 @@
 \def\URL#1{\texttt{#1}}
 \def\src#1{\texttt{#1}}
 
-% Dvipdfmx.def 
+% Dvipdfmx.def
 \def\dvipdfmxDefi{http://tex.dante.jp/ok/dvipdfmx/}
 \def\dvipdfmxDefii{http://ftp.ktug.or.kr/KTUG/dvipdfmx/contrib/latex/}
 
@@ -169,7 +169,7 @@
    \let \IfDvipdfmxDef = \empty \relax}{%
    \typeout{^^Jget dvipdfmx.def at \dvipdfmxDefi^^J
             or \dvipdfmxDefii^^J}%
-   \def\IfDvipdfmxDef{Get \src{dvipdfmx.def} at \URL \dvipdfmxDefii \\ 
+   \def\IfDvipdfmxDef{Get \src{dvipdfmx.def} at \URL \dvipdfmxDefii \\
       or \URL \dvipdfmxDefi.}%
 }
 
@@ -188,7 +188,7 @@
 %\IfDvipdfmxDef
 
 \section{ちょっとした説明}% Short Description
- 
+
 奥村晴彦氏の掲示板の「汎用的な浮動体」という一連の書き込みから
 転載しました。
 
@@ -200,13 +200,13 @@
 \end{quote}
 
  Copyright は吉永哲美氏にあるのだと思います．
- 
+
 \section{更新履歴}% ChageLogs
 
 \begin{description}
  \item[ver.~0.1 (2004/03/24)]
    とりあえず公開．
- \item[ver.~0.2 (2006/02/20)] 
+ \item[ver.~0.2 (2006/02/20)]
    \verb|\lst@breakProcessOther| 命令の定義の追加．
 \end{description}
 

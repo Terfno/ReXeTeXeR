@@ -6,7 +6,7 @@
 %  In LaTeX ulem replaces italics with underlining in \em-phasized text.
 %  It is most suitable for simple text such as {\em ibid.} or \emph{\LaTeX:
 %  A Document Preparation System} that may need to be underlined in a
-%  manuscript submitted for publication.  A declaration of \normalem (or 
+%  manuscript submitted for publication.  A declaration of \normalem (or
 %  the \usepackage option "normalem") restores the normal \em behavior.
 %
 %  Full instructions appear in ulem.ltx (ulem.pdf).  In summary:
@@ -28,12 +28,12 @@
 %  Copyright (c) 1989-2011 by Donald Arseneau (Vancouver, Canada; asnd@triumf.ca)
 %
 %  This software may be freely transmitted, reproduced, or modified for any
-%  purpose provided that this copyright notice is left intact.  
+%  purpose provided that this copyright notice is left intact.
 %  (Small excerpts may be taken and used without any restriction.)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Defend against multiple loading.
-\expandafter \ifx \csname UL@box\endcsname \relax \else 
+\expandafter \ifx \csname UL@box\endcsname \relax \else
  \immediate\write16{ulem.sty refuses to load twice. }\endinput \fi
 
 %  Set catcode of @ in case it isn't a "letter" already
@@ -46,7 +46,7 @@
 \global\expandafter\let\expandafter\UL@protected\csname protected\endcsname
 \endgroup
 
-\UL@protected\def\uline{\relax \ifmmode\expandafter\underline 
+\UL@protected\def\uline{\relax \ifmmode\expandafter\underline
            \else \bgroup\expandafter\ULset\fi}
 
 \newbox\UL@box
@@ -78,7 +78,7 @@
 
 %   \UL@on sets the engine of underline running, and tells it
 %   where to stop.  #1 = the relevant text.
-\long\def\UL@on#1{\leavevmode\UL@ender \let\UL@on\UL@onin 
+\long\def\UL@on#1{\leavevmode\UL@ender \let\UL@on\UL@onin
   \everymath{\UL@hrest}\everyvbox{\UL@hrest}\let\hskip\UL@hskip
   \let\\\UL@cr \let\-\UL@dischyp \let\newline\UL@newline \let\ \UL@space
   \def\hfil{\hskip\z@ plus1fil\relax}\def\hfill{\hskip\z@ plus1fill\relax}%
@@ -141,7 +141,7 @@
 \def\UL@putbox{\ifx\UL@start\@empty \else % not inner
    \vrule\@width\z@ \LA@penalty\@M
     {\UL@skip\wd\UL@box \UL@leaders \kern-\UL@skip}%
-    \box\UL@box 
+    \box\UL@box
   \fi}
 
 %  With interword leaders, give some overlap to avoid gaps caused by
@@ -159,7 +159,7 @@
 \def\UL@hrest{\let\ \LA@space \let\-\@empty \let\penalty\LA@penalty}
 
 \let\LA@space\ %
-\UL@protected\def\UL@space{\LA@space \global\UL@skip\lastskip \unskip \UL@reskip}% 
+\UL@protected\def\UL@space{\LA@space \global\UL@skip\lastskip \unskip \UL@reskip}%
 
 % Hyphenation is done by explicit \discretionary.  The overlapping melds
 % with the running overlap because it *is* part of the running overlap:
@@ -169,7 +169,7 @@
 % (in registration) for a distance of the hyphen's width.
 \UL@protected\def\UL@dischyp{\global\setbox\UL@hyphenbox\hbox
    {\ifnum \hyphenchar\font<\z@ \string-\else \char\hyphenchar\font \fi}%
-   \kern\wd\UL@hyphenbox \LA@penalty\@M 
+   \kern\wd\UL@hyphenbox \LA@penalty\@M
    \UL@stop \kern-\wd\UL@hyphenbox
    \discretionary{\box\UL@hyphenbox}{}{}\UL@start}
 
@@ -205,7 +205,7 @@
 \def\UL@crb[#1]{\UL@vad{\vskip#1}\UL@newline}
 
 \UL@protected\def\UL@newline{\ifx\UL@start\@empty % (\UL@cr may have \UL@stop-ed already)
-  \unskip \ifx\ \LA@space \else \UL@stop \unskip\unskip\unskip \fi\fi 
+  \unskip \ifx\ \LA@space \else \UL@stop \unskip\unskip\unskip \fi\fi
   \LA@hskip \z@\@plus.0001fil\LA@penalty -\@M \UL@start}
 
 % That concludes the basic underlining.  To put various other objects
@@ -213,7 +213,7 @@
 % to set the overlay material in a box, and use leaders of that box for
 % overlaying the text.  Here, the meaning of \UL@pixel is changed so
 % that  `pixel' size = box size.  Note that we generally need \leaders
-% (not \cleaders) for text, because an underline will be a patchwork 
+% (not \cleaders) for text, because an underline will be a patchwork
 % of small \leaders, and the characters must stay in registration.
 % However, we "hook" the leaders command so specific applications can
 % reassign it (\let\ULleaders\xleaders or \let\ULleaders\cleaders).
@@ -235,9 +235,9 @@
 % For drawing a wavey underline instead of a straight one the command
 % is \uwave (under-wave) which uses the wiggle from 6-pt lasy font:
 
-\UL@protected\def\uwave{\leavevmode \bgroup 
+\UL@protected\def\uwave{\leavevmode \bgroup
   \ifdim \ULdepth=\maxdimen \ULdepth 3.5\p@
-  \else \advance\ULdepth2\p@ 
+  \else \advance\ULdepth2\p@
   \fi \markoverwith{\lower\ULdepth\hbox{\sixly \char58}}\ULon}
 \font\sixly=lasy6 % does not re-load if already loaded, so no memory drain.
 
@@ -261,23 +261,23 @@
 \UL@protected\def\xout{\leavevmode \bgroup
   \markoverwith{\hbox to.35em{\hss/\hss}}\ULon}
 
-\UL@protected\def\dotuline{\leavevmode \bgroup 
+\UL@protected\def\dotuline{\leavevmode \bgroup
   \UL@setULdepth
   \ifx\UL@on\UL@onin \advance\ULdepth2\p@\fi
   \markoverwith{\begingroup
-     %\advance\ULdepth0.08ex 
+     %\advance\ULdepth0.08ex
      \lower\ULdepth\hbox{\kern.06em .\kern.04em}%
      \endgroup}%
   \ULon}
 
-\UL@protected\def\dashuline{\leavevmode \bgroup 
+\UL@protected\def\dashuline{\leavevmode \bgroup
   \UL@setULdepth
   \ifx\UL@on\UL@onin \advance\ULdepth2\p@\fi
   \markoverwith{\kern.13em
   \vtop{\kern\ULdepth \hrule width .3em}%
   \kern.13em}\ULon}
 
-% A command to declare that an underline command should be used in 
+% A command to declare that an underline command should be used in
 % place of a particular font selection:
 % \useunder {underline_command}{font_declaration}{font_command}
 % e.g.: \useunder{\uuline}{\bfseries}{\textbf}
@@ -337,7 +337,7 @@
   \addto@hook\UL@hook{\let\marginpar\UL@marpar}
 \fi
 
-\catcode`@=\ULthickness % Scratch meaning: restore catcode of @ 
+\catcode`@=\ULthickness % Scratch meaning: restore catcode of @
 
 \def\ULthickness{.4pt}% can change this with \renewcommand
 \newdimen\ULdepth  \ULdepth=\maxdimen
