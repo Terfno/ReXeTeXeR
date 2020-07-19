@@ -1,5 +1,7 @@
-\documentclass[a4paper]{article}
-\XeTeXlinebreaklocale "ja"
+\documentclass[a4paper,xelatex,ja=standard]{bxjsarticle}
+\XeTeXlinebreaklocale "ja_JP"
+\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
+\XeTeXlinebreakpenalty=0
 \usepackage{xltxtra}
 
 % fonts
@@ -42,11 +44,11 @@
 \title{ReXeTeXeR}
 \author{Takahito Sueda}
 \date{2020年7月14日}
-\kind{\interim} % 中間報告書の場合
-% \kind{\preliminary} % 予備審査論文の場合
-% \kind{\thesis} % 最終報告書の場合
-\affiliation{情報システム系}
-\adviser{指導教員の氏名}
+\kind{\interim} % 中間報告書の場合 / これはc_thesis.sty
+% \kind{\preliminary} % 予備審査論文の場合 / これはc_thesis.sty
+% \kind{\thesis} % 最終報告書の場合 / これはc_thesis.sty
+\affiliation{情報システム系} % これはc_thesis.sty
+\adviser{指導教員の氏名} % これはc_thesis.sty
 
 \begin{document}
   % 表紙
