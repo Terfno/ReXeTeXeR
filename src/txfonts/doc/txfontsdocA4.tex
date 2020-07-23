@@ -1,0 +1,1220 @@
+\documentclass[11pt]{article}
+
+\usepackage{a4wide,amsmath}
+\usepackage{txfonts}
+%\normalfont
+%\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+\let\orgnonumber=\nonumber\usepackage{mathenv}\let\nonumb=\nonumber\let\nonumber=\orgnonumber
+
+\allowdisplaybreaks
+
+\newcommand{\bs}{\symbol{'134}}
+
+
+\def\Ent#1{\csname #1\endcsname & \texttt{\bs #1}}
+\def\EEnt#1#2{\csname #1\endcsname & \texttt{\bs #1},\,\texttt{\bs #2}}
+
+\makeatletter
+\newcount\curchar \newcount\currow \newcount\curcol
+\newdimen\indexwd \newdimen\tempcellwd
+\setbox0\hbox{\ttfamily0\kern.2em}
+\indexwd=\wd0
+
+\def\ident#1{#1}
+\def\hexnumber#1{\ifcase\expandafter\ident\expandafter{\number#1} 0\or
+1\or 2\or 3\or 4\or 5\or 6\or 7\or 8\or 9\or A\or B\or C\or D\or E\or
+F\else ?\fi}
+
+\def\rownumber{\ttfamily\hexnumber\currow}
+\def\colnumber{\ttfamily\hexnumber\curcol \global\advance\curcol 1 }
+
+\def\charnumber{\setbox0=\hbox{\char\curchar}%
+  \ifdim\ht0>7.5pt\reposition
+  \else\ifdim\dp0>2.5pt\reposition\fi\fi
+  \box0 \global\advance\curchar1 }
+\def\reposition{\setbox0=\hbox{$\vcenter{\kern1.5pt\box0\kern1.5pt}$}}
+
+\def\dochart#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+
+\def\dochartA#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrowX\setrow\setrowX %
+%    \hline %
+    \setrow\setrowX\setrow\setrowX %
+    \hline %
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+
+\def\dochartB#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow%\setrow\setrow
+    \hline
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+
+\def\dochartC#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow
+    \hline
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+
+\def\dochartD#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+
+\def\dochartE#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrowX\setrow\setrowX\setrow
+    \hline
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+\def\colnumbers{\hbox to\hsize{\global\curcol 0
+  \def\1{\hbox to\cellwd{\curcol}{\hfil\colnumber\hfil}}%
+  \kern\indexwd\hfil\hfil
+  \1\1\1\1\hfil\hfil \1\1\1\1\hfil\hfil
+  \1\1\1\1\hfil\hfil \1\1\1\1\hfil\hfil
+  \kern\indexwd}%
+}
+
+\def\dochartF#1{%
+  \begingroup
+  \global\curchar=0 \global\currow=0 \global\curcol=0
+  \def\hline{\kern2pt\hrule\kern3pt }%
+  \setbox0\vbox{#1%
+    \def\0{\hbox to\cellwd{\curcol}{\hss\charnumber\hss}}%
+    \colnumbers
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow\setrow
+    \hline
+    \setrow\setrow\setrow
+    \hline
+    \colnumbers
+  }%
+  \vbox{%
+    \hbox to\hsize{\kern\indexwd
+      \def\fullrule{\hfil\vrule height\ht0 depth\dp0\hfil}%
+      \fullrule\kern\cellwd{0}\kern\cellwd{1}\kern\cellwd{2}\kern\cellwd{3}%
+      \fullrule\kern\cellwd{4}\kern\cellwd{5}\kern\cellwd{6}\kern\cellwd{7}%
+      \fullrule\kern\cellwd{8}\kern\cellwd{9}\kern\cellwd{10}\kern\cellwd{11}%
+      \fullrule\kern\cellwd{12}\kern\cellwd{13}\kern\cellwd{14}\kern\cellwd{15}%
+      \fullrule\kern\indexwd}%
+    \kern-\ht0 \kern-\dp0 \unvbox0}%
+  \endgroup
+}
+
+
+\def\setrow{\hbox to\hsize{%
+  \hbox to\indexwd{\hfil\rownumber\kern.2em}\hfil\hfil
+  \0\0\0\0\hfil\hfil \0\0\0\0\hfil\hfil
+  \0\0\0\0\hfil\hfil \0\0\0\0\hfil\hfil
+  \hbox to\indexwd{\ttfamily\kern.2em \rownumber\hfil}}%
+  \global\advance\currow 1 }%
+
+\def\setrowX{\global\advance\curchar16\global\advance\currow 1\relax}
+
+\def\cellwd#1{20pt}% initialize
+
+\def\measurecolwidths#1{%
+  \tempcellwd\hsize \advance\tempcellwd-2\indexwd
+  \advance\tempcellwd -12pt
+  \divide\tempcellwd 16
+  \xdef\cellwd##1{\the\tempcellwd}%
+}
+
+\def \table #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochart{#1}%
+}}
+
+
+\def \tableA #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochartA{#1}%
+}}
+
+\def \tableB #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochartB{#1}%
+}}
+
+\def \tableC #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochartC{#1}%
+}}
+
+\def \tableD #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochartD{#1}%
+}}
+
+\def \tableE #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochartE{#1}%
+}}
+
+\def \tableF #1#2#3{\par\penalty-200 \bigskip
+  \font #1=#2 \relax
+  \vbox{\hsize=29pc
+    \measurecolwidths{#1}%
+    \centerline{#3 -- {\tt#2}}%
+    \medskip
+    \dochartF{#1}%
+}}
+
+\makeatother
+
+\begin{document}
+
+\title{The \texttt{TX} Fonts%
+\thanks{Special thanks to those who reported problems of
+\texttt{TX} fonts and provided suggestions!}}
+
+\author{Young Ryu}
+
+\date{December 15, 2000}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+\section{Introduction}
+
+The \texttt{TX} fonts consist of
+\begin{enumerate}\itemsep=0pt
+\item virtual text roman fonts using Adobe Times (or URW NimbusRomNo9L) with
+      some modified and additional text symbols in OT1, T1, TS1, and LY1 encodings
+\item \textsf{virtual text sans serif fonts using Adobe Helvetica (or URW NimbusSanL) with
+      additional text symbols in OT1, T1, TS1, and LY1 encodings}
+\item \texttt{monospaced typewriter fonts in OT1, T1, TS1, and LY1 encodings}
+\item math alphabets using Adobe Times (or URW NimbusRomNo9L)
+      with modified metrics
+\item math fonts of all symbols corresponding to those of Computer Modern
+      math fonts (CMSY, CMMI, CMEX, and Greek letters of CMR)
+\item math fonts of all symbols corresponding to those of AMS fonts
+      (MSAM and MSBM)
+\item additional math fonts of various symbols
+\end{enumerate}
+%
+All fonts are in the Type 1 format (in \texttt{afm} and \texttt{pfb} files).
+Necessary \texttt{tfm} and \texttt{vf} files together with
+\LaTeXe\ package files and font map files for \texttt{dvips} are
+provided.
+
+\begin{bfseries}%\itshape
+The \texttt{TX} fonts and related files are distributed 
+without any guaranty or warranty.
+I do not assume responsibility for any actual or possible
+damages or losses, directly or indirectly caused by the
+distributed files.
+\end{bfseries}
+The \texttt{TX} fonts are distributed under the GNU public license (GPL)\@.
+The fonts will be improved and additional glyphs will be added
+in the future.
+
+\section{Changes}
+
+\begin{description}
+\item[1.0] (October 25, 2000) 1st public release
+\item[2.0] (November 2, 2000)
+     \begin{itemize}
+     \item An encoding error in txi and txbi (`\textdollar' \texttt{"24}) is fixed.
+     \item Mistakes in symbol declarations for `\AA' and `\aa' in \texttt{txfonts.sty}
+           are fixed.
+     \item $\lambda$ (\texttt{"15} of txmi and txbmi),
+           $\lambdaslash$ (\texttt{"6E} of txsyc and txbsyc), and
+	 $\lambdabar$ (\texttt{"6F} of txsyc and txbsyc)
+	 are updated to be more slanted.
+     \item More symbols added in txexa and txbexa (\texttt{"29}--\texttt{"2E})
+           and in txsyc and txbsyc (\texttt{"80}--\texttt{"94}).
+     \item Some fine tuning of a few glyphs.
+     \item Math italic font metrics are improved.
+     \item Text font metrics are improved.
+     \item T1 and TS1 encodings are supported. (Not all TS1 encoding glyphs are implemented.)
+     \end{itemize}
+\item[2.1] (November 18, 2000)
+     \begin{itemize}
+     \item Complete implementation of TS1 encoding fonts.
+     \item Various improvements of font metrics and font encodings. For instance,
+           the bogus entry of char \texttt{'27} in T1 encoding virtual font files
+           are removed. (This bogus entry caused ``warning char 23 replaced
+           by \bs.notdef'' with PDF\TeX/PDF\LaTeX.)
+     \item Helvetica-based TX sans serif fonts in OT1, T1, and TS1 encodings.
+     \item Monospaced TX typewriter fonts, which are thicker than Courier (and thus may look better
+           with Times), in OT1, T1, and TS1 encodings.
+     \end{itemize}
+\item[2.2] (November 22, 2000)
+     \begin{itemize}
+     \item LY1 encoding support
+     \item Monospaced typewriter fonts redone (Uppercase letters are tall enough to match with Times.)
+     \item Various glyph and metric improvement
+     \end{itemize}
+\item[2.3] (December 6, 2000)
+     \begin{itemize}
+     \item Math extension fonts (radical symbols) updated
+     \item Alternative blackboard bold letters ($\varmathbb{A}\ldots\varmathbb{Z}$ and $\varBbbk$)
+           introduced. (Enter \verb|$\varmathbb{...}$| and \verb|$\varBbk$| to get them.)
+     \item More large operators symbols
+     \item Now \verb|\lbag| ($\lbag$) and \verb|\rbag| ($\rbag$) are
+          delimiters.
+     \item Alternative math alphabets $\varg$ and $\vary$ added
+     \end{itemize}
+\item[2.4] (December 12, 2000)
+     \begin{itemize}
+     \item An encoding mistake in text companion typewriter fonts fixed
+     \item Bugs in \LaTeX\ input files fixed
+     \end{itemize}
+\item[3.0] (December 14, 2000)
+     \begin{itemize}
+     \item Minor problem fixes.
+     \end{itemize}
+\item[3.1] (December 15, 2000)
+     \begin{itemize}
+     \item Alternative math alphabets $\varv$ and $\varw$ added
+     \item Hopefully, this is the final release \ldots
+     \end{itemize}
+\end{description}
+
+\section{A Problem: \texttt{DVIPS} Partial Font Downloading}
+
+It was reported that when \texttt{TX} fonts
+are partially downloaded with \texttt{dvips},
+some HP Laserprinters (with Postscript) cannot
+print documents. To resolve this problem,
+turn the partial font downloading off.
+See the \texttt{dvips} document for various ways to
+turn off partial font downloading.
+
+\textbf{\itshape Even though one does not observe such a problem,
+I would like to strongly recommend to turn off \texttt{dvips}
+partial font downloading.}
+%I think the \texttt{dvips} partial font downloading
+%mechanism appears to have some problems. For instance,
+%when Adobe Times fonts are set to be downloaded, e.g.,
+%\begin{verbatim}
+%   ptmr8r Times-Roman "TeXBase1Encoding ReEncodeFont" <8r.enc <tir_____.pfb
+%\end{verbatim}
+%\TeX ing \texttt{testfont.tex} on \texttt{ptmr8r}
+%and \texttt{dvips}ing \texttt{testfont.dvi}
+%with partial font download on give
+%\begin{verbatim}
+%   WARNING: Not all chars found
+%\end{verbatim}
+%This specific warning seems to be harmless. But,
+%in my opinion, this should not happen.
+
+
+\section{Installation}
+
+Put all files in \texttt{afm}, \texttt{tfm}, \texttt{vf},
+and \texttt{pfb} files in proper locations of your \TeX\ system.
+For Mik\TeX, they may go
+\begin{verbatim}
+     \localtexmf\fonts\afm\txr\
+     \localtexmf\fonts\tfm\txr\
+     \localtexmf\fonts\vf\txr\
+     \localtexmf\fonts\type1\txr\
+\end{verbatim}
+All files of the \texttt{input} directory must
+be placed where \LaTeX\ finds its package files.
+For Mik\TeX, they may go
+\begin{verbatim}
+     \localtexmf\tex\latex\txr\
+\end{verbatim}
+Put the \texttt{txr.map}, \texttt{txr1.map}, \texttt{txr2.map}, and \texttt{tx8r.enc}%
+\footnote{The \texttt{tx8r.enc} file is identical to \texttt{8r.enc}.
+I included \texttt{tx8r.enc} because (1)~some \TeX\ installation might not have \texttt{8r.enc} and
+(2)~including \texttt{8r.enc} would result in multiple copies of \texttt{8r.enc} for \TeX\ systems
+that already have it.}
+files of the \texttt{dvips}
+directory in a proper place that \texttt{dvips} refers to.
+For Mik\TeX, they may go
+\begin{verbatim}
+     \localtexmf\dvips\config\
+\end{verbatim}
+Also add the reference to \texttt{txr.map} in
+the \texttt{dvips} configuration file (\texttt{config.ps})
+\begin{verbatim}
+     . . .
+     % Configuration of postscript type 1 fonts:
+     p psfonts.map
+     p +txr.map
+     . . .
+\end{verbatim}
+and in the PDF\TeX\ configuration file (\texttt{pdftex.cfg})
+\begin{verbatim}
+     . . .
+     % pdftex.map is set up by texmf/dvips/config/updmap
+     map pdftex.map
+     map +txr.map
+     . . .
+\end{verbatim}
+(The \texttt{txr.map} file has only named references to the Adobe Times fonts;
+the \texttt{txr1.map} file makes \texttt{dvips} load Adobe Times font files;
+and the \texttt{txr2.map}  file makes \texttt{dvips} load URW NimbusRomNo9L font files.)
+
+\section{Using the \texttt{TX} Fonts with \LaTeX}
+
+It is as simple as
+\begin{verbatim}
+     \documentclass{article}
+     \usepackage{txfonts}
+     %\normalfont                     % Just in case ...
+     %\usepackage[T1]{fontenc}        % To use T1 encoding fonts
+     %\usepackage[LY1]{fontenc}       % To use LY1 encoding fonts
+     %\usepackage{textcomp}           % To use text companion fonts
+
+     \begin{document}
+
+     This is a very short article.
+
+     \end{document}
+\end{verbatim}
+
+The standard \LaTeX\ distribution does not include
+files supporting the LY1 encoding.
+One needs at least \texttt{ly1enc.def}, which is available
+from both CTAN and Y\&Y (\texttt{www.yandy.com}).
+At the time this document was written, CTAN had
+an old version (1997/03/21 v0.3); \texttt{ly1enc.def}
+available from Y\&Y's downloads sites was dated on 1998/04/21 v0.4.
+
+\section{Additional Symbols in the \texttt{TX} Math Fonts}
+
+\emph{All} CM symbols are included in the \texttt{TX} math fonts.
+In addition, the \texttt{TX} math fonts provide or modify
+the following symbols, including all of AMS and most of \LaTeX\ symbols.
+
+\subsubsection*{Binary Operator Symbols}
+\begin{eqnarray*}[c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l]
+\Ent{medcirc}&
+\Ent{medbullet}&
+\Ent{invamp}\\
+\Ent{circledwedge}&
+\Ent{circledvee}&
+\Ent{circledbar}\\
+\Ent{circledbslash}&
+\Ent{nplus}&
+\Ent{boxast}\\
+\Ent{boxbslash}&
+\Ent{boxbar}&
+\Ent{boxslash}\\
+\Ent{Wr}&
+\Ent{sqcupplus}&
+\Ent{sqcapplus}\\
+\Ent{rhd}&
+\Ent{lhd}&
+\Ent{unrhd}\\
+\Ent{unlhd}
+\end{eqnarray*}
+
+\subsubsection*{Binary Relation Symbols}
+\begin{eqnarray*}[c@{\enskip}l@{\quad}c@{\enskip}l@{\quad}c@{\enskip}l]
+\Ent{mappedfrom}&
+\Ent{longmappedfrom}&
+\Ent{Mapsto}\\
+\Ent{Longmapsto}&
+\Ent{Mappedfrom}&
+\Ent{Longmappedfrom}\\
+\Ent{mmapsto}&
+\Ent{longmmapsto}&
+\Ent{mmappedfrom}\\
+\Ent{longmmappedfrom}&
+\Ent{Mmapsto}&
+\Ent{Longmmapsto}\\
+\Ent{Mmappedfrom}&
+\Ent{Longmmappedfrom}&
+\Ent{varparallel}\\
+\Ent{varparallelinv}&
+\Ent{nvarparallel}&
+\Ent{nvarparallelinv}\\
+\Ent{colonapprox}&
+\Ent{colonsim}&
+\Ent{Colonapprox}\\
+\Ent{Colonsim}&
+\Ent{doteq}&
+\Ent{multimapinv}\\
+\Ent{multimapboth}&
+\Ent{multimapdot}&
+\Ent{multimapdotinv}\\
+\Ent{multimapdotboth}&
+\Ent{multimapdotbothA}&
+\Ent{multimapdotbothB}\\
+\Ent{VDash}&
+\Ent{VvDash}&
+\Ent{cong}\\
+\Ent{preceqq}&
+\Ent{succeqq}&
+\Ent{nprecsim}\\
+\Ent{nsuccsim}&
+\Ent{nlesssim}&
+\Ent{ngtrsim}\\
+\Ent{nlessapprox}&
+\Ent{ngtrapprox}&
+\Ent{npreccurlyeq}\\
+\Ent{nsucccurlyeq}&
+\Ent{ngtrless}&
+\Ent{nlessgtr}\\
+\Ent{nbumpeq}&
+\Ent{nBumpeq}&
+\Ent{nbacksim}\\
+\Ent{nbacksimeq}&
+\EEnt{neq}{ne}&
+\Ent{nasymp}\\
+\Ent{nequiv}&
+\Ent{nsim}&
+\Ent{napprox}\\
+\Ent{nsubset}&
+\Ent{nsupset}&
+\Ent{nll}\\
+\Ent{ngg}&
+\Ent{nthickapprox}&
+\Ent{napproxeq}\\
+\Ent{nprecapprox}&
+\Ent{nsuccapprox}&
+\Ent{npreceqq}\\
+\Ent{nsucceqq}&
+\Ent{nsimeq}&
+\Ent{notin}\\
+\EEnt{notni}{notowns}&
+\Ent{nSubset}&
+\Ent{nSupset}\\
+\Ent{nsqsubseteq}&
+\Ent{nsqsupseteq}&
+\Ent{coloneqq}\\
+\Ent{eqqcolon}&
+\Ent{coloneq}&
+\Ent{eqcolon}\\
+\Ent{Coloneqq}&
+\Ent{Eqqcolon}&
+\Ent{Coloneq}\\
+\Ent{Eqcolon}&
+\Ent{strictif}&
+\Ent{strictfi}\\
+\Ent{strictiff}&
+\Ent{circledless}&
+\Ent{circledgtr}\\
+\Ent{lJoin}&
+\Ent{rJoin}&
+\EEnt{Join}{lrJoin}\\
+\Ent{openJoin}&
+\Ent{lrtimes}&
+\Ent{opentimes}\\
+\Ent{nsqsubset}&
+\Ent{nsqsupset}&
+\Ent{dashleftarrow}\\
+%\EEnt{dashrightarrow}{dasharrow}&
+\Ent{dashrightarrow}&
+\Ent{dashleftrightarrow}&
+\Ent{leftsquigarrow}\\
+\Ent{ntwoheadrightarrow}&
+\Ent{ntwoheadleftarrow}&
+\Ent{Nearrow}\\
+\Ent{Searrow}&
+\Ent{Nwarrow}&
+\Ent{Swarrow}\\
+\Ent{Perp}&
+\Ent{leadstoext}&
+\Ent{leadsto}\\
+\Ent{boxright}&
+\Ent{boxleft}&
+\Ent{boxdotright}\\
+\Ent{boxdotleft}&
+\Ent{Diamondright}&
+\Ent{Diamondleft}\\
+\Ent{Diamonddotright}&
+\Ent{Diamonddotleft}&
+\Ent{boxRight}\\
+\Ent{boxLeft}&
+\Ent{boxdotRight}&
+\Ent{boxdotLeft}\\
+\Ent{DiamondRight}&
+\Ent{DiamondLeft}&
+\Ent{DiamonddotRight}\\
+\Ent{DiamonddotLeft}&
+\Ent{circleright}&
+\Ent{circleleft}\\
+\Ent{circleddotright}&
+\Ent{circleddotleft}&
+\Ent{multimapbothvert}\\
+\Ent{multimapdotbothvert}&
+\Ent{multimapdotbothAvert}&
+\Ent{multimapdotbothBvert}
+\end{eqnarray*}
+
+\subsubsection*{Ordinary Symbols}
+\begin{eqnarray*}[c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l]
+\Ent{alphaup}&
+\Ent{betaup}&
+\Ent{gammaup}\\
+\Ent{deltaup}&
+\Ent{epsilonup}&
+\Ent{varepsilonup}\\
+\Ent{zetaup}&
+\Ent{etaup}&
+\Ent{thetaup}\\
+\Ent{varthetaup}&
+\Ent{iotaup}&
+\Ent{kappaup}\\
+\Ent{lambdaup}&
+\Ent{muup}&
+\Ent{nuup}\\
+\Ent{xiup}&
+\Ent{piup}&
+\Ent{varpiup}\\
+\Ent{rhoup}&
+\Ent{varrhoup}&
+\Ent{sigmaup}\\
+\Ent{varsigmaup}&
+\Ent{tauup}&
+\Ent{upsilonup}\\
+\Ent{phiup}&
+\Ent{varphiup}&
+\Ent{chiup}\\
+\Ent{psiup}&
+\Ent{omegaup}&
+\Ent{Diamond}\\
+\Ent{Diamonddot}&
+\Ent{Diamondblack}&
+\Ent{lambdaslash}\\
+\Ent{lambdabar}&
+\Ent{varclubsuit}&
+\Ent{vardiamondsuit}\\
+\Ent{varheartsuit}&
+\Ent{varspadesuit}&
+\Ent{Top}\\
+\Ent{Bot}
+\end{eqnarray*}
+
+\subsubsection*{Math Alphabets}
+
+\begin{eqnarray*}[c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l]
+\Ent{varg} &
+\Ent{varv} &
+\Ent{varw} &
+\Ent{vary}
+\end{eqnarray*}
+In order to replace math alphabets $g$, $v$, $w$, and $y$ by these alternatives,
+use the \texttt{varg} option with the \texttt{txfonts} package:
+\begin{verbatim}
+     \usepackage[varg]{txfonts}
+\end{verbatim}
+Then, \verb|$g$|, \verb|$v$|, \verb|$w$|, and \verb|$y$| will produce
+these $\varg$, $\varv$, $\varw$, and~$\vary$ (instead of $g$, $v$, $w$, and~$y$).
+%
+Notice that $\varv$ (the alternative \textit{v})
+is more clearly distingiushed from $\nu$ (the lowercase Greek nu).
+However, this is not without cost:
+it looks similar to $\upsilon$ (the lowercase Greek upsilon).
+
+%\footnote{A comment on Times New Roman fonts:
+%the italic \textit{v} of Times New Roman (both Type 1 and TrueType versions),
+%but not that of Times, is very badly designed. The starting serif at the left-top
+%corner of the letter is very different from other letters' corresponding portion.
+%However, that of Times New Roman bold italic is consistent with others.
+%Further, in the TrueType version of Times New Roman italic and bold italic,
+%the lowercase Greek $\nu$ (nu) is exactly same as \textit{v} (i.e., linked to \textit{v}).
+%For the mathematical typesetting purpose, this is undesirable.
+%In \texttt{TX} fonts, the lowercase Greek $\nu$ (nu) is not identical to
+%\textit{v}, but very similar. The alternative $\varv$ is provided to
+%be more clearly distingiushed from the lowercase Greek $\nu$ (nu).
+%The alternative $\varw$ is provided to ensure consistency.}
+
+\subsubsection*{Large Operator Symbols}
+
+\begin{eqnarray*}[c@{\enskip}l@{\quad}c@{\enskip}l@{\quad}c@{\enskip}l]
+\Ent{bignplus}&
+\Ent{bigsqcupplus}&
+\Ent{bigsqcapplus}\\
+\Ent{bigsqcap}&
+\Ent{bigsqcap}&
+\Ent{varprod}\\
+\Ent{oiint}&
+\Ent{oiiint}&
+\Ent{ointctrclockwise}\\
+\Ent{ointclockwise}&
+\Ent{varointctrclockwise}&
+\Ent{varointclockwise}\\
+\Ent{sqint}&
+\Ent{sqiintop}&
+\Ent{sqiiintop}\\
+\Ent{fint}&
+\Ent{iint}&
+\Ent{iiint}\\
+\Ent{iiiint}&
+\Ent{idotsint}&
+\Ent{oiintctrclockwise}\\
+\Ent{oiintclockwise}&
+\Ent{varoiintctrclockwise}&
+\Ent{varoiintclockwise}\\
+\Ent{oiiintctrclockwise}&
+\Ent{oiiintclockwise}&
+\Ent{varoiiintctrclockwise}\\
+\Ent{varoiiintclockwise}&
+\end{eqnarray*}
+
+\subsubsection*{Delimiters}
+\begin{eqnarray*}[c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l]
+\Big\llbracket&\texttt{\bs llbracket}&
+\Big\rrbracket&\texttt{\bs rrbracket}&
+\Big\lbag&\texttt{\bs lbag}&
+\Big\rbag&\texttt{\bs rbag}
+\end{eqnarray*}
+
+%\subsubsection*{Parentheses}
+%\begin{eqnarray*}[c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l@{\qquad\qquad\qquad}c@{\enskip}l]
+%\Ent{lbag}&
+%\Ent{rbag}&
+%\Ent{Lbag}&
+%\Ent{Rbag}
+%\end{eqnarray*}
+
+\subsubsection*{Miscellaneous}
+
+\verb|$\mathfrak{...}$| produces
+$\mathfrak{A} \ldots \mathfrak{Z}$ and $\mathfrak{a} \ldots \mathfrak{z}$.
+\verb|$\varmathbb{...}$| produces
+$\varmathbb{A} \ldots \varmathbb{Z}$ (lowercase letters only);
+\verb|\varBbbk| produces $\varBbbk$.
+Note that the \AmS\ math font command \verb|$\mathbb{...}$| produces
+$\mathbb{A} \ldots \mathbb{Z}$;
+\verb|\Bbbk| produces $\Bbbk$.
+If you find the alternative blackboard letters are better, then do
+\begin{verbatim}
+   \let\mathbb=\varmathbb
+   \let\Bbbk=\varBbbk
+\end{verbatim}
+
+
+\section{Remarks}
+
+\subsection{Some Font Design Issues}
+
+The Adobe Times fonts are thicker than the CM fonts.
+Designing math fonts for Times based on the rule thickness of Times
+`$=$', `$-$', `$+$', `/', `$<$', etc.\
+would result in too thick math symbols,
+in my opinion.\footnote{I have designed many math symbols
+(corresponding to those in CMMI and CMSY)
+based on the rule thickness of original Times `$=$', etc.
+At that time, I noticed that the symbols,
+especially some bold math symbols, are extremely thick.
+Perhaps, in the future, I will complete all math symbols
+based on the rule thickness of original Times `$=$', etc.\
+and release in public, so that users will judge
+whether they are acceptable or not~\ldots.}
+In the \texttt{TX} fonts, these glyphs are thinner
+than those of original Times fonts. That is, the rule thickness
+of these glyphs is around 85\% of that of the Times fonts,
+but still thicker than that of the CM fonts.
+
+For negated relation symbols, the CM fonts composes
+relation symbols with the negation slash (\texttt{"36} in CMSY).
+Even though the CM fonts were very carefully designed
+to look reasonable when negated relation symbols are composed
+(except `$\notin$' \verb|\notin|, which is composed of
+`$\in$' and the normal slash `$/$'),
+the AMS font set includes many negated relation symbols,
+mainly because the vertical placement and
+height\slash depth of the negation slash are not optimal
+when composed with certain relation symbols, I guess.
+The \texttt{TX} fonts include the negation slash symbol
+(\texttt{"36} in txsy), which could be composed with
+relation symbols to give reasonably looking negated related symbols.
+I believe, however, explicitly designed negated relation symbols
+are looking better than composed relation symbols.
+Thus, in addition to negated relation symbols matching those of
+the AMS fonts, many negated symbols such as `$\neq$' are introduced
+in the \texttt{TX} fonts.
+
+Further, in order to maintain editing compatibility with
+vanilla \LaTeXe\ typesetting, \verb|\not| is redefined in \texttt{txfonts.sty} 
+so that when \verb|\not\XYZ| is processed,
+if \verb|\notXYZ| or \verb|\nXYZ| is defined, it will be used
+in place of \verb|\not\XYZ|; otherwise,
+\verb|\XYZ| is composed with the negation slash.
+For instance, `$\nprecsim$' is available as \verb|\nprecsim| in the \texttt{TX} fonts.
+Thus, if \verb|\not\precsim| is typed in the document,
+the \verb|\nprecsim| symbol, instead of \verb|\precsim| composed
+with the negation slash, is printed.
+
+\subsection{Times vs.\ Times New Roman}
+
+The recent version of Acrobat is shipped with
+Times New Roman instead of Times fonts.
+Times New Roman fonts' italic letters (e.g.,
+`\textit{A}') are substantially different from those
+of Times fonts. Thus, when documents with the \texttt{TX} fonts
+are processed with Acrobat, accents may not be correctly placed.
+If this is a noticeable problem, use the NimbusRomNo9L fonts
+(included in the Ghostscript distribution) with the \texttt{TX} fonts
+through \texttt{txr2.map}.
+
+\subsection{PDF\TeX/PDF\LaTeX\ and Standard Postscript Fonts}
+
+PDF\TeX/PDF\LaTeX\ does not handle slanting of fonts not embedded
+in the document.
+Note, in the standard setup, PDF\TeX/PDF\LaTeX\ does not embed
+the 14 standard Postscript fonts (Times $\times$~4,
+Helvetica $\times$~4, Courier $\times$~4, Symbol, and ZapfDingbats).
+As the result, PDF\TeX/PDF\LaTeX\ issues warning
+(and may try to generate and use bitmapped fonts for these fonts).
+If it is not desirable, a solution would be to use URW NimbusRomNo9L
+and NimbusSanL fonts
+which are an Adobe Times and Helvetica fonts clone. That is, in the
+PDF\TeX/PDF\LaTeX\ configuration file (\texttt{pdftex.cfg}),
+put \texttt{txr2.map} instead of \texttt{txr.map}
+\begin{verbatim}
+     . . .
+     % pdftex.map is set up by texmf/dvips/config/updmap
+     map pdftex.map
+     map +txr2.map
+     . . .
+\end{verbatim}
+Be sure to properly install URW NimbusRomNo9L and NimbusSanL fonts (which are
+included in the Ghostscript distribution) in your texmf tree.
+
+If you have Adobe Times and Helvetica font files, and want to embed them
+in your PDF document file, do the following trick to fool PDF\TeX/PDF\LaTeX.
+\begin{enumerate}\itemsep=0pt%\parskip=0pt
+\item Copy \texttt{txr1.map} in the dvips configuration directory
+      to \texttt{txrpdf.map} in the PDF\TeX/PDF\LaTeX\ configuration directory.
+\item Edit txrpdf.map and have
+\begin{small}
+\begin{verbatim}
+rtxptmb "TeXBase1Encoding ReEncodeFont" <tx8r.enc <tib_____.pfb
+rtxptmbo ".167 SlantFont TeXBase1Encoding ReEncodeFont" <tx8r.enc <tib_____.pfb
+rtxptmbi "TeXBase1Encoding ReEncodeFont" <tx8r.enc <tibi____.pfb
+rtxptmr "TeXBase1Encoding ReEncodeFont" <tx8r.enc <tir_____.pfb
+rtxptmro ".167 SlantFont TeXBase1Encoding ReEncodeFont" <tx8r.enc <tir_____.pfb
+rtxptmri "TeXBase1Encoding ReEncodeFont" <tx8r.enc <tii_____.pfb
+. . .
+\end{verbatim}
+\end{small}
+instead of
+\begin{small}
+\begin{verbatim}
+rtxptmb Times-Bold "TeXBase1Encoding ReEncodeFont" <tx8r.enc <tib_____.pfb
+. . .
+. . .
+\end{verbatim}
+\end{small}
+Note, the actual standard Postscript fonts names such as \texttt{"Times-Bold"}
+are removed. As the result, PDF\TeX/PDF\LaTeX\ will embed these standard
+Postscript fonts and there will be no warning for slanting them.
+\item Put \texttt{txrpdf.map} in the PDF\TeX/PDF\LaTeX\ configuration
+      file (\texttt{pdftex.cfg}).
+\begin{small}
+\begin{verbatim}
+. . .
+% pdftex.map is set up by texmf/dvips/config/updmap
+map pdftex.map
+map +txrpdf.map
+. . .
+\end{verbatim}
+\end{small}
+\end{enumerate}
+
+\subsection{Glyph Hinting}
+
+The hinting of the \texttt{TX} fonts is far from ideal.
+As a result, when documents with the \texttt{TX} fonts
+are \emph{viewed} with Gsview (or Ghostview), you might notice
+some display quality problem. When they are \emph{viewed}
+with Acrobat, they look much better.
+However, when they are \emph{printed} in laser printers,
+there will be no quality problem.
+(Note, hinting is to improve display quality on low resolution devices such as
+display screens.)
+
+\subsection{Glyphs in Low Positions}
+
+It is known that Acrobat often does not properly handle
+CM font glyphs placed between \texttt{"00} and \texttt{"1F}.
+Thus, most Type 1 versions of CM fonts publicly available
+have these glyphs in higher positions above \texttt{"7F}.
+When the \texttt{-G} flag is used with \texttt{dvips},
+those glyphs in low positions are shifted to higher positions.
+The \texttt{TX} text fonts have
+glyphs in the low positions between \texttt{"00} and \texttt{"1F}.
+As of now, these glyphs are not available in higher positions above \texttt{"7F}.
+Thus, when run \texttt{dvips}, do not use the \texttt{-G}
+flag (or remove \texttt{G} in the \texttt{dvips} configuration file).
+Especially, do not use \texttt{config.pdf}.
+In my computer systems, Acrobat correctly handles glyphs in low positions.
+However, if this known Acrobat problem occurs in other computer systems,
+I will modify the \texttt{TX} fonts so that glyphs in low positions
+are also available in higher positions.
+
+\section{Font Charts}
+
+The original Computer Modern (CM) text fonts (aka \TeX\ text fonts)
+have the OT1 encoding. The OT1 \texttt{TX} text fonts follow
+the CM fonts' encoding as much as possible, but have some
+variations and additions:
+\begin{itemize}\parskip=0pt\itemsep=0pt
+\item The position \texttt{"24} of text italic fonts has
+      the dollar symbol (\textit{\textdollar}), not the sterling symbol (\textit{\textsterling}).
+\item The uppercase and lowercase lslash (\L, \l) and aring (\AA, \aa) letters are added.
+\item The cent (\ifx\textcentoldstyle\undefined\textcent\else\textcentoldstyle\fi)
+      and sterling (\textsterling) symbols are added.
+\end{itemize}
+The original CM text fonts have somewhat different encodings in
+\textsc{cap \& small cap} and \texttt{typewriter} fonts.
+\texttt{TX} fonts corresponding to them have the original CM encodings,
+not the strict OT1 encoding.
+
+The T1 encoding text fonts (known as EC fonts) are designed to
+replace the CM text fonts in the OT1 encoding.
+The LY1 encoding is another text font encoding, which is based
+on both \TeX\ and ANSI encodings.
+Both T1 and LY1 encoding fonts are especially useful to typeset
+European languages with proper hyphenation.
+The TS1 encoding text companion fonts (known as TC fonts) have
+additional text symbols.
+All corresponding \texttt{TX} fonts are implemented.
+
+The Computer Modern (CM) math fonts (aka \TeX\ math fonts)
+consist of three fonts: math italic (CMMI), math symbols (CMSY), and
+math extension (CMEX). The American Mathematical Society provided
+two additional math symbol fonts (MSAM and MSBM).
+The \texttt{TX} math fonts include those exactly corresponding to them.
+In addition, the \texttt{TX} math fonts include math italic A,
+math symbols C, and math extension A fonts.
+
+
+\subsection{OT1 (CM) Encoding Text Fonts}
+
+These fonts' encodings are identical to those of corresponding CM fonts,
+except 6~additional glyphs.
+
+\begin{center}
+\centering
+\leavevmode\hbox{\tableA \fonttab{txr}{Text Roman Upright}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txi}{\textit{Text Roman Italic}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txsl}{\textsl{Text Roman Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txsc}{\textsc{Text Roman Cap \& Small Cap}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txss}{\textsf{Text Sans Serif Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txsssl}{\textsf{\slshape Text Sans Serif Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txsssc}{\textsf{\scshape Text Sans Serif Cap \& Small Cap}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txtt}{\texttt{Text Typewriter Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txttsl}{\texttt{\slshape Text Typewriter Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableA \fonttab{txttsc}{\texttt{\scshape Text Typewriter Cap \& Small Cap}}}
+\end{center}
+
+\subsection{T1 (EC) Cork Encoding Text Fonts}
+
+These fonts' encodings are identical to those of corresponding EC fonts.
+
+\begin{center}
+\centering
+\leavevmode\hbox{\tableD \fonttab{t1xr}{Text Roman Upright}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xi}{\textit{Text Roman Italic}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xsl}{\textsl{Text Roman Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xsc}{\textsc{Text Roman Cap \& Small Cap}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xss}{\textsf{Text Sans Serif Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xsssl}{\textsf{\slshape Text Sans Serif Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xsssc}{\textsf{\scshape Text Sans Serif  Cap \& Small Cap}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xtt}{\texttt{Text Typewriter Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xttsl}{\texttt{\slshape Text Typewriter Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{t1xttsc}{\texttt{\scshape Text Typewriter Cap \& Small Cap}}}
+\end{center}
+
+\subsection{LY1 \TeX\ and ANSI Encoding Text Fonts}
+
+\begin{center}
+\centering
+\leavevmode\hbox{\tableD \fonttab{tyxr}{Text Roman Upright}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxi}{\textit{Text Roman Italic}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxsl}{\textsl{Text Roman Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxsc}{\textsc{Text Roman Cap \& Small Cap}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxss}{\textsf{Text Sans Serif Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxsssl}{\textsf{\slshape Text Sans Serif Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxsssc}{\textsf{\scshape Text Sans Serif Cap \& Small Cap}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxtt}{\texttt{Text Typewriter Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxttsl}{\texttt{\slshape Text Typewriter Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableD \fonttab{tyxttsc}{\texttt{\scshape Text Typewriter Cap \& Small Cap}}}
+\end{center}
+
+\subsection{TS1 (TC) Encoding Text Companion Fonts}
+
+These fonts' encodings are identical to those of corresponding TC fonts.
+
+\begin{center}
+\centering
+\leavevmode\hbox{\tableE \fonttab{tcxr}{Text Companion Roman Upright}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableE \fonttab{tcxi}{\textit{Text Companion Roman Italic}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableE \fonttab{tcxsl}{\textsl{Text Companion Roman Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableE \fonttab{tcxss}{\textsf{Text Companion Sans Serif Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableE \fonttab{tcxsssl}{\textsf{\slshape Text Companion Sans Serif Slanted}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableE \fonttab{tcxtt}{\texttt{Text Companion Typewriter Upright}}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableE \fonttab{tcxttsl}{\texttt{\slshape Text Companion Typewriter Slanted}}}
+\end{center}
+
+\subsection{Math Fonts}
+
+These fonts' encodings are identical to those of corresponding CM 
+and AMS Math fonts.
+Additional math fonts are provided.
+
+\begin{center}
+\centering
+\leavevmode\hbox{\table \fonttab{txmi}{Math Italic (Corresponding to CMMI)}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\table \fonttab{txmi1}{Math Italic (Corresponding to CMMI) used with the \texttt{varg} option}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableF \fonttab{txmia}{Math Italic A}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\table \fonttab{txsy}{Math Symbols (Corresponding to CMSY)}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\table \fonttab{txsya}{Math Symbols A (Corresponding to MSAM)}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\table \fonttab{txsyb}{Math Symbols B (Corresponding to MSBM)}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableC \fonttab{txsyc}{Math Symbols C}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\table \fonttab{txex}{Math Extension (Corresponding to CMEX)}}
+
+\bigskip\bigskip
+\leavevmode\hbox{\tableB \fonttab{txexa}{Math Extension A}}
+\end{center}
+
+Bold versions of all fonts are available.
+
+
+\end{document}
