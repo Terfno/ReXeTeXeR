@@ -7,9 +7,9 @@ RUN apk update && \
   apk add openssl make texlive-xetex
 
 # fonts
-ADD ./fonts/Courier_Prime/ ~/.fonts/
-ADD ./fonts/Noto_Sans_JP/ ~/.fonts/
-ADD ./fonts/Noto_Serif_JP/ ~/.fonts/
+ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/	ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/
+ADD ./fonts/Noto_Sans_JP/ /usr/share/fonts/japanese/TrueType/Noto_Sans_JP/	ADD ./fonts/Noto_Sans_JP/ /usr/share/fonts/japanese/TrueType/Noto_Sans_JP/
+ADD ./fonts/Noto_Serif_JP/ /usr/share/fonts/japanese/TrueType/Noto_Serif_JP/	ADD ./fonts/Noto_Serif_JP/ /usr/share/fonts/japanese/TrueType/Noto_Serif_JP/
 
 # latex package -> xelatex package
 RUN mv /usr/share/texmf-dist/tex/latex/ /usr/share/texmf-dist/tex/xelatex/
