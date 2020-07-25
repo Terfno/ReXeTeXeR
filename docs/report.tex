@@ -1,8 +1,10 @@
-\documentclass[a4paper,xelatex,ja=standard]{bxjsarticle}
-\XeTeXlinebreaklocale "ja_JP"
-\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
-\XeTeXlinebreakpenalty=0
+% UTF-8
+\documentclass[a4paper]{article}
+\XeTeXlinebreaklocale "ja"
 \usepackage{xltxtra}
+
+% \XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
+% \XeTeXlinebreakpenalty=0
 
 % fonts
 \usepackage{fontspec}
@@ -18,13 +20,13 @@
 
 % custom for 津山高専指示のスタイル
 % 動いたパッケージ
-\usepackage{mathptmx}
+\usepackage{listings} % ソースコード表示
+\usepackage[normalem]{ulem} % 下線表示
+\useunder{\uline}{\ul}{} % texデフォルト下線をulemの下線に置き換え
 % まだ動かないパッケージ
-\usepackage{c_thesis}
-\usepackage{listings, jlisting}
-\usepackage[normalem]{ulem}
-\useunder{\uline}{\ul}{}
-
+% \usepackage{c_thesis}
+% \usepackage{jlisting} % ソースコード表示
+% \usepackage{here} % 図の強制配置
 
 % % ソースコードの設定/listings の表示設定
 \lstset{
@@ -44,17 +46,17 @@
 \title{ReXeTeXeR}
 \author{Takahito Sueda}
 \date{2020年7月14日}
-\kind{\interim} % 中間報告書の場合 / これはc_thesis.sty
+% \kind{\interim} % 中間報告書の場合 / これはc_thesis.sty
 % \kind{\preliminary} % 予備審査論文の場合 / これはc_thesis.sty
 % \kind{\thesis} % 最終報告書の場合 / これはc_thesis.sty
-\affiliation{情報システム系} % これはc_thesis.sty
-\adviser{指導教員の氏名} % これはc_thesis.sty
+% \affiliation{情報システム系} % これはc_thesis.sty
+% \adviser{指導教員の氏名} % これはc_thesis.sty
 
 \begin{document}
   % 表紙
   \maketitle
-  \kanjiskip=.25zw plus 3pt minus 3pt % 字間設定
-  \xkanjiskip=.25zw plus 3pt minus 3pt % 字間設定
+  % \kanjiskip=.25zw plus 3pt minus 3pt % 字間設定
+  % \xkanjiskip=.25zw plus 3pt minus 3pt % 字間設定
 
   % Abstract
   \begin{abstract}
@@ -96,6 +98,6 @@
   なんか書くと、コンテナ内のシェルスクリプトがこのファイルの変更を検知して、texのコンパイルコマンドが走ります。
 
   % bibtex
-  \bibliographystyle{junsrt}
   \bibliography{ref.bib}
+  \bibliographystyle{junsrt}
 \end{document}
