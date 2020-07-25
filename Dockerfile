@@ -16,10 +16,12 @@ RUN mv /usr/share/texmf-dist/tex/latex/ /usr/share/texmf-dist/tex/xelatex/
 
 # for bibtex
 ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
-# listing - jlisting.sty
+# jlisting.sty
 ADD ./src/jlisting.sty /usr/share/texmf-dist/tex/xelatex/listings/
-# todo fix dir | normalem - ulem.sty
-ADD ./src/ulem.sty /usr/share/texmf-dist/tex/xelatex/
+# ulem.sty
+ADD ./src/ulem.sty /usr/share/texmf-dist/tex/xelatex/ulem
+# here.sty
+ADD ./src/here.sty /usr/share/texmf-dist/tex/xelatex/here/
 # txfonts
 ADD ./src/txfonts/afm/ /usr/share/texmf-dist/fonts/afm/txr/
 ADD ./src/txfonts/pfb/ /usr/share/texmf-dist/fonts/type1/txr/
