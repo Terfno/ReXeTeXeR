@@ -1,10 +1,7 @@
 % UTF-8
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{article} % c_thesis.styがjsarticle前提なのでそっちに対応する必要がある。
 \XeTeXlinebreaklocale "ja"
 \usepackage{xltxtra}
-
-% \XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
-% \XeTeXlinebreakpenalty=0
 
 % fonts
 \usepackage{fontspec}
@@ -12,21 +9,15 @@
 \setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular}
 \setmonofont[Scale=MatchLowercase]{CourierPrime-Regular}
 
-% bibtex
-\usepackage{cite}
-
-% 画像
-\usepackage{graphicx}
-
-% custom for 津山高専指示のスタイル
-% 動いたパッケージ
+\usepackage{cite} % bibtex
+\usepackage{graphicx} % 画像
+\usepackage{here} % 図の強制配置
 \usepackage{listings} % ソースコード表示
 \usepackage[normalem]{ulem} % 下線表示
 \useunder{\uline}{\ul}{} % texデフォルト下線をulemの下線に置き換え
 % まだ動かないパッケージ
 % \usepackage{c_thesis}
 % \usepackage{jlisting} % ソースコード表示
-% \usepackage{here} % 図の強制配置
 
 % % ソースコードの設定/listings の表示設定
 \lstset{
