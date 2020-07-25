@@ -1,6 +1,7 @@
 % UTF-8
 \documentclass[a4paper]{article} % c_thesis.styがjsarticle前提なのでそっちに対応する必要がある。
 \XeTeXlinebreaklocale "ja"
+\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
 \usepackage{xltxtra}
 
 % fonts
@@ -12,12 +13,11 @@
 \usepackage{cite} % bibtex
 \usepackage{graphicx} % 画像
 \usepackage{here} % 図の強制配置
-\usepackage{listings} % ソースコード表示
+\usepackage{listings, jlisting} % ソースコード表示
 \usepackage[normalem]{ulem} % 下線表示
 \useunder{\uline}{\ul}{} % texデフォルト下線をulemの下線に置き換え
 % まだ動かないパッケージ
 % \usepackage{c_thesis}
-% \usepackage{jlisting} % ソースコード表示
 
 % % ソースコードの設定/listings の表示設定
 \lstset{
@@ -51,6 +51,7 @@
 
   % Abstract
   \begin{abstract}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     Abstractを書く。英語で。
     この論文の要約を英語のみを用いて、200ワード以上1ページ以内にまとめる。
   \end{abstract}

@@ -22,7 +22,7 @@ ADD ./src/jlisting.sty /usr/share/texmf-dist/tex/xelatex/listings/
 ADD ./src/ulem.sty /usr/share/texmf-dist/tex/xelatex/ulem
 # here.sty
 ADD ./src/here.sty /usr/share/texmf-dist/tex/xelatex/here/
-# txfonts
+# txfonts for some other packages.
 ADD ./src/txfonts/afm/ /usr/share/texmf-dist/fonts/afm/txr/
 ADD ./src/txfonts/pfb/ /usr/share/texmf-dist/fonts/type1/txr/
 ADD ./src/txfonts/tfm/ /usr/share/texmf-dist/fonts/tfm/txr/
