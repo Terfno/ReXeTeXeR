@@ -1,0 +1,18 @@
+# Fdb version 3
+["pdflatex"] 1604708503 "/Users/terfno/dev/terfno/ReXeTeXeR/docs/report.tex" "/Users/terfno/dev/terfno/ReXeTeXeR/docs/report.pdf" "report" 1604708503
+  "/Users/terfno/dev/terfno/ReXeTeXeR/docs/report.aux" 1604708503 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/Users/terfno/dev/terfno/ReXeTeXeR/docs/report.tex" 1604708503 3735 c6435b18c51292557fa0aa83ce2e2bc0 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
+  "/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty" 1583617216 6501 4011d89d9621e0b0901138815ba5ff29 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifxetex.sty" 1572645307 488 4565444a3e75e59cb2702dc42e18f482 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/base/article.cls" 1601675358 20145 aad8c3dd3bc36e260347b84002182bc2 ""
+  "/usr/local/texlive/2020/texmf-dist/tex/latex/base/size10.clo" 1601675358 8449 a72d5d4e612221b46000c3d71724e0ef ""
+  "/usr/local/texlive/2020/texmf-dist/tex/xelatex/xltxtra/xltxtra.sty" 1546294187 5686 8a29af4ad9d707b5280738995d050842 ""
+  "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1598393674 39451 15a3ebee027466ecb89701aa91dfebaf ""
+  "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1604647816 2550031 c64995a5fc0520756981039cb9c78d66 ""
+  "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
+  "report.tex" 1604708503 3735 c6435b18c51292557fa0aa83ce2e2bc0 ""
+  (generated)
+  "report.log"
+  "/Users/terfno/dev/terfno/ReXeTeXeR/docs/report.pdf"
+  "/Users/terfno/dev/terfno/ReXeTeXeR/docs/report.log"

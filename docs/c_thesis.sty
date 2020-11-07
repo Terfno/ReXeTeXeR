@@ -1,8 +1,8 @@
 %% This is file `c_thesis.sty',
 
 % TeXファイルに以下の２行を追加してください
-% \kanjiskip=.25zw plus 3pt minus 3pt
-% \xkanjiskip=.25zw plus 3pt minus 3pt
+% \kanjiskip=.25em plus 3pt minus 3pt
+% \xkanjiskip=.25em plus 3pt minus 3pt
 
 % スタイルファイルの読み込み
 % \usepackage{mathptmx} % フォントをTimes系にするだけなので不要
@@ -33,8 +33,8 @@
 % \addtolength{\textheight}{\topskip}
 \renewcommand{\baselinestretch}{1.1}
 
-% thebibrography環境の見出しの再定義
-\renewcommand{\bibname}{参考文献}
+% thebibrography環境の見出しの再定義->bibtex版に変更
+\renewcommand{\refname}{参考文献}
 
 % 参考文献のラベルに番号を用いる。無駄な項目の入力なくなる。利用方法(\bib{参考文献1,参考文献2})
 \newcounter{bibnum}\setcounter{bibnum}{0}
@@ -70,7 +70,7 @@
 % \def\@cite#1#2{({#1\if@tempswa , #2\fi})}
 
 % \postsectionnameの定義
-\renewcommand{\postsectionname}{.}
+% \renewcommand{\postsectionname}{.}
 
 \newcommand{\@sidou}{指導教員}
 \newcommand{\@school}{津山工業高等専門学校}
@@ -81,7 +81,7 @@
 \newcommand{\thesis}{卒業研究報告書}
 
 % \@maketitleの定義-
-\renewcommand{\@maketitle}{
+\renewcommand{\maketitle}{
   \setlength{\voffset}{-1.0truein}
   \addtolength{\voffset}{40truemm}
   \setlength{\topmargin}{0truemm}
@@ -120,7 +120,7 @@
   \end{center}
   \thispagestyle{empty}
   \newpage
-  \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
+  % \ifvoid\@abstractbox\else\centerline{\box\@abstractbox}\vskip1.5em\fi
 }
 
 % 図、表のフォントサイズの変更
@@ -148,7 +148,7 @@
 % \renewcommand{\tablename}{表}
 % \renewcommand{\appendixname}{付録}
 \renewcommand{\abstractname}{Abstract}
-\newcommand{\abstractnamae}{概要}
+% \newcommand{\abstractnamae}{概要}
 \newcommand{\sname}{節}
 
 % グラフ表示時の簡略化
@@ -239,7 +239,7 @@
   \rightskip\@tocrmarg
   \parfillskip-\rightskip
   \leavevmode\headfont
-  \setlength\@lnumwidth{4zw}
+  \setlength\@lnumwidth{4em}
   \advance\leftskip\@lnumwidth \hskip-\leftskip
   #1\nobreak\leaders\hbox{\normalfont$\m@th \mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill\nobreak\hbox to\@pnumwidth{\hss#2}\par
   \endgroup
@@ -247,8 +247,8 @@
 }
 
 \renewcommand*{\l@subsection}{
-  \@tempdima\jsc@tocl@width \advance\@tempdima -1zw
-  \@dottedtocline{2}{\@tempdima}{3zw}
+  \@tempdima\jsc@tocl@width \advance\@tempdima -1em
+  \@dottedtocline{2}{\@tempdima}{3em}
 }
 
 % 図を囲んで中央ぞろえ（使い方）\begin{figure}[htbp]\begin{figbox}\includegraphics[]{}\end{figbox}\end{figure}
@@ -263,20 +263,20 @@
 
 % section関連の再定義
 \renewcommand{\section}{
-  \@startsection{section}{1}{1zw}
+  \@startsection{section}{1}{1em}
   {0.7\Cvs}{0.7\Cvs}
   {\normalsize\bf\raggedright}
 }
 
 \renewcommand{\subsection}{
-  \@startsection{subsection}{1}{1zw}
+  \@startsection{subsection}{1}{1em}
   {.5\Cvs \@plus.5\Cdp \@minus.2 \Cdp}
   {.2\Cvs \@plus.3\Cdp}
   {\normalsize\bf\raggedright}
 }
 
 \renewcommand{\subsubsection}{
-  \@startsection{subsubsection}{1}{1zw}
+  \@startsection{subsubsection}{1}{1em}
   {.5\Cvs \@plus.5\Cdp \@minus.2 \Cdp}
   {.2\Cvs \@plus.3\Cdp}
   {\normalsize\bf\raggedright}
@@ -341,7 +341,7 @@
   \settowidth\jsc@tocl@width{\headfont\presectionname\postsectionname}
   \settowidth\@tempdima{\headfont\appendixname}
   \ifdim\jsc@tocl@width<\@tempdima\relax\setlength\jsc@tocl@width{\@tempdima}\fi
-  \ifdim\jsc@tocl@width<2zw \divide\jsc@tocl@width by 2 \advance\jsc@tocl@width 1zw\fi
+  \ifdim\jsc@tocl@width<2em \divide\jsc@tocl@width by 2 \advance\jsc@tocl@width 1em\fi
 
   \section*{\contentsname}
   \@mkboth{\contentsname}{\contentsname}

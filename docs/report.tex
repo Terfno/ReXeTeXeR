@@ -1,14 +1,14 @@
 % UTF-8
-\documentclass[a4paper]{article} % c_thesis.styがjsarticle前提なのでそっちに対応する必要がある。
+\documentclass[a4paper, titlepage]{bxjsreport}
 \XeTeXlinebreaklocale "ja"
 \XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
 \usepackage{xltxtra}
 
 % fonts
 \usepackage{fontspec}
-\setmainfont[Scale=MatchLowercase]{NotoSerifJP-Regular}
-\setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular}
-\setmonofont[Scale=MatchLowercase]{CourierPrime-Regular}
+\setmainfont[Scale=MatchLowercase]{NotoSerifJP-Regular.otf}
+% \setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular}
+% \setmonofont[Scale=MatchLowercase]{CourierPrime-Regular}
 
 \usepackage{cite} % bibtex
 \usepackage{graphicx} % 画像
@@ -17,9 +17,9 @@
 \usepackage[normalem]{ulem} % 下線表示
 \useunder{\uline}{\ul}{} % texデフォルト下線をulemの下線に置き換え
 % まだ動かないパッケージ
-% \usepackage{c_thesis}
+\usepackage{c_thesis}
 
-% % ソースコードの設定/listings の表示設定
+% ソースコードの設定/listings の表示設定
 \lstset{
   breaklines = true,
   tabsize = 2,
@@ -37,17 +37,15 @@
 \title{ReXeTeXeR}
 \author{Takahito Sueda}
 \date{2020年7月14日}
-% \kind{\interim} % 中間報告書の場合 / これはc_thesis.sty
+\kind{\interim} % 中間報告書の場合 / これはc_thesis.sty
 % \kind{\preliminary} % 予備審査論文の場合 / これはc_thesis.sty
 % \kind{\thesis} % 最終報告書の場合 / これはc_thesis.sty
-% \affiliation{情報システム系} % これはc_thesis.sty
-% \adviser{指導教員の氏名} % これはc_thesis.sty
+\affiliation{情報システム系} % これはc_thesis.sty
+\adviser{指導教員の氏名} % これはc_thesis.sty
 
 \begin{document}
   % 表紙
   \maketitle
-  % \kanjiskip=.25zw plus 3pt minus 3pt % 字間設定
-  % \xkanjiskip=.25zw plus 3pt minus 3pt % 字間設定
 
   % Abstract
   \begin{abstract}
@@ -59,37 +57,42 @@
   % 目次
   \tableofcontents
 
-  \section{はじめに} % \section{研究背景}
-  \label{sec1}
+  \section{はじめに}
   研究の必要性と意義、従来その分野の研究状況、研究の目的とその範囲、オリジナリティを主張する範囲などを記載する。
   現状についての共有→課題→解決方法と目標
 
-  \section{先行研究} % \section{既存研究}
+  \section{先行研究}
   すでに存在している研究について記載する。
 
-  \section{数式}
-  普通に{\TeX}で書けます。
+  \section{本論}
+
+  \subsection{本論1}
+  理論や実験方法、結果の解釈と考察などを明瞭に述べる。
+  {\TeX}での数式テスト
   \begin{eqnarray}
     2x_1 + x_2 & = & 5 \\
     2x_2 & = & 2
   \end{eqnarray}
 
-  \section{引用}
-  bibtexを使えます。引用箇所は↓の感じです。Referencesが最後のとこにあります。\\
-  引用テストDL\cite{lecun2015deep} \\
-  引用テストML\cite{michie1994machine}
+  \subsection{本論2}
+  文意や内容によって、節に分けて記述する。
+  bibtexでの引用テスト引用テストDL\cite{lecun2015deep},引用テストML\cite{michie1994machine}
 
-  \section{画像}
-  graphicx使っていけます。
+  \subsection{画像テスト}
+  graphicx使う。
   \begin{center}
     \includegraphics[width=10cm]{img/logo.png} \\
     ReXeTeXeRのぶちかっこいいロゴ
   \end{center}
 
-  \section{自動監視テスト}
-  なんか書くと、コンテナ内のシェルスクリプトがこのファイルの変更を検知して、texのコンパイルコマンドが走ります。
+  \section{おわりに}
+  研究目標に対する到達レベル、論文主張点のまとめ、今後の課題などを記述する。
 
-  % bibtex
+  % 参考 / bibtex
   \bibliography{ref.bib}
   \bibliographystyle{junsrt}
+
+  \appendix
+  \section{付録の例}
+  長い数式の誘導過程、実験装置やシステムについての詳しい説明など、本文中に挿入すると論旨が不明瞭になる事項は付録とする。
 \end{document}
