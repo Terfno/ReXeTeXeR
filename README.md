@@ -20,13 +20,6 @@
 
 日本語の `.tex` (UTF-8) を TeX の環境構築なしに、XeTeX(xelatex)を使って `.pdf` に変換する Docker のコンテナーを作れるファイル群です。勝手に**ReXeTeXeR**と名前をつけました。pBibTeX による Reference の自動生成に対応してます。
 
-# ReXeTeXeR
-
-<div style="text-align:center;">
-
-![GitHub](https://img.shields.io/github/license/terfno/rexetexer) ![GitHub repo size](https://img.shields.io/github/repo-size/terfno/rexetexer) ![GitHub last commit](https://img.shields.io/github/last-commit/terfno/rexetexer)
-
-</div>
 
 ## 環境
 
@@ -214,6 +207,8 @@ Google Fonts からいくつか用意しました。コンテナ内に自動的�
 ### `/src`について
 
 Reference を表示するのに必要だった`cite.sty`と`junsrt.bst`が置いてあります。今後必要なライブラリがあれば、ここを使用してコンテナー内に配置する予定です。
+また、日本語対応に必要だったBXjsclsの2.4の一部を置いています。
 
 - cite.sty: mirrors.ctan.org/macros/latex/contrib/cite/cite.sty
 - junsrt.bst: http://mirror.las.iastate.edu/tex-archive/biblio/pbibtex/base/junsrt.bst
+- BXjscls: https://github.com/zr-tex8r/BXjscls
