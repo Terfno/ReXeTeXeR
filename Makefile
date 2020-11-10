@@ -2,11 +2,8 @@ INAME:=terfno/rexetexer:tsuyama
 CNAME:=tsuyama-rexetexer
 TARGET:=report.tex
 
-dev:
-	@docker run -it --rm alpine:3.11 sh
-
-build:
-	@docker build -t '${INAME}' .
+init:
+	@docker pull ${INAME}
 
 run:
 	@docker run -v ${PWD}:/docs --name ${CNAME} -itd ${INAME} sh
@@ -32,5 +29,6 @@ tex:
 	@xelatex ${TARGET} && pbibtex report.aux && xelatex ${TARGET} && xelatex ${TARGET}
 
 watch:
-	@chmod +x ./watch.sh && \
+	@echo "start watching" && \
+	chmod +x ./watch.sh && \
 	./watch.sh ./${TARGET} 'make tex'
