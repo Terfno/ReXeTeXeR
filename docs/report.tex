@@ -1,14 +1,15 @@
 % UTF-8
-\documentclass[a4paper, titlepage]{bxjsreport}
-\XeTeXlinebreaklocale "ja"
+\documentclass[a4paper, xelatex]{bxjsarticle}
+\XeTeXlinebreaklocale "ja_JP"
 \XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
+\XeTeXlinebreakpenalty=0
 \usepackage{xltxtra}
 
 % fonts
 \usepackage{fontspec}
 \setmainfont[Scale=MatchLowercase]{NotoSerifJP-Regular.otf}
-% \setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular}
-% \setmonofont[Scale=MatchLowercase]{CourierPrime-Regular}
+\setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular.otf}
+\setmonofont[Scale=MatchLowercase]{RobotoMono.ttf}
 
 \usepackage{cite} % bibtex
 \usepackage{graphicx} % 画像
@@ -16,8 +17,7 @@
 \usepackage{listings, jlisting} % ソースコード表示
 \usepackage[normalem]{ulem} % 下線表示
 \useunder{\uline}{\ul}{} % texデフォルト下線をulemの下線に置き換え
-% まだ動かないパッケージ
-\usepackage{c_thesis}
+\usepackage{c_thesis} % 津山高専指定のスタイルファイル
 
 % ソースコードの設定/listings の表示設定
 \lstset{
@@ -34,23 +34,24 @@
 }
 
 % タイトル・表紙設定
-\title{ReXeTeXeR}
+\title{「研究タイトルっぽいやつ」}
 \author{Takahito Sueda}
-\date{2020年7月14日}
+\date{2020年12月1日}
 \kind{\interim} % 中間報告書の場合 / これはc_thesis.sty
 % \kind{\preliminary} % 予備審査論文の場合 / これはc_thesis.sty
 % \kind{\thesis} % 最終報告書の場合 / これはc_thesis.sty
 \affiliation{情報システム系} % これはc_thesis.sty
-\adviser{指導教員の氏名} % これはc_thesis.sty
+\adviser{房 冠深} % これはc_thesis.sty
 
 \begin{document}
   % 表紙
   \maketitle
 
-  % Abstract
   \begin{abstract}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     Abstractを書く。英語で。
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
     この論文の要約を英語のみを用いて、200ワード以上1ページ以内にまとめる。
   \end{abstract}
 
@@ -68,7 +69,8 @@
 
   \subsection{本論1}
   理論や実験方法、結果の解釈と考察などを明瞭に述べる。
-  {\TeX}での数式テスト
+
+  数式テスト
   \begin{eqnarray}
     2x_1 + x_2 & = & 5 \\
     2x_2 & = & 2
@@ -76,7 +78,8 @@
 
   \subsection{本論2}
   文意や内容によって、節に分けて記述する。
-  bibtexでの引用テスト引用テストDL\cite{lecun2015deep},引用テストML\cite{michie1994machine}
+
+  bibtexでの引用テスト。DL\cite{lecun2015deep}はML\cite{michie1994machine}に内包される1つの手法。
 
   \subsection{画像テスト}
   graphicx使う。
@@ -88,7 +91,7 @@
   \section{おわりに}
   研究目標に対する到達レベル、論文主張点のまとめ、今後の課題などを記述する。
 
-  % 参考 / bibtex
+  % 参考文献 / bibtex
   \bibliography{ref.bib}
   \bibliographystyle{junsrt}
 
