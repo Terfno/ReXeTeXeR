@@ -4,3 +4,5 @@
 *.log
 *.toc
 c_thesis_sample.tex
+*.fdb_latexmk
+*fls
