@@ -32,7 +32,7 @@
 
 Docker は必須です。それ以外はオプショナルです。
 
-- Docker(必須)
+- Docker or Podman(どちらか1つ)
 - GNU Make
 - テキストエディタ
 - 自動リロードできる PDF ビュワー
@@ -88,6 +88,14 @@ $ make watch
 
 `./report.tex`を編集することで、PDF が錬成されます。
 XeTeX(XeLaTeX)です。
+
+### 5. Podmanでの利用
+
+```sh
+$ make podman.${TARGET} # この形でコマンドを実行することでDockerではなくPodmanが利用される。
+# Example
+$ make podman.init # Run `make init` with Podman
+```
 
 #### 画像の表示
 
