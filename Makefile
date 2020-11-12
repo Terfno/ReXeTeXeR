@@ -1,31 +1,32 @@
 INAME:=terfno/rexetexer
 CNAME:=rexetexer
 TARGET:=report.tex
+CONTAINER_ENGINE:=docker
 
 dev:
-	@docker run -it --rm alpine:3.11 sh
+	@${CONTAINER_ENGINE} run -it --rm alpine:3.11 sh
 
 build:
-	@docker build -t '${INAME}' .
+	@${CONTAINER_ENGINE} build -t '${INAME}' .
 
 run:
-	@docker run -v ${PWD}:/docs --name ${CNAME} -itd ${INAME} sh
+	@${CONTAINER_ENGINE} run -v ${PWD}:/docs --name ${CNAME} -itd ${INAME} sh
 
 exec:
-	@docker exec -it ${CNAME} sh
+	@${CONTAINER_ENGINE} exec -it ${CNAME} sh
 
 start:
-	@docker start ${CNAME}
+	@${CONTAINER_ENGINE} start ${CNAME}
 
 stop:
-	@docker stop ${CNAME}
+	@${CONTAINER_ENGINE} stop ${CNAME}
 
 # rm
 rm:
-	@docker rm ${CNAME}
+	@${CONTAINER_ENGINE} rm ${CNAME}
 
 rmi:
-	@docker rmi ${INAME}
+	@${CONTAINER_ENGINE} rmi ${INAME}
 
 # tex
 tex:
@@ -34,3 +35,6 @@ tex:
 watch:
 	@chmod +x ./watch.sh && \
 	./watch.sh ./${TARGET} 'make tex'
+
+podman.%:
+	@$(MAKE) $* CONTAINER_ENGINE="podman"
