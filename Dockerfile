@@ -4,10 +4,11 @@ WORKDIR /docs
 
 # install xetex
 RUN apk update && \
-  apk add openssl make texlive-xetex
+  apk add openssl make texlive-xetex && \
+  # latex package -> xelatex package
+  mv /usr/share/texmf-dist/tex/latex/ /usr/share/texmf-dist/tex/xelatex/
 
-# bibtex cite.sty
-ADD ./src/cite.sty /usr/share/texmf-dist/tex/xelatex/cite/
+# bibtex
 ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
 
 # BXjscls
