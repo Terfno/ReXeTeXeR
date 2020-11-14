@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.8
 
 # install xetex
 RUN apk --no-cache add openssl make texlive-xetex && \
