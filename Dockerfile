@@ -3,8 +3,7 @@ FROM alpine:3.11
 WORKDIR /docs
 
 # install xetex
-RUN apk update && \
-  apk add openssl make texlive-xetex && \
+RUN apk --no-cache add openssl make texlive-xetex && \
   # latex package -> xelatex package
   mv /usr/share/texmf-dist/tex/latex/ /usr/share/texmf-dist/tex/xelatex/
 

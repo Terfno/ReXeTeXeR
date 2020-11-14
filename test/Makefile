@@ -1,5 +1,5 @@
 INAME:=terfno/rexetexer
-TAG:=latest
+TAG:=dev
 CNAME:=rexetexer
 TARGET:=report.tex
 CONTAINER_ENGINE:=docker
