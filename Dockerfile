@@ -1,7 +1,5 @@
 FROM alpine:3.11
 
-WORKDIR /docs
-
 # install xetex
 RUN apk --no-cache add openssl make texlive-xetex && \
   # latex package -> xelatex package
@@ -14,5 +12,3 @@ ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
 ADD ./src/BXjscls/*.* /usr/share/texmf-dist/tex/xelate/bxjscls/
 
 RUN mktexlsr
-
-CMD ["sh"]
