@@ -1,4 +1,9 @@
 # Project Specific rules here
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
 
 # Temporary Files
 #---------------------------
