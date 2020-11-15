@@ -8,7 +8,7 @@
 \usepackage{fontspec}
 \setmainfont[Scale=MatchLowercase]{NotoSerifJP-Regular.otf}
 \setsansfont[Scale=MatchLowercase]{NotoSansJP-Regular.otf}
-\setmonofont[Scale=MatchLowercase]{CourierPrime-Regular.otf}
+\setmonofont[Scale=MatchLowercase]{RobotoMono.ttf}
 
 % bibtex
 \usepackage{cite}
@@ -20,31 +20,33 @@
 
   \title{ReXeTeXeR}
   \author{Takahito Sueda}
+  \date{2020/11/15}
   \maketitle
 
   \section{はじめに}
-  {\XeTeX} でいい感じにするやつです。
+  \XeTeX をDockerだけでいい感じにするやつです。
+  Podmanにも対応しました。
 
   \section{数式}
   普通に{\TeX}で書けます。
   \begin{eqnarray}
-    2x_1 + x_2 & = & 5 \\
-    2x_2 & = & 2
+    2x^2 + 3x & = & 5
   \end{eqnarray}
 
   \section{引用}
-  bibtexを使えます。引用箇所は↓の感じです。Referencesが最後のとこにあります。\\
-  引用テストDL\cite{lecun2015deep} \\
+  bibtexを使えます。引用箇所は↓の感じです。Referencesが最後のとこにあります。
+  引用テストDL\cite{lecun2015deep}
   引用テストML\cite{michie1994machine}
 
   \section{画像}
   graphicx使っていけます。
   \begin{center}
-    \includegraphics[width=10cm]{img/logo.png} \\
+    \includegraphics[width=10cm]{img/logo.png}
+
     ReXeTeXeRのぶちかっこいいロゴ
   \end{center}
 
-  \section{自動監視テスト}
+  \section{自動監視}
   なんか書くと、コンテナ内のシェルスクリプトがこのファイルの変更を検知して、texのコンパイルコマンドが走ります。
 
   % bibtex
