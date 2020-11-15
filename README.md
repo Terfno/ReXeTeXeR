@@ -94,7 +94,7 @@ XeTeX(XeLaTeX)です。
 リソースのオートリロードに対応したPDFビューワーを使って`report.pdf`を開くと、ほぼリアルタイムにプレビューされます。
 
 ### 6. その他
-#### VS CodeのAuto Saveとの相性が悪い
+#### VS CodeのAuto Saveとの相性が悪いこともある
 ファイルの変更を察知してコンパイルが走るので、VS CodeなどのAuto Saveで文法が完成していない`.tex`ファイルがコンパイルされることがあります。
 `.vscode`にこのワークスペースのみ、Auto Saveが`onFocusChange`になるよう設定すると解消できます。。
 
