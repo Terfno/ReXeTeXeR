@@ -4,6 +4,8 @@
 *.blg
 *.log
 *.toc
+*.fdb_latexmk
+*fls
 
 # Temporary Files
 #---------------------------

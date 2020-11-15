@@ -1,7 +1,7 @@
 INAME:=terfno/rexetexer
 TAG:=latest
 CNAME:=rexetexer
-TARGET:=report.tex
+TARGET:=report
 CONTAINER_ENGINE:=docker
 
 podman.%:
