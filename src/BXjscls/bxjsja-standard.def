@@ -1,0 +1,727 @@
+%%
+%% This is file `bxjsja-standard.def',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% bxjscls.dtx  (with options: `drv,standard')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from bxjsja-standard.def.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file bxjscls.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+\ProvidesFile{bxjsja-standard.def}
+  [2020/10/16 v2.4  BXJS document classes]
+%% このファイルは日本語文字を含みます
+\input{bxjsja-minimal.def}
+\bxjs@simplejasetupfalse
+\newif\ifbxjs@jp@jismmiv
+\bxjs@cslet{bxjs@kv@jis2004@true}\bxjs@jp@jismmivtrue
+\bxjs@cslet{bxjs@kv@jis2004@false}\bxjs@jp@jismmivfalse
+\define@key{bxjsStd}{jis2004}[true]{%
+  \bxjs@set@keyval{jis2004}{#1}{}}
+\newif\ifbxjs@jp@units
+\let\bxjs@kv@units@true\bxjs@jp@unitstrue
+\let\bxjs@kv@units@false\bxjs@jp@unitsfalse
+\define@key{bxjsStd}{units}[true]{%
+  \bxjs@set@keyval{units}{#1}{}}
+\let\bxjs@jp@font\@empty
+\define@key{bxjsStd}{font}{%
+  \edef\bxjs@jp@font{#1}}
+\newif\ifbxjs@jp@strong@cmd \bxjs@jp@strong@cmdtrue
+\let\bxjs@kv@strongcmd@true\bxjs@jp@strong@cmdtrue
+\let\bxjs@kv@strongcmd@false\bxjs@jp@strong@cmdfalse
+\define@key{bxjs}{strong-cmd}[true]{\bxjs@set@keyval{strongcmd}{#1}{}}
+\def\bxjs@next#1{\bxjs@safe@setkeys{bxjsStd}{#1}}
+\expandafter\bxjs@next\expandafter{\jsJaParam}
+\@onlypreamble\bxjs@apply@mmiv
+\def\bxjs@apply@mmiv{%
+  \g@addto@macro\@classoptionslist{,jis2004}
+  \PassOptionsToPackage{jis2004}{otf}
+  \global\let\bxjs@apply@mmiv\relax}
+\ifbxjs@jp@jismmiv \bxjs@apply@mmiv \fi
+\if j\jsEngine
+  \bxjs@jp@unitsfalse
+\fi
+\ifbxjs@jp@units
+  \IfFileExists{bxcalc.sty}{%
+    \RequirePackage{bxcalc}[2018/01/28]%v1.0a
+    \ifx\usepTeXunits\@undefined
+      \PackageWarningNoLine\bxjs@clsname
+       {Cannot support pTeX units (zw etc.), since\MessageBreak
+        the package 'bxcalc' is too old}%
+      \bxjs@jp@unitsfalse
+    \else \usepTeXunits
+    \fi
+  }{%else
+    \PackageWarningNoLine\bxjs@clsname
+     {Cannot support pTeX units (zw etc.), since\MessageBreak
+      the package 'bxcalc' is unavailable}%
+    \bxjs@jp@unitsfalse
+  }
+\fi
+\ifbxjs@jp@units
+\def\bxjs@parse@qh#1{\let\bxjs@tmpb\relax}
+\let\bxjs@parse@qh@a\@undefined
+\let\bxjs@parse@qh@b\@undefined
+\fi
+\ifbxjs@jp@units
+  \def\bxjs@let@lenexpr#1#2{%
+    \edef#1{#2}%
+    \expandafter\CUXParseExpr\expandafter#1\expandafter{#1}}
+\else
+  \def\bxjs@let@lenexpr{\edef}
+\fi
+\ifbxjs@jp@strong@cmd\jsAtEndOfClass{%
+  \ifx\strong\@undefined\ifx\strongenv\@undefined
+    \DeclareRobustCommand{\strongenv}{\bxjs@strong@font}%
+    \DeclareTextFontCommand{\strong}{\strongenv}%
+    \@ifdefinable{\strongfontdeclare}{\bxjs@protected\def\strongfontdeclare#1{%
+      \bxjs@strong@font@declare@a#1,\@nil}}%
+    \def\bxjs@strong@font@declare@a#1,#2\@nil{\def\bxjs@strong@font{#1}}%
+    \def\bxjs@strong@font{\bfseries}%
+  \fi\fi
+}\fi
+\ifjsWitheTeX
+  \@tempdima=0.25mm
+  \protected\edef\jQ{\dimexpr\the\@tempdima\relax}
+  \let\jH\jQ
+  \ifjsc@mag
+    \@tempdimb=\jsBaseFontSize\relax
+    \edef\bxjs@tmpa{\strip@pt\@tempdimb}%
+    \@tempdima=2.5mm
+    \bxjs@invscale\@tempdima\bxjs@tmpa
+    \protected\edef\trueQ{\dimexpr\the\@tempdima\relax}
+    \@tempdima=10pt
+    \bxjs@invscale\@tempdima\bxjs@tmpa
+    \protected\edef\bxjs@truept{\dimexpr\the\@tempdima\relax}
+  \else \let\trueQ\jQ \let\bxjs@truept\p@
+  \fi
+  \let\trueH\trueQ
+  \@tempdima\trueQ \bxjs@invscale\@tempdima\jsScale
+  \protected\edef\ascQ{\dimexpr\the\@tempdima\relax}
+  \@tempdima\bxjs@truept \bxjs@invscale\@tempdima\jsScale
+  \protected\edef\ascpt{\dimexpr\the\@tempdima\relax}
+\fi
+\def\jafontsize#1#2{%
+  \begingroup
+    \bxjs@jafontsize@a{#1}%
+    \@tempdimb\jsInverseScale\@tempdima
+    \bxjs@jafontsize@a{#2}%
+    \xdef\bxjs@g@tmpa{%
+      \noexpand\fontsize{\the\@tempdimb}{\the\@tempdima}}%
+  \endgroup\bxjs@g@tmpa}
+\def\bxjs@jafontsize@a#1{%
+  \bxjs@parse@qh{#1}%
+  \ifx\bxjs@tmpb\relax \def\bxjs@tmpb{#1}\fi
+  \@defaultunits\@tempdima\bxjs@tmpb pt\relax\@nnil}
+\def\bxjs@kanjiskip{0pt}
+\newcommand*\setkanjiskip[1]{%
+  \bxjs@let@lenexpr\bxjs@kanjiskip{#1}%
+  \bxjs@reset@kanjiskip}
+\newcommand*\getkanjiskip{%
+  \bxjs@kanjiskip}
+\newif\ifbxjs@kanjiskip@enabled \bxjs@kanjiskip@enabledtrue
+\bxjs@robust@def\bxjs@enable@kanjiskip{%
+  \bxjs@kanjiskip@enabledtrue
+  \bxjs@reset@kanjiskip}
+\bxjs@robust@def\bxjs@disable@kanjiskip{%
+  \bxjs@kanjiskip@enabledfalse
+  \bxjs@reset@kanjiskip}
+\bxjs@robust@def\bxjs@reset@kanjiskip{%
+  \ifbxjs@kanjiskip@enabled
+    \setlength{\@tempskipa}{\bxjs@kanjiskip}%
+  \else \@tempskipa\z@
+  \fi
+  \bxjs@apply@kanjiskip}
+\def\bxjs@xkanjiskip{0pt}
+\newcommand*\setxkanjiskip[1]{%
+  \bxjs@let@lenexpr\bxjs@xkanjiskip{#1}%
+  \bxjs@reset@xkanjiskip}
+\newcommand*\getxkanjiskip{%
+  \bxjs@xkanjiskip}
+\newif\ifbxjs@xkanjiskip@enabled \bxjs@xkanjiskip@enabledtrue
+\bxjs@robust@def\bxjs@enable@xkanjiskip{%
+  \bxjs@xkanjiskip@enabledtrue
+  \bxjs@reset@xkanjiskip}
+\bxjs@robust@def\bxjs@disable@xkanjiskip{%
+  \bxjs@xkanjiskip@enabledfalse
+  \bxjs@reset@xkanjiskip}
+\bxjs@robust@def\bxjs@reset@xkanjiskip{%
+  \ifbxjs@xkanjiskip@enabled
+    \setlength{\@tempskipa}{\bxjs@xkanjiskip}%
+  \else \@tempskipa\z@
+  \fi
+  \bxjs@apply@xkanjiskip}
+\g@addto@macro\jsResetDimen{%
+  \bxjs@reset@kanjiskip
+  \bxjs@reset@xkanjiskip}
+\let\bxjs@apply@kanjiskip\relax
+\let\bxjs@apply@xkanjiskip\relax
+\@onlypreamble\bxjs@adjust@jafont
+\def\bxjs@adjust@jafont#1{%
+  \ifx\jsJaFont\bxjs@@auto
+    \bxjs@get@kanjiEmbed
+    \ifx\bxjs@jaEmbed\relax
+      \let\bxjs@tmpa\@empty
+    \else
+      \let\bxjs@tmpa\bxjs@jaEmbed
+      \ifx\bxjs@jaVariant\bxjs@@hziv
+        \bxjs@apply@mmiv
+      \fi
+    \fi
+  \else
+    \let\bxjs@tmpa\jsJaFont
+  \fi
+  \if f#1\ifx\bxjs@tmpa\bxjs@@noEmbed
+    \ClassWarningNoLine\bxjs@clsname
+     {Option 'jafont=noEmbed' is ignored, because it is\MessageBreak
+      not available on the current situation}%
+    \let\bxjs@tmpa\@empty
+  \fi\fi
+}
+\def\bxjs@@auto{auto}
+\def\bxjs@@noEmbed{noEmbed}
+\def\bxjs@@hziv{-04}
+\let\bxjs@jaEmbed\relax
+\let\bxjs@jaVariant\relax
+\@onlypreamble\bxjs@get@kanjiEmbed
+\def\bxjs@get@kanjiEmbed{%
+  \begingroup\setbox\z@=\hbox{%
+    \global\let\bxjs@tmpdo\@empty
+    \def\bxjs@next##1##2##3{%
+      \def##1####1##3 ####2\@nil####3\@nnil{%
+        \ifx$####1$\gdef##2{####2}\fi}%
+      \g@addto@macro\bxjs@tmpdo{%
+        \expandafter##1\bxjs@tmpa\@nil##3 \@nil\@nnil}}%
+    \bxjs@next\bxjs@tmpdo@a\bxjs@g@tmpa{kanjiEmbed}%
+    \bxjs@next\bxjs@tmpdo@b\bxjs@g@tmpa{jaEmbed}%
+    \bxjs@next\bxjs@tmpdo@c\bxjs@g@tmpb{kanjiVariant}%
+    \bxjs@next\bxjs@tmpdo@d\bxjs@g@tmpb{jaVariant}%
+    \global\let\bxjs@g@tmpa\relax
+    \global\let\bxjs@g@tmpb\relax
+    \endlinechar\m@ne
+    \let\do\@makeother\dospecials
+    \catcode32=10 \catcode12=10 %form-feed
+    \let\bxjs@tmpa\@empty
+    \openin\@inputcheck="|kpsewhich updmap.cfg"\relax
+    \ifeof\@inputcheck\else
+      \read\@inputcheck to\bxjs@tmpa
+      \closein\@inputcheck
+    \fi
+    \ifx\bxjs@tmpa\@empty\else
+      \openin\@inputcheck="\bxjs@tmpa"\relax
+      \@tempswatrue
+      \loop\if@tempswa
+        \read\@inputcheck to\bxjs@tmpa
+        \bxjs@tmpdo
+        \ifeof\@inputcheck \@tempswafalse \fi
+      \repeat
+    \fi
+  }\endgroup
+  \let\bxjs@jaEmbed\bxjs@g@tmpa
+  \let\bxjs@jaVariant\bxjs@g@tmpb
+}
+\@onlypreamble\bxjs@resolve@jafont@paren
+\def\bxjs@resolve@jafont@paren#1{%
+  \def\bxjs@tmpb{\let#1}%
+  \expandafter\bxjs@resolve@jafont@paren@a#1\@nil()\@nil\@nnil#1}
+\@onlypreamble\bxjs@resolve@jafont@paren@a
+\def\bxjs@resolve@jafont@paren@a#1(#2)#3\@nil#4\@nnil#5{%
+  \ifx\relax#4\relax \bxjs@tmpb#5%
+  \else
+    \edef\bxjs@tmpa{#1\bxjs@jafont@paren{#2}#3}%
+    \bxjs@tmpb\bxjs@tmpa
+  \fi}
+\newcommand*\jachar[1]{%
+  \begingroup
+    \jsLetHeadChar\bxjs@tmpa{#1}%
+    \ifx\bxjs@tmpa\relax
+      \ClassWarningNoLine\bxjs@clsname
+        {Illegal argument given to \string\jachar}%
+    \else
+      \expandafter\bxjs@jachar\expandafter{\bxjs@tmpa}%
+    \fi
+  \endgroup}
+\let\jsJaChar\jachar
+\let\bxjs@jachar\@firstofone
+\PassOptionsToPackage{setpagesize=false}{hyperref}
+\@onlypreamble\bxjs@fix@hyperref@unicode
+\def\bxjs@fix@hyperref@unicode#1{%
+  \PassOptionsToPackage{bxjs/hook=#1}{hyperref}%
+  \@namedef{KV@Hyp@bxjs/hook}##1{%
+    \KV@Hyp@unicode{##1}%
+    \def\KV@Hyp@unicode####1{%
+      \expandafter\ifx\csname if##1\expandafter\endcsname
+         \csname if####1\endcsname\else
+        \ClassWarningNoLine\bxjs@clsname
+        {Blcoked hyperref option 'unicode=####1'}%
+      \fi
+    }%
+  }%
+}
+\@onlypreamble\jsCheckHyperrefUnicode
+\let\jsCheckHyperrefUnicode\@empty
+\g@addto@macro\bxjs@begin@document@hook{\jsCheckHyperrefUnicode}
+\@onlypreamble\bxjs@check@hyperref@unicode
+\def\bxjs@check@hyperref@unicode#1{%
+  \g@addto@macro\jsCheckHyperrefUnicode{%
+    \@tempswafalse
+    \begingroup
+      \expandafter\ifx\csname ifHy@unicode\endcsname\relax
+        \aftergroup\@tempswatrue \fi
+      \expandafter\ifx\csname ifHy@unicode\expandafter\endcsname
+          \csname if#1\endcsname
+        \aftergroup\@tempswatrue \fi
+    \endgroup
+    \if@tempswa\else
+      \ClassError\bxjs@clsname
+       {The value of hyperref 'unicode' key is not suitable\MessageBreak
+        for the present engine (must be #1)}%
+       {\@ehc}%
+    \fi}}
+\@onlypreamble\bxjs@urgent@special
+\@onlypreamble\bxjs@urgent@special@a
+\ifbxjs@old@hook@system
+\def\bxjs@urgent@special#1{%
+  \AtBeginDvi{\special{#1}}%
+  \g@addto@macro\bxjs@begin@document@hook{%
+    \@ifpackageloaded{atbegshi}{%
+      \begingroup
+        \toks\z@{\special{#1}}%
+        \toks\tw@\expandafter{\AtBegShi@HookFirst}%
+        \xdef\AtBegShi@HookFirst{\the\toks@\the\toks\tw@}%
+      \endgroup
+    }{}%
+  }%
+}
+\else
+  \def\bxjs@urgent@special#1{%
+    \bxjs@urgent@special@a
+    \AddToHook{shipout/firstpage}[pxjahyper/enc]{\special{#1}}}
+  \def\bxjs@urgent@special@a{%
+    \DeclareHookRule{shipout/firstpage}{pxjahyper/enc}{<}{hyperref}%
+    \global\let\bxjs@urgent@special@a\relax}
+\fi
+\if j\jsEngine
+\def\bxjs@apply@kanjiskip{%
+  \kanjiskip\@tempskipa}
+\def\bxjs@apply@xkanjiskip{%
+  \xkanjiskip\@tempskipa}
+\def\bxjs@jachar#1{%
+  \bxjs@jachar@a#1....\@nil}
+\def\bxjs@jachar@a#1#2#3#4#5\@nil{%
+  \ifx.#2#1%
+  \else\ifx.#3%
+    \@tempcnta`#1 \multiply\@tempcnta64
+    \advance\@tempcnta`#2 \advance\@tempcnta-"3080
+    \bxjs@jachar@b
+  \else\ifx.#4%
+    \@tempcnta`#1 \multiply\@tempcnta64
+    \advance\@tempcnta`#2 \multiply\@tempcnta64
+    \advance\@tempcnta`#3 \advance\@tempcnta-"E2080
+    \bxjs@jachar@b
+  \else
+    \@tempcnta`#1 \multiply\@tempcnta64
+    \advance\@tempcnta`#2 \multiply\@tempcnta64
+    \advance\@tempcnta`#3 \multiply\@tempcnta64
+    \advance\@tempcnta`#4 \advance\@tempcnta-"3C82080
+    \bxjs@jachar@b
+  \fi\fi\fi}
+\ifjsWithupTeX
+  \def\bxjs@jachar@b{\kchar\@tempcnta}
+\else
+  \def\bxjs@jachar@b{%
+    \ifx\bxUInt\@undefined\else
+      \bxUInt{\@tempcnta}%
+    \fi}
+\fi
+\ifbxjs@jaspace@cmd
+  \def\jathinspace{\hskip\xkanjiskip}
+\fi
+\ifbxjs@jp@jismmiv
+  \PassOptionsToPackage{prefer2004jis}{pxchfon}
+  \PassOptionsToPackage{prefer2004jis}{pxbabel}
+\fi
+\let\bxjs@jafont@paren\@firstofone
+\let\bxjs@tmpa\jsJaFont
+\ifx\bxjs@tmpa\bxjs@@auto
+  \let\bxjs@tmpa\@empty
+\else\ifx\bxjs@tmpa\bxjs@@noEmbed
+  \def\bxjs@tmpa{noembed}
+\fi\fi
+\bxjs@resolve@jafont@paren\bxjs@tmpa
+\edef\bxjs@tmpa{\bxjs@catopt\bxjs@tmpa\bxjs@jp@font}
+\ifx\bxjs@tmpa\@empty\else
+  \edef\bxjs@next{%
+    \noexpand\RequirePackage[\bxjs@tmpa]{pxchfon}[2010/05/12]% v0.5
+  }\bxjs@next
+\fi
+\begingroup
+  \global\let\bxjs@g@tmpa\relax
+  \catcode`\|=0 \catcode`\\=12
+  |def|bxjs@tmpdo#1|@nil{%
+    |bxjs@tmpdo@a#1|@nil\RequirePackage|@nnil}%
+  |def|bxjs@tmpdo@a#1\RequirePackage#2|@nnil{%
+    |ifx$#1$|bxjs@tmpdo@b#2|@nil keyval|@nnil |fi}%
+  |catcode`|\=0 \catcode`\|=12
+  \def\bxjs@tmpdo@b#1keyval#2\@nnil{%
+    \ifx$#2$\else
+      \xdef\bxjs@g@tmpa{%
+        \noexpand\PassOptionsToPackage{scale=\jsScale}{otf}}%
+    \fi}
+\@firstofone{%
+  \catcode10=12 \endlinechar\m@ne
+  \let\do\@makeother \dospecials \catcode32=10
+  \openin\@inputcheck=otf.sty\relax
+  \@tempswatrue
+  \loop\if@tempswa
+    \ifeof\@inputcheck \@tempswafalse \fi
+    \if@tempswa
+      \read\@inputcheck to\bxjs@next
+      \expandafter\bxjs@tmpdo\bxjs@next\@nil
+    \fi
+  \repeat
+  \closein\@inputcheck
+\endgroup}
+\bxjs@g@tmpa
+\ifbxjs@hyperref@enc
+  \bxjs@check@hyperref@unicode{false}
+\fi
+\if \ifx\bxjs@driver@given\bxjs@driver@@dvipdfmx T%
+    \else\ifjsWithpTeXng T\else F\fi\fi T%
+  \IfFileExists{pxjahyper-enc.sty}{\@tempswatrue}{\@tempswafalse}
+  \if@tempswa
+    \RequirePackage{pxjahyper-enc}[2020/10/05]%v0.6
+    \ifbxjs@bigcode\else \suppressbigcode \fi
+  \else
+  \ifnum\jis"2121="A1A1 %euc
+    \bxjs@urgent@special{pdf:tounicode EUC-UCS2}
+  \else\ifnum\jis"2121="8140 %sjis
+    \bxjs@urgent@special{pdf:tounicode 90ms-RKSJ-UCS2}
+  \else\ifnum\jis"2121="3000 %uptex
+    \ifbxjs@bigcode
+      \bxjs@urgent@special{pdf:tounicode UTF8-UTF16}
+      \PassOptionsToPackage{bigcode}{pxjahyper}
+    \else
+      \bxjs@urgent@special{pdf:tounicode UTF8-UCS2}
+      \PassOptionsToPackage{nobigcode}{pxjahyper}
+    \fi
+  \fi\fi\fi
+  \let\bxToUnicodeSpecialDone=t
+  \fi
+\fi
+\ifx f\bxjs@enablejfam\else
+  \@enablejfamtrue
+\fi
+\if@enablejfam
+  \DeclareSymbolFont{mincho}{\jsc@JYn}{mc}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathmc}{mincho}
+  \SetSymbolFont{mincho}{bold}{\jsc@JYn}{gt}{m}{n}
+  \jfam\symmincho
+  \DeclareMathAlphabet{\mathgt}{\jsc@JYn}{gt}{m}{n}
+  \g@addto@macro\bxjs@begin@document@hook{%
+    \ifx\reDeclareMathAlphabet\@undefined\else
+      \reDeclareMathAlphabet{\mathrm}{\@mathrm}{\@mathmc}%
+      \reDeclareMathAlphabet{\mathbf}{\@mathbf}{\@mathgt}%
+      \reDeclareMathAlphabet{\mathsf}{\@mathsf}{\@mathgt}%
+    \fi}
+\fi
+\else\if p\jsEngine
+\bxjs@adjust@jafont{f}
+\let\bxjs@jafont@paren\@firstofone
+\bxjs@resolve@jafont@paren\bxjs@tmpa
+\edef\bxjs@tmpa{\bxjs@catopt\bxjs@tmpa\bxjs@jp@font}
+\edef\bxjs@tmpa{\bxjs@catopt\bxjs@tmpa{whole}}
+\def\bxjs@tmpb{pandoc}\ifx\bxjs@tmpb\bxjs@jadriver\else
+  \edef\bxjs@tmpa{\bxjs@catopt\bxjs@tmpa{autotilde}}
+\fi
+\edef\bxjs@next{%
+  \noexpand\RequirePackage[\bxjs@tmpa]{bxcjkjatype}[2013/10/15]% v0.2c
+}\bxjs@next
+\bxjs@cjk@loaded
+\ifbxjs@hyperref@enc
+  \PassOptionsToPackage{unicode}{hyperref}
+\fi
+\ifx\bxcjkjatypeHyperrefPatchDone\@undefined
+\begingroup
+  \CJK@input{UTF8.bdg}
+\endgroup
+\g@addto@macro\pdfstringdefPreHook{%
+  \@nameuse{CJK@UTF8Binding}%
+}
+\fi
+\ifx\bxcjkjatypeHyperrefPatchDone\@undefined
+\g@addto@macro\pdfstringdefPreHook{%
+  \ifx~\bxjs@@CJKtilde
+    \let\bxjs@org@LetUnexpandableSpace\HyPsd@LetUnexpandableSpace
+    \let\HyPsd@LetUnexpandableSpace\bxjs@LetUnexpandableSpace
+    \let~\@empty
+  \fi
+}
+\def\bxjs@@CJKtilde{\CJKecglue\ignorespaces}
+\def\bxjs@@tildecmd{~}
+\def\bxjs@LetUnexpandableSpace#1{%
+  \def\bxjs@tmpa{#1}\ifx\bxjs@tmpa\bxjs@@tildecmd\else
+    \bxjs@org@LetUnexpandableSpace#1%
+  \fi}
+\fi
+\newskip\jsKanjiSkip
+\newskip\jsXKanjiSkip
+\ifx\CJKecglue\@undefined
+  \def\CJKtilde{\CJK@global\def~{\CJKecglue\ignorespaces}}
+\fi
+\let\autospacing\bxjs@enable@kanjiskip
+\let\noautospacing\bxjs@disable@kanjiskip
+\protected\def\bxjs@CJKglue{\hskip\jsKanjiSkip}
+\def\bxjs@apply@kanjiskip{%
+  \jsKanjiSkip\@tempskipa
+  \let\CJKglue\bxjs@CJKglue}
+\let\autoxspacing\bxjs@enable@xkanjiskip
+\let\noautoxspacing\bxjs@disable@xkanjiskip
+\protected\def\bxjs@CJKecglue{\hskip\jsXKanjiSkip}
+\def\bxjs@apply@xkanjiskip{%
+  \jsXKanjiSkip\@tempskipa
+  \let\CJKecglue\bxjs@CJKecglue}
+\def\bxjs@jachar#1{%
+  \CJKforced{#1}}
+\ifbxjs@jaspace@cmd
+  \protected\def\jathinspace{\CJKecglue}
+\fi
+\ifx t\bxjs@enablejfam
+  \ClassWarningNoLine\bxjs@clsname
+   {You cannot use 'enablejfam=true', since the\MessageBreak
+    CJK package does not support Japanese math}
+\fi
+\else\if x\jsEngine
+\RequirePackage{zxjatype}
+\PassOptionsToPackage{no-math}{fontspec}%!
+\PassOptionsToPackage{xetex}{graphicx}%!
+\PassOptionsToPackage{xetex}{graphics}%!
+\ifx\zxJaFamilyName\@undefined
+  \ClassError\bxjs@clsname
+  {xeCJK or zxjatype is too old}\@ehc
+\fi
+\bxjs@adjust@jafont{f}
+\let\bxjs@jafont@paren\@gobble
+\bxjs@resolve@jafont@paren\bxjs@tmpa
+\edef\bxjs@tmpa{\bxjs@catopt\bxjs@tmpa\bxjs@jp@font}
+\ifx\bxjs@tmpa\@empty
+  \setCJKmainfont[BoldFont=HaranoAjiGothic-Medium.otf]{HaranoAjiMincho-Regular.otf}
+  \setCJKsansfont[BoldFont=HaranoAjiGothic-Medium.otf]{HaranoAjiGothic-Medium.otf}
+\else
+  \edef\bxjs@next{%
+    \noexpand\RequirePackage[\bxjs@tmpa]{zxjafont}[2013/01/28]% v0.2a
+  }\bxjs@next
+\fi
+\ifnum\strcmp{\the\XeTeXversion\XeTeXrevision}{0.99992}>\m@ne
+  \ifbxjs@hyperref@enc
+    \PassOptionsToPackage{unicode}{hyperref}
+  \fi
+\fi
+\AtEndOfPackage{%
+\def\@gnewline #1{%
+  \ifvmode \@nolnerr
+  \else
+    \unskip \reserved@e {\reserved@f#1}\nobreak \hfil \break \null
+    \nobreak \hskip-1sp\hskip1sp\relax
+    \ignorespaces
+  \fi}
+}
+\newskip\jsKanjiSkip
+\newskip\jsXKanjiSkip
+\ifx\CJKecglue\@undefined
+  \def\CJKtilde{\CJK@global\def~{\CJKecglue\ignorespaces}}
+\fi
+\let\autospacing\bxjs@enable@kanjiskip
+\let\noautospacing\bxjs@disable@kanjiskip
+\protected\def\bxjs@CJKglue{\hskip\jsKanjiSkip}
+\def\bxjs@apply@kanjiskip{%
+  \jsKanjiSkip\@tempskipa
+  \xeCJKsetup{CJKglue={\bxjs@CJKglue}}}
+\let\autoxspacing\bxjs@enable@xkanjiskip
+\let\noautoxspacing\bxjs@disable@xkanjiskip
+\protected\def\bxjs@CJKecglue{\hskip\jsXKanjiSkip}
+\def\bxjs@apply@xkanjiskip{%
+  \jsXKanjiSkip\@tempskipa
+  \xeCJKsetup{CJKecglue={\bxjs@CJKecglue}}}
+\ifx\mcfamily\@undefined
+  \protected\def\mcfamily{\CJKfamily{\CJKrmdefault}}
+  \protected\def\gtfamily{\CJKfamily{\CJKsfdefault}}
+\fi
+\def\bxjs@jachar#1{%
+  \xeCJKDeclareCharClass{CJK}{`#1}\relax
+  #1}
+\ifbxjs@jaspace@cmd
+  \protected\def\jathinspace{\CJKecglue}
+\fi
+\ifx t\bxjs@enablejfam
+  \@enablejfamtrue
+\fi
+\if@enablejfam
+  \xeCJKsetup{CJKmath=true}
+\fi
+\else\if l\jsEngine
+\let\zw\@undefined
+\RequirePackage{luatexja}
+\edef\bxjs@next{%
+  \noexpand\RequirePackage[scale=\jsScale]{luatexja-fontspec}[2015/08/26]%
+}\bxjs@next
+\DeclareFontShape{JY3}{mc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY3}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY3}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JY3}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY3}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY3}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY3}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY3}{gt}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY3}{gt}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JY3}{mc}{b}{n}{<->ssub*mc/bx/n}{}
+\DeclareFontShape{JY3}{mc}{b}{it}{<->ssub*mc/bx/n}{}
+\DeclareFontShape{JY3}{mc}{b}{sl}{<->ssub*mc/bx/n}{}
+\DeclareFontShape{JY3}{gt}{b}{n}{<->ssub*gt/bx/n}{}
+\DeclareFontShape{JY3}{gt}{b}{it}{<->ssub*gt/bx/n}{}
+\DeclareFontShape{JY3}{gt}{b}{sl}{<->ssub*gt/bx/n}{}
+\DeclareFontShape{JT3}{mc}{m}{it}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT3}{mc}{m}{sl}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT3}{mc}{m}{sc}{<->ssub*mc/m/n}{}
+\DeclareFontShape{JT3}{gt}{m}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT3}{gt}{m}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT3}{mc}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT3}{mc}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT3}{gt}{bx}{it}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT3}{gt}{bx}{sl}{<->ssub*gt/m/n}{}
+\DeclareFontShape{JT3}{mc}{b}{n}{<->ssub*mc/bx/n}{}
+\DeclareFontShape{JT3}{mc}{b}{it}{<->ssub*mc/bx/n}{}
+\DeclareFontShape{JT3}{mc}{b}{sl}{<->ssub*mc/bx/n}{}
+\DeclareFontShape{JT3}{gt}{b}{n}{<->ssub*gt/bx/n}{}
+\DeclareFontShape{JT3}{gt}{b}{it}{<->ssub*gt/bx/n}{}
+\DeclareFontShape{JT3}{gt}{b}{sl}{<->ssub*gt/bx/n}{}
+\bxjs@adjust@jafont{t}
+\ifx\bxjs@tmpa\bxjs@@noEmbed
+  \def\bxjs@tmpa{noembed}
+\fi
+\let\bxjs@jafont@paren\@gobble
+\bxjs@resolve@jafont@paren\bxjs@tmpa
+\edef\bxjs@tmpa{\bxjs@catopt\bxjs@tmpa\bxjs@jp@font}
+\ifx\bxjs@tmpa\@empty
+  \defaultjfontfeatures{ Kerning=Off }
+  \setmainjfont[BoldFont=HaranoAjiGothic-Medium.otf,JFM=ujis]{HaranoAjiMincho-Regular.otf}
+  \setsansjfont[BoldFont=HaranoAjiGothic-Medium.otf,JFM=ujis]{HaranoAjiGothic-Medium.otf}
+\else
+  \edef\bxjs@next{%
+    \noexpand\RequirePackage[\bxjs@tmpa]{luatexja-preset}%
+  }\bxjs@next
+\fi
+\@ifpackagelater{luatexja}{2016/03/31}{}{%else
+\DeclareRobustCommand\rmfamily
+  {\not@math@alphabet\rmfamily\mathrm
+   \romanfamily\rmdefault\kanjifamily\mcdefault\selectfont}
+\DeclareRobustCommand\sffamily
+  {\not@math@alphabet\sffamily\mathsf
+   \romanfamily\sfdefault\kanjifamily\gtdefault\selectfont}
+\DeclareRobustCommand\ttfamily
+  {\not@math@alphabet\ttfamily\mathtt
+   \romanfamily\ttdefault\kanjifamily\gtdefault\selectfont}
+}
+\long\def\jttdefault{\gtdefault}
+\unless\ifx\@ltj@match@familytrue\@undefined
+  \@ltj@match@familytrue
+\fi
+\g@addto@macro\bxjs@begin@document@hook{%
+  \reDeclareMathAlphabet{\mathrm}{\mathrm}{\mathmc}%
+  \reDeclareMathAlphabet{\mathbf}{\mathbf}{\mathgt}%
+  \reDeclareMathAlphabet{\mathsf}{\mathsf}{\mathgt}}%
+\bxjs@if@sf@default{%
+  \renewcommand\kanjifamilydefault{\gtdefault}}
+\ltjsetparameter{jaxspmode={`！,1}}
+\ltjsetparameter{jaxspmode={`〒,2}}
+\ltjsetparameter{alxspmode={`+,3}}
+\ltjsetparameter{alxspmode={`\%,3}}
+\ifx\ltjfakeparbegin\@undefined
+  \protected\def\ltjfakeparbegin{%
+    \ifhmode
+      \relax\directlua{%
+        luatexja.jfmglue.create_beginpar_node()}}
+    \fi}
+\fi
+\unless\ifnum\bxjs@everyparhook=\bxjs@everyparhook@@none
+\begingroup
+  \let\%\@percentchar \def\@#1{[[\detokenize{#1}]]}
+  \@gobble\if\def\bxjs@tmpa{\@{\everypar{}\fi}}
+  \ifnum\bxjs@everyparhook=\bxjs@everyparhook@@compat
+    \@gobble\if\def\bxjs@tmpa{\@{\everypar{\everyparhook}\fi}}\fi
+  \directlua{
+    local function patchcmd(cs, code, from, to)
+      tex.sprint(code:gsub(from:gsub("\%W", "\%\%\%0"), "\%0"..to)
+        :gsub("macro:", \@\gdef..cs, 1):gsub("->", "{", 1).."}")
+    end
+    patchcmd(\@\@xsect, [[\meaning\@xsect]],
+      \@{\hskip-\@tempskipa}, \@\ltjfakeparbegin)
+    patchcmd(\@\@item, [[\meaning\@item]],
+      \bxjs@tmpa, \@\ltjfakeparbegin)}
+\endgroup
+\fi
+\ifbxjs@hyperref@enc
+  \PassOptionsToPackage{unicode}{hyperref}
+  \bxjs@check@hyperref@unicode{true}
+\fi
+\protected\def\autospacing{%
+  \ltjsetparameter{autospacing=true}}
+\protected\def\noautospacing{%
+  \ltjsetparameter{autospacing=false}}
+\protected\def\autoxspacing{%
+  \ltjsetparameter{autoxspacing=true}}
+\protected\def\noautoxspacing{%
+  \ltjsetparameter{autoxspacing=false}}
+\def\bxjs@apply@kanjiskip{%
+  \ltjsetparameter{kanjiskip={\@tempskipa}}}
+\def\bxjs@apply@xkanjiskip{%
+  \ltjsetparameter{xkanjiskip={\@tempskipa}}}
+\def\bxjs@jachar#1{%
+  \ltjjachar`#1\relax}
+\ifbxjs@jaspace@cmd
+  \protected\def\jathinspace{%
+    \hskip\ltjgetparameter{xkanjiskip}\relax}
+\fi
+\ifx f\bxjs@enablejfam
+  \ClassWarningNoLine\bxjs@clsname
+   {You cannot use 'enablejfam=false', since the\MessageBreak
+    LuaTeX-ja always provides Japanese math families}
+\fi
+\fi\fi\fi\fi
+\ifx\DeclareFixJFMCJKTextFontCommand\@undefined
+\DeclareJaTextFontCommand{\textmc}{\mcfamily}
+\DeclareJaTextFontCommand{\textgt}{\gtfamily}
+\fi
+\ifx\mathmc\@undefined
+  \DeclareJaMathFontCommand{\mathmc}{\mcfamily}
+  \DeclareJaMathFontCommand{\mathgt}{\gtfamily}
+\fi
+\ifbxjs@jaspace@cmd
+  \bxjs@protected\def\bxjs@choice@jathinspace{%
+    \relax\ifmmode \mskip\medmuskip
+    \else \jathinspace\ignorespaces
+    \fi}
+  \jsAtEndOfClass{%
+    \ifjsWitheTeX \let\>\bxjs@choice@jathinspace
+    \else \def\>{\protect\bxjs@choice@jathinspace}%
+    \fi}
+\fi
+\setkanjiskip{0pt plus.1\jsZw minus.01\jsZw}
+\ifx\jsDocClass\jsSlide \setxkanjiskip{0.1em}
+\else \setxkanjiskip{0.25em plus 0.15em minus 0.06em}
+\fi
+\endinput
+%%
+%% End of file `bxjsja-standard.def'.

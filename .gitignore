@@ -1,4 +1,11 @@
 # Project Specific rules here
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
+*.fdb_latexmk
+*fls
 
 # Temporary Files
 #---------------------------

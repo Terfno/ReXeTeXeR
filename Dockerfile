@@ -1,19 +1,14 @@
-FROM alpine:3.11
-
-WORKDIR /docs
+FROM alpine:3.8
 
 # install xetex
-RUN apk update && \
-  apk add openssl make texlive-xetex
+RUN apk --no-cache add openssl make texlive-xetex && \
+  # latex package -> xelatex package
+  mv /usr/share/texmf-dist/tex/latex/ /usr/share/texmf-dist/tex/xelatex/
 
-# fonts
-ADD ./fonts/Courier_Prime/ /usr/share/fonts/japanese/TrueType/Courier_Prime/
-ADD ./fonts/Noto_Sans_JP/ /usr/share/fonts/japanese/TrueType/Noto_Sans_JP/
-ADD ./fonts/Noto_Serif_JP/ /usr/share/fonts/japanese/TrueType/Noto_Serif_JP/
-
-# bibtex cite.sty
-ADD ./src/cite.sty /usr/share/texmf-dist/tex/xelatex/cite/
+# bibtex
 ADD ./src/junsrt.bst /usr/share/texmf-dist/bibtex/bst/base/
-RUN mktexlsr
 
-CMD ["sh"]
+# BXjscls
+ADD ./src/BXjscls/*.* /usr/share/texmf-dist/tex/xelate/bxjscls/
+
+RUN mktexlsr
