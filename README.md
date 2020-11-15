@@ -1,5 +1,3 @@
-津山高専版は→[ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
-
 # ReXeTeXeR
 <div style="text-align:center;">
 
@@ -7,19 +5,8 @@
 
 </div>
 
-ぼくのブログ: [TeX の環境構築ダルくね…? せや!](https://medium.com/@terfno/b9892d0d343c?)
-
-![img](./design/logo.png)
-
-<div style="text-align:center;">マジでかっこいいロゴっぽいやつ</div><br>
-
 ## これはなに
-![img](design/img.png)
-
-<div style="text-align:center;">動作イメージ(スクショは開発中のもの)</div><br>
-
 日本語の`.tex`(UTF-8)をTeXの環境構築なしに、XeTeX(xelatex)を使って`.pdf`に変換するやつです。
-勝手に**ReXeTeXeR**と名前をつけましたpBibTeXによるReferenceの自動生成に対応してます。
 
 ## 環境
 DockerかPodmanが必須です。それ以外はオプショナルです。
@@ -88,12 +75,16 @@ $ make tex
 ### 4. TeXを書く
 `./report.tex`を編集することで、PDFが錬成されます。
 XeTeX(XeLaTeX)です。
-画像、引用等については、`test/report.tex`を参照してください。
 
 ### 5. PDFを見る
 リソースのオートリロードに対応したPDFビューワーを使って`report.pdf`を開くと、ほぼリアルタイムにプレビューされます。
 
 ### 6. その他
+#### make tex等でTeXがオギャったら
+とりあえずCtrl+Dでそのコンパイルを中断して再度`$ make tex`してみてください。
+たいていの場合は`.aux`や`.toc`などが原因で、`$ make tex`が走るとそれらのファイルは一度削除されます。
+それでも解消されない場合はIssueを建てるか、エラーメッセージを読んでください。
+
 #### VS CodeのAuto Saveとの相性が悪いこともある
 ファイルの変更を察知してコンパイルが走るので、VS CodeなどのAuto Saveで文法が完成していない`.tex`ファイルがコンパイルされることがあります。
 `.vscode`にこのワークスペースのみ、Auto Saveが`onFocusChange`になるよう設定すると解消できます。。
