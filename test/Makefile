@@ -1,7 +1,7 @@
 INAME:=terfno/rexetexer
 TAG:=dev
 CNAME:=rexetexer
-TARGET:=report.tex
+TARGET:=report
 CONTAINER_ENGINE:=docker
 
 podman.%:
@@ -35,5 +35,6 @@ tex:
 	xelatex ${TARGET}.tex && pbibtex report.aux && xelatex ${TARGET}.tex && xelatex ${TARGET}.tex
 
 watch:
-	@chmod +x ./watch.sh && \
-	./watch.sh ./${TARGET} 'make tex'
+	@echo "start watching" && \
+	chmod +x ./watch.sh && \
+	./watch.sh ./${TARGET}.tex 'make tex'
