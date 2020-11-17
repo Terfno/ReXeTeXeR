@@ -1,5 +1,3 @@
-津山高専版は→[ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
-
 # ReXeTeXeR
 <div style="text-align:center;">
 
@@ -7,11 +5,9 @@
 
 </div>
 
-ぼくのブログ: [TeX の環境構築ダルくね…? せや!](https://medium.com/@terfno/b9892d0d343c?)
-
 ![img](./design/logo.png)
 
-<div style="text-align:center;">マジでかっこいいロゴっぽいやつ</div><br>
+<div style="text-align:center;">マジでかっこいいロゴ</div><br>
 
 ## これはなに
 ![img](design/img.png)
@@ -20,6 +16,9 @@
 
 日本語の`.tex`(UTF-8)をTeXの環境構築なしに、XeTeX(xelatex)を使って`.pdf`に変換するやつです。
 勝手に**ReXeTeXeR**と名前をつけましたpBibTeXによるReferenceの自動生成に対応してます。
+
+### 派生
+* 津山高専版: [ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
 
 ## 環境
 DockerかPodmanが必須です。それ以外はオプショナルです。
@@ -119,3 +118,6 @@ $ make rm
 ## thx
 - junsrt.bst: http://mirror.las.iastate.edu/tex-archive/biblio/pbibtex/base/junsrt.bst
 - BXjscls: https://github.com/zr-tex8r/BXjscls
+
+### もしよければ:bow:
+<a href="https://www.buymeacoffee.com/terfno" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
