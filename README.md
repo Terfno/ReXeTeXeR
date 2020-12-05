@@ -5,34 +5,36 @@
 
 </div>
 
+----
+
 ![img](./design/logo.png)
 
-<div style="text-align:center;">マジでかっこいいロゴ</div><br>
+<div style="text-align:center;">awesome cool logo</div>
 
-## これはなに
+----
+
+## What is this?
 ![img](design/img.png)
 
-<div style="text-align:center;">動作イメージ(スクショは開発中のもの)</div><br>
+Its compile Japanese (you can use English) TeX file to PDF without TeX Live on your local machine.
+Just required Docker.
+It include pBibTeX.
 
-日本語の`.tex`(UTF-8)をTeXの環境構築なしに、XeTeX(xelatex)を使って`.pdf`に変換するやつです。
-勝手に**ReXeTeXeR**と名前をつけましたpBibTeXによるReferenceの自動生成に対応してます。
-
-### 派生
-* 津山高専版: [ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
+### variation
+* For National Institute of Technology, Tsuyama College: [ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
 
 ## 環境
-DockerかPodmanが必須です。それ以外はオプショナルです。
+- Required
+  - Docker (you can use Podman)
+- Optional
+  - GNU Make
+  - Text editor
+  - PDF viewer (Skim)
 
-- Docker or Podman(どちらか1つ)
-- GNU Make
-- テキストエディタ
-- 自動リロードできるPDFビューワー
-
-## 使い方
-### 0. 準備
-releaseから最新版をダウンロードしてください。
-`.zip`を作業ディレクトリに展開してください。
-すると、以下のようになるはずです。
+## How to use
+### 0. Preparation
+Download the latest version from releases.
+Then, unzip the .zip file.
 
 ```
 .
@@ -50,74 +52,83 @@ releaseから最新版をダウンロードしてください。
 └── watch.sh
 ```
 
-その後、以下のコマンドでReXeTeXeRをpullします。
+After that, run below command at directory where you unzip.
 ```sh
 $ make init
 ```
 
-#### Podmanでの利用
-この形でコマンドを実行することでDockerではなくPodmanが利用されます。
+#### If you want to use Podman.
+If you want to use Podman, you should read and run as follows.
 ```sh
+# General
 $ make podman.${TARGET}
-# Example
-$ make podman.init # Run `make init` with Podman
+
+# Example: Run `make init` with Podman
+$ make podman.init
 ```
 
-### 1. 起動
+### 1. Launch
 ```sh
 $ make run
 ```
 
-### 2. 接続
+### 2. Connect
 ```sh
 $ make exec
 ```
-これでコンテナに入れます。
-以降のコマンドは特に記載がなければコンテナ内で実行するコマンドです。
+After run this command, your terminal will connect to the container.
+The following commands are executed in a container.
 
-### 3. 自動コンパイルスクリプトを起動
+### 3. Launch auto compile script
 ```sh
 $ make watch
 ```
-#### 一度だけコンパイルしたいときは
+
+#### If you want to compile just 1 time.
 ```sh
 $ make tex
 ```
 
-### 4. TeXを書く
-`./report.tex`を編集することで、PDFが錬成されます。
-XeTeX(XeLaTeX)です。
-画像、引用等については、`test/report.tex`を参照してください。
+### 4. Write TeX
+After `make watch`, edit `. /report.tex` will automatically generate a pdf.
+TeX Engine is XeTeX/XeLaTeX, see `./report.tex`.
 
-### 5. PDFを見る
-リソースのオートリロードに対応したPDFビューワーを使って`report.pdf`を開くと、ほぼリアルタイムにプレビューされます。
+### 5. View PDF
+Open `./report.pdf` with Skim or your favorite PDF viewer.
 
-### 6. その他
-#### VS CodeのAuto Saveとの相性が悪いこともある
-ファイルの変更を察知してコンパイルが走るので、VS CodeなどのAuto Saveで文法が完成していない`.tex`ファイルがコンパイルされることがあります。
-`.vscode`にこのワークスペースのみ、Auto Saveが`onFocusChange`になるよう設定すると解消できます。。
+### 6. Tips
+#### Can be incompatible with Auto Save (VS Code)
+Auto Save, such as VS Code, can cause incomplete `.tex` files to be compiled because it detects changes in the file and runs the compilation.
 
-#### リソースのオートリロードに対応したPDFビューワー
+This can be resolved by setting `.vscode` to set Auto Save to `onFocusChange` for this workspace only.
+Or you can also solve this problem by extending the monitoring interval of watch.sh from 1 to about 5 seconds.
+
+#### PDF Viewer that supports auto-reload of resources
 - macOS: [Skim](https://skim-app.sourceforge.io/)
 - windows10: [Sumatra PDF](https://www.sumatrapdfreader.org/)
 - Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
-#### 止めるときは
-コンテナから出て(`$ exit`)、以下のコマンドで止められます。
+#### If you want to stop this system.
+Exit container(`$ exit`), and do below commands.
 ```sh
 $ make stop
 ```
-再度起動する場合は`$ make run`ではなく`$ make start`してください。
 
-コンテナを削除する場合は、以下のコマンドを使用してください。(イメージは削除されないので安心)
+If you want to relaunch the system, use `$ make start`.
+
+If you want to delete container, do below commands. (It's not delte image. Safe.)
 ```sh
 $ make rm
 ```
-イメージを削除する場合は`$ make rmi`です。
+
+If you want to delte image, do below commands.
+```sh
+$ make rmi
+```
 
 ## thx
 - junsrt.bst: http://mirror.las.iastate.edu/tex-archive/biblio/pbibtex/base/junsrt.bst
 - BXjscls: https://github.com/zr-tex8r/BXjscls
 
-### もしよければ:bow:
+### Support me!
 <a href="https://www.buymeacoffee.com/terfno" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
