@@ -25,7 +25,7 @@ It include pBibTeX.
 
 ## 環境
 - Required
-  - Docker (you can use Podman)
+  - Docker (or Podman)
 - Optional
   - GNU Make
   - Text editor
@@ -33,7 +33,7 @@ It include pBibTeX.
 
 ## How to use
 ### 0. Preparation
-Download the latest version from releases.
+Download the latest version from [releases](https://github.com/Terfno/ReXeTeXeR/releases).
 Then, unzip the .zip file.
 
 ```
@@ -109,19 +109,19 @@ Or you can also solve this problem by extending the monitoring interval of watch
 - Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
 #### If you want to stop this system.
-Exit container(`$ exit`), and do below commands.
+Exit container(`$ exit`), and run below commands.
 ```sh
 $ make stop
 ```
 
 If you want to relaunch the system, use `$ make start`.
 
-If you want to delete container, do below commands. (It's not delte image. Safe.)
+If you want to delete container, run below commands. (It's not delte image. Safe.)
 ```sh
 $ make rm
 ```
 
-If you want to delte image, do below commands.
+If you want to delete image, run below commands.
 ```sh
 $ make rmi
 ```
