@@ -16,9 +16,9 @@
 ## What is this?
 ![img](design/img.png)
 
-Its compile Japanese (you can use English) TeX file to PDF without TeX Live on your local machine.
+It is a system what compile Japanese (you can use English) TeX file to PDF without TeX Live on your local machine.
 Just required Docker.
-It include pBibTeX.
+It includes pBibTeX.
 
 ### variation
 * For National Institute of Technology, Tsuyama College: [ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
