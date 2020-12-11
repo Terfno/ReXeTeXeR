@@ -1,4 +1,4 @@
-# ReXeTeXeR
+
 <div style="text-align:center;">
 
 ![GitHub](https://img.shields.io/github/license/terfno/rexetexer) ![GitHub repo size](https://img.shields.io/github/repo-size/terfno/rexetexer) ![GitHub last commit](https://img.shields.io/github/last-commit/terfno/rexetexer)
@@ -16,9 +16,9 @@
 ## What is this?
 ![img](design/img.png)
 
-Its compile Japanese (you can use English) TeX file to PDF without TeX Live on your local machine.
+It compiles Japanese (you can use English) TeX file to PDF without TeX Live on your local machine.
 Just required Docker.
-It include pBibTeX.
+It includes BibTeX.
 
 ### variation
 * For National Institute of Technology, Tsuyama College: [ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
@@ -52,7 +52,7 @@ Then, unzip the .zip file.
 └── watch.sh
 ```
 
-After that, run below command at directory where you unzip.
+After that, run the below command at the directory where you unzip.
 ```sh
 $ make init
 ```
@@ -76,7 +76,7 @@ $ make run
 ```sh
 $ make exec
 ```
-After run this command, your terminal will connect to the container.
+After running this command, your terminal will connect to the container.
 The following commands are executed in a container.
 
 ### 3. Launch auto compile script
@@ -97,10 +97,10 @@ TeX Engine is XeTeX/XeLaTeX, see `./report.tex`.
 Open `./report.pdf` with Skim or your favorite PDF viewer.
 
 ### 6. Tips
-#### Can be incompatible with Auto Save (VS Code)
-Auto Save, such as VS Code, can cause incomplete `.tex` files to be compiled because it detects changes in the file and runs the compilation.
+#### Can be incompatible with AutoSave (VS Code)
+AutoSave, such as VS Code, can cause incomplete `.tex` files to be compiled because it detects changes in the file and runs the compilation.
 
-This can be resolved by setting `.vscode` to set Auto Save to `onFocusChange` for this workspace only.
+This can be resolved by setting `.vscode` to set AutoSave to `onFocusChange` for this workspace only.
 Or you can also solve this problem by extending the monitoring interval of watch.sh from 1 to about 5 seconds.
 
 #### PDF Viewer that supports auto-reload of resources
@@ -109,19 +109,19 @@ Or you can also solve this problem by extending the monitoring interval of watch
 - Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
 #### If you want to stop this system.
-Exit container(`$ exit`), and do below commands.
+Exit container(`$ exit`), and do the below commands.
 ```sh
 $ make stop
 ```
 
 If you want to relaunch the system, use `$ make start`.
 
-If you want to delete container, do below commands. (It's not delte image. Safe.)
+If you want to delete the container, do the below commands. (It does not delete the image. Safe.)
 ```sh
 $ make rm
 ```
 
-If you want to delte image, do below commands.
+If you want to delete the image, do the below commands.
 ```sh
 $ make rmi
 ```
