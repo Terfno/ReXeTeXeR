@@ -25,7 +25,7 @@ It includes BibTeX.
 
 ## 環境
 - Required
-  - Docker (you can use Podman)
+  - Docker (or Podman)
 - Optional
   - GNU Make
   - Text editor
@@ -33,7 +33,7 @@ It includes BibTeX.
 
 ## How to use
 ### 0. Preparation
-Download the latest version from releases.
+Download the latest version from [releases](https://github.com/Terfno/ReXeTeXeR/releases).
 Then, unzip the .zip file.
 
 ```
@@ -109,19 +109,31 @@ Or you can also solve this problem by extending the monitoring interval of watch
 - Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
 #### If you want to stop this system.
+<<<<<<< HEAD
 Exit container(`$ exit`), and do the below commands.
+=======
+Exit container(`$ exit`), and run below commands.
+>>>>>>> e30daae09482bae96a0717ec779835a24827a0de
 ```sh
 $ make stop
 ```
 
 If you want to relaunch the system, use `$ make start`.
 
+<<<<<<< HEAD
 If you want to delete the container, do the below commands. (It does not delete the image. Safe.)
+=======
+If you want to delete container, run below commands. (It's not delte image. Safe.)
+>>>>>>> e30daae09482bae96a0717ec779835a24827a0de
 ```sh
 $ make rm
 ```
 
+<<<<<<< HEAD
 If you want to delete the image, do the below commands.
+=======
+If you want to delete image, run below commands.
+>>>>>>> e30daae09482bae96a0717ec779835a24827a0de
 ```sh
 $ make rmi
 ```
