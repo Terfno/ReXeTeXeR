@@ -23,7 +23,7 @@ It includes BibTeX.
 ### variation
 * For National Institute of Technology, Tsuyama College: [ReXeTeXeR-tsuyama](https://github.com/Terfno/ReXeTeXeR-tsuyama)
 
-## 環境
+## Environment
 - Required
   - Docker (or Podman)
 - Optional
@@ -109,31 +109,19 @@ Or you can also solve this problem by extending the monitoring interval of watch
 - Linux: [Evince](https://wiki.gnome.org/Apps/Evince)
 
 #### If you want to stop this system.
-<<<<<<< HEAD
 Exit container(`$ exit`), and do the below commands.
-=======
-Exit container(`$ exit`), and run below commands.
->>>>>>> e30daae09482bae96a0717ec779835a24827a0de
 ```sh
 $ make stop
 ```
 
 If you want to relaunch the system, use `$ make start`.
 
-<<<<<<< HEAD
 If you want to delete the container, do the below commands. (It does not delete the image. Safe.)
-=======
-If you want to delete container, run below commands. (It's not delte image. Safe.)
->>>>>>> e30daae09482bae96a0717ec779835a24827a0de
 ```sh
 $ make rm
 ```
 
-<<<<<<< HEAD
 If you want to delete the image, do the below commands.
-=======
-If you want to delete image, run below commands.
->>>>>>> e30daae09482bae96a0717ec779835a24827a0de
 ```sh
 $ make rmi
 ```
