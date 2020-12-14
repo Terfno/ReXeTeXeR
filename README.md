@@ -33,7 +33,7 @@ It includes BibTeX.
 
 ## How to use
 ### 0. Preparation
-Download the latest version from [releases](https://github.com/Terfno/ReXeTeXeR/releases).
+Download the latest version from [releases](https://github.com/Terfno/ReXeTeXeR/releases/latest).
 Then, unzip the .zip file.
 
 ```
