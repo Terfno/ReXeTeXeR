@@ -17,7 +17,7 @@ build:
 	@${CONTAINER_ENGINE} build -t '${INAME}:${TAG}' .
 
 run:
-	@${CONTAINER_ENGINE} run -v ${PWD}:/docs -w /docs --name ${CNAME} -itd ${INAME}:${TAG} sh
+	@${CONTAINER_ENGINE} run -it --rm -v ${CURDIR}:/docs -w /docs --name ${CNAME} ${INAME}:${TAG} sh
 
 exec:
 	@${CONTAINER_ENGINE} exec -it ${CNAME} sh
